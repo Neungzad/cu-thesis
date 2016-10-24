@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  h2 PoC : Classification Questions
+  hr
+  .row
+    .col-sm-3
+      div test
+    .col-sm-9
+      - for (var i = 0; i < rows.length ; i++) 
+        .box
+          h3 #{i+1}. #{rows[i].Title} 
+          p Title (Removed stop word) : 
+            - for (var j = 0; j < kwTitle[rows[i].Id].length ; j++)
+              span.label.label-info #{kwTitle[rows[i].Id][j]} 
+              span &nbsp;
+          p Tags : 
+            - for (var j = 0; j < tags[rows[i].Id].length ; j++)
+              span.label.label-primary #{tags[rows[i].Id][j]} 
+              span &nbsp;  
+          p 
+            b Score : 
+            b.score #{finalScope[rows[i].Id]} (#{scope[rows[i].Id]})
+
+          p
+            b Difficuty : 
+            b.difficulty #{difficuty[i]}
+          
+          p 
+            b Body Content : 
+            - for (var j = 0; j < bodyContent[rows[i].Id].length ; j++)
+              span.label.label-default #{bodyContent[rows[i].Id][j]}
+              span &nbsp; 
+
+          p 
+            b Body Code : 
+            - for (var j = 0; j < bodyCode[rows[i].Id].length ; j++)
+              span.label.label-warning #{bodyCode[rows[i].Id][j]}
+              span &nbsp; 
+
+          p 
+            b Body : 
+            span #{bodyFull[rows[i].Id]}
+
+          p #{rows[i].CreationDate} 
+          p
+            a.btn.btn-default(href='http://stackoverflow.com/questions/'+rows[i].Id, target='_blank', role='button') View details »
+    
