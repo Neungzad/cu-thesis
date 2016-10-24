@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <img src="https://hacktoberfest.digitalocean.com/assets/hf_logo-52c2c8901ebacc7c28dc212084389f4d950f89c3599db4e37cd9aa572ed096b3.svg" width="600" height="auto">
 ## Hacktoberfest 2016 (Oct 1 — Oct 31)
 
@@ -1422,3 +1423,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+=======
+# cu-thesis
+>>>>>>> dfda7826eec5f61c207811ed3359b676e0c827d5
