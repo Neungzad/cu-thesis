@@ -28,7 +28,7 @@ var visitNode = {};
 exports.index = (req, res) => {
   const difficuty = ["Normal", "Normal", "Easy", "Easy", "Easy", "Hard", "Normal", "Hard", "Easy", "Hard",
                      "Normal", "Normal", "Easy", "Easy", "Easy", "Normal", "Hard", "Easy", "Easy", "Hard"];
-  fs.readFile('./data/questions2.json', (err, data) => {
+  fs.readFile('./data/questions.json', (err, data) => {
     const result = JSON.parse(data);
     const kwTitle = {};
     const tags = {};
@@ -44,18 +44,18 @@ exports.index = (req, res) => {
       // title
       const oldString = q.Title.split(' ');
       kwTitle[q.Id] = sw.removeStopwords(uniqueList(removeSpecialChar(oldString)), stopWordEnglish);
-      scope[q.Id] = calScore(kwTitle[q.Id], false)*2;
+      scope[q.Id] = calScore(kwTitle[q.Id], false);
 
       // tags
       tags[q.Id] = uniqueList(removeSpecialChar(extractTags(q.Tags)));
-      scope[q.Id] += calScore(tags[q.Id], false)*2;
+      scope[q.Id] += calScore(tags[q.Id], false);
 
       // body 
       const tempBody = retriveBodyText(q.Body);
       bodyContent[q.Id] = sw.removeStopwords(uniqueList(tempBody.content), stopWordEnglish);
       bodyCode[q.Id] = sw.removeStopwords(uniqueList(tempBody.code), stopWordEnglish);
-      scope[q.Id] += calScore(bodyContent[q.Id], false);
-      scope[q.Id] += calScore(bodyCode[q.Id], true);
+      scope[q.Id] += calScore(bodyContent[q.Id], false)*0.5;
+      scope[q.Id] += calScore(bodyCode[q.Id], true)*0.5;
 
       // body full
       bodyFull[q.Id] = q.Body;
