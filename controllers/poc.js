@@ -38,31 +38,39 @@ exports.index = (req, res) => {
     const scope = {};
     const finalScope = {};
 
-    result.map(q => {
-      //visitNode = {};
+    result.map( (q, index) => {
+      visitNode = {};
+
+      console.log(" ---------------------------------");
+      console.log("|      Question No. "+(index+1)+"           |");
+      console.log(" ---------------------------------");
 
       // title
       const oldString = q.Title.split(' ');
-      kwTitle[q.Id] = sw.removeStopwords(uniqueList(removeSpecialChar(oldString)), stopWordEnglish);
+      kwTitle[q.Id] = (sw.removeStopwords(uniqueList(removeSpecialChar(oldString)), stopWordEnglish));
       scope[q.Id] = calScore(kwTitle[q.Id], false);
+      console.log(":: Title Score = "+scope[q.Id]);
 
       // tags
       tags[q.Id] = uniqueList(removeSpecialChar(extractTags(q.Tags)));
       scope[q.Id] += calScore(tags[q.Id], false);
+      console.log(":: Tags Score = "+scope[q.Id]);
 
       // body 
       const tempBody = retriveBodyText(q.Body);
-      bodyContent[q.Id] = sw.removeStopwords(uniqueList(tempBody.content), stopWordEnglish);
+      bodyContent[q.Id] = sw.removeStopwords(uniqueList(tempBody.content), stopWordEnglish);      
       bodyCode[q.Id] = sw.removeStopwords(uniqueList(tempBody.code), stopWordEnglish);
       scope[q.Id] += calScore(bodyContent[q.Id], false)*0.5;
+      console.log(":: bodyContent Score = "+scope[q.Id]);
       scope[q.Id] += calScore(bodyCode[q.Id], true)*0.5;
+      console.log(":: bodyCode Score = "+scope[q.Id]);
 
       // body full
       bodyFull[q.Id] = q.Body;
       
       finalScope[q.Id] = calScopeScore(scope[q.Id]);
 
-      //console.log(visitNode);
+      console.log(visitNode);
     });
 
     res.render('poc', {
@@ -102,12 +110,19 @@ const calScore = (words, isCode) => {
   var sum = 0;
   words.map(w => {
     // already visited
-    /*if(visitNode[w]) 
-      return 0;*/
+    if(visitNode[w]) 
+      return 0;
 
     // for debug
-    if(tree[w])
+    if(tree[w]){
+      // check first time visited node 
+      if((tree[w].isCode && isCode) || !tree[w].isCode){
+        visitNode[tree[w].word] = true;
+        //console.log(tree[w].word+" | isCode = "+tree[w].isCode);
+      }
+
       console.log("WORD = "+tree[w].word);
+    }
 
     sum += tree[w] ? recusiveCal(tree[w], isCode) : 0 ;  
   });
@@ -116,18 +131,16 @@ const calScore = (words, isCode) => {
 }
 
 const recusiveCal = (word, isCode) => { 
-  //visitNode[word.word] = true;
-
   // check isCode
   if(word.isCode && !isCode)
     return 0;
 
   if(word.parent){
     console.log(">> word = " + word.word + " , parent = "+word.parent);
-    return word.value + recusiveCal(tree[word.parent], isCode);
+    return 1 + recusiveCal(tree[word.parent], isCode);
   }
 
-  return word.value
+  return 1;
 }
 
 function calScopeScore(score) {
@@ -172,7 +185,7 @@ function retriveBodyText(html) {
   }
 }
 
-const _getArrayIndex = (start, end) => {
+const _getArrayIndex = (arr, start, end) => {
   let result = [];
   while(start <= end){
     result.push(arr[start]);
@@ -191,7 +204,7 @@ const arrMulti3 = (arr) => {
     while(start < max){
        end = start+(i-1);
        if(end<max){
-         result.push(_getArrayIndex(start, end));
+         result.push(_getArrayIndex(arr, start, end));
        }
        start++;         
     }    
