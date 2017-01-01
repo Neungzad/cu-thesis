@@ -7,16 +7,16 @@ const sw = require('stopword');
 const _ = require('underscore');
 const tree = require('../data/tree.js');
 const config = {
-    user: 'sa',
-    password: '1234',
-    server: 'localhost',
-    database: 'StackOverflow',
-    requestTimeout: 60000, 
-    pool: {
-        max: 10,
-        min: 0,
-        idleTimeoutMillis: 30000
-    }
+  user: 'sa',
+  password: '1234',
+  server: 'localhost',
+  database: 'StackOverflow',
+  requestTimeout: 60000,
+  pool: {
+    max: 10,
+    min: 0,
+    idleTimeoutMillis: 30000
+  }
 };
 
 var visitNode = {};
@@ -27,8 +27,9 @@ var visitNode = {};
  */
 exports.index = (req, res) => {
   const difficuty = ["Normal", "Normal", "Easy", "Easy", "Easy", "Hard", "Normal", "Hard", "Easy", "Hard",
-                     "Normal", "Normal", "Easy", "Easy", "Easy", "Normal", "Hard", "Easy", "Easy", "Hard"];
-  fs.readFile('./data/questions.json', (err, data) => {
+    "Normal", "Normal", "Easy", "Easy", "Easy", "Normal", "Hard", "Easy", "Easy", "Hard"];
+
+  fs.readFile('./data/questions10.json', (err, data) => {
     const result = JSON.parse(data);
     const kwTitle = {};
     const tags = {};
@@ -37,38 +38,42 @@ exports.index = (req, res) => {
     const bodyFull = {};
     const scope = {};
     const finalScope = {};
+    const finalLinearScope = {};
 
-    result.map( (q, index) => {
+    result.map((q, index) => {
       visitNode = {};
 
       console.log(" ---------------------------------");
-      console.log("|      Question No. "+(index+1)+"           |");
+      console.log("|       Question No. " + (index + 1) + "           |");
       console.log(" ---------------------------------");
 
       // title
       const oldString = q.Title.split(' ');
-      kwTitle[q.Id] = (sw.removeStopwords(uniqueList(removeSpecialChar(oldString)), stopWordEnglish));
+      kwTitle[q.Id] = sw.removeStopwords(uniqueList(removeSpecialChar(oldString)), stopWordEnglish);
       scope[q.Id] = calScore(kwTitle[q.Id], false);
-      console.log(":: Title Score = "+scope[q.Id]);
+      console.log(":: Title Score = " + scope[q.Id]);
 
       // tags
       tags[q.Id] = uniqueList(removeSpecialChar(extractTags(q.Tags)));
       scope[q.Id] += calScore(tags[q.Id], false);
-      console.log(":: Tags Score = "+scope[q.Id]);
+      console.log(":: Tags Score = " + scope[q.Id]);
 
       // body 
       const tempBody = retriveBodyText(q.Body);
-      bodyContent[q.Id] = sw.removeStopwords(uniqueList(tempBody.content), stopWordEnglish);      
-      bodyCode[q.Id] = sw.removeStopwords(uniqueList(tempBody.code), stopWordEnglish);
-      scope[q.Id] += calScore(bodyContent[q.Id], false)*0.5;
-      console.log(":: bodyContent Score = "+scope[q.Id]);
-      scope[q.Id] += calScore(bodyCode[q.Id], true)*0.5;
-      console.log(":: bodyCode Score = "+scope[q.Id]);
+      bodyContent[q.Id] = (sw.removeStopwords(uniqueList(tempBody.content), stopWordEnglish));
+      bodyCode[q.Id] = (sw.removeStopwords(uniqueList(tempBody.code), stopWordEnglish));
+      scope[q.Id] += calScore(bodyContent[q.Id], false) * 0.5;
+      console.log(":: bodyContent Score = " + scope[q.Id]);
+      scope[q.Id] += calScore(bodyCode[q.Id], true) * 0.5;
+      console.log(":: bodyCode Score = " + scope[q.Id]);
 
       // body full
       bodyFull[q.Id] = q.Body;
-      
-      finalScope[q.Id] = calScopeScore(scope[q.Id]);
+
+      // expotiential
+      // finalScope[q.Id] = calScopeScore(scope[q.Id]);
+
+      finalLinearScope[q.Id] = calScopeLinearScore(scope[q.Id]);
 
       console.log(visitNode);
     });
@@ -81,7 +86,8 @@ exports.index = (req, res) => {
       bodyContent,
       bodyCode,
       scope,
-      finalScope,
+      //finalScope,
+      finalLinearScope,
       difficuty,
       bodyFull
     });
@@ -95,9 +101,15 @@ const extractTags = (tags) => {
 
 const removeSpecialChar = (words) => {
   return words.map(w => {
-    return w.replace(/[`~@?;:,"“”{}\(\);,']/gi, '').toLowerCase();
+    return w.toString().replace(/[`~@?;:,"“”{}\(\);,']|^(\d+)$/gi, '').toLowerCase();
     // replace(/[^\w\s\-\.]/gi, '')
     // replace(/[`~!@?;:,<>\{\}\[\]\\\/]/gi, '')
+  })
+}
+
+const removeDigi = (words) => {
+  return words.map(w => {
+    return w.toString().replace(/^(\d+)$/gi, '').toLowerCase();
   })
 }
 
@@ -110,41 +122,45 @@ const calScore = (words, isCode) => {
   var sum = 0;
   words.map(w => {
     // already visited
-    if(visitNode[w]) 
+    if (visitNode[w])
       return 0;
 
     // for debug
-    if(tree[w]){
+    if (tree[w]) {
       // check first time visited node 
-      if((tree[w].isCode && isCode) || !tree[w].isCode){
+      if ((tree[w].isCode && isCode) || !tree[w].isCode) {
         visitNode[tree[w].word] = true;
         //console.log(tree[w].word+" | isCode = "+tree[w].isCode);
       }
 
-      console.log("WORD = "+tree[w].word);
+      console.log("WORD = " + tree[w].word);
     }
 
-    sum += tree[w] ? recusiveCal(tree[w], isCode) : 0 ;  
+    sum += tree[w] ? recusiveCal(tree[w], isCode) : 0;
   });
 
   return sum;
 }
 
-const recusiveCal = (word, isCode) => { 
+const recusiveCal = (word, isCode) => {
   // check isCode
-  if(word.isCode && !isCode)
+  if (word.isCode && !isCode)
     return 0;
 
-  if(word.parent){
-    console.log(">> word = " + word.word + " , parent = "+word.parent);
-    return 1 + recusiveCal(tree[word.parent], isCode);
+  if (word.parent) {
+    console.log(">> word = " + word.word + " , parent = " + word.parent);
+    return word.value + recusiveCal(tree[word.parent], isCode);
   }
 
-  return 1;
+  return word.value;
 }
 
-function calScopeScore(score) {
-  return 1 - ( 1 / Math.pow(2.71828, score) );
+// function calScopeScore(score) {
+//   return 1 - ( 1 / Math.pow(2.71828, score) );
+// }
+
+function calScopeLinearScore(score) {
+  return 1 - (1 / Math.log(score));
 }
 
 function retriveBodyText(html) {
@@ -155,11 +171,11 @@ function retriveBodyText(html) {
   const paragraphs = html.split(re);
 
   let content = "",
-      code = "";
+    code = "";
 
   //console.log(paragraphs);    
   paragraphs.map(w => {
-    if(w.substring(0,6) === "<code>")
+    if (w.substring(0, 6) === "<code>")
       code += "" + w;
     else
       content += "" + w;
@@ -167,49 +183,48 @@ function retriveBodyText(html) {
 
   // content remove tag 
   content = content.replace(/<(?:.|\n)*?>/gm, '');
-  // content replace Speaial Chat to space bar
+  // content replace Spectial character to space bar
   content = content.replace(/[`~@?;:,"“”{}();,\.']/gi, ' ');
   // spit 
-  content = content.toLowerCase().split(/\s+/);
-  /*console.log("content = ");
-  console.log(code);*/
+  content = removeDigi(content.toLowerCase().split(/\s+/));
+ 
   // convert entity to tag
   code = _.unescape(code);
   // remove stop word for programming
-  code = code.replace(/([@:`\'\"{}\(\)\[\];,'\.<>\/?])/gm, ' ').split(/\s+/);
+  console.log(code);
+  code = removeDigi(code.replace(/([@:`\'\"{}\(\)\[\];,'\.<>\/?])/gm, ' ').split(/\s+/));
 
-
-  return {
+  return { 
     content,
-    code 
+    code
   }
 }
 
 const _getArrayIndex = (arr, start, end) => {
   let result = [];
-  while(start <= end){
+  while (start <= end) {
     result.push(arr[start]);
     start++;
-  } 
+  }
   return result.join(' ');
 }
 
 const arrMulti3 = (arr) => {
   const max = arr.length;
   const result = [];
-  
-  for(let i=1; i<=3; i++){
+
+  for (let i = 1; i <= 3; i++) {
     let start = 0;
     let end;
-    while(start < max){
-       end = start+(i-1);
-       if(end<max){
-         result.push(_getArrayIndex(arr, start, end));
-       }
-       start++;         
-    }    
-  } 
-  
+    while (start < max) {
+      end = start + (i - 1);
+      if (end < max) {
+        result.push(_getArrayIndex(arr, start, end));
+      }
+      start++;
+    }
+  }
+
   return result;
 }
 
@@ -220,7 +235,7 @@ const arrMulti3 = (arr) => {
       console.log('"'+w.toLowerCase()+'" : {"word":"'+w.toLowerCase()+'","value": 1,"parent":null},');
     })*/
 
-/* Save to database */ 
+/* Save to database */
 /*exports.index = (req, res) => {
 	var connection1 = new sql.Connection(config, function(err) {	
     const query = `

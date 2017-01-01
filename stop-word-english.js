@@ -571,7 +571,6 @@ exports.english = [
   'upon',
   'upwards',
   'us',
-  'use',
   'used',
   'useful',
   'uses',

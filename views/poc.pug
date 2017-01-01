@@ -18,9 +18,14 @@ block content
             - for (var j = 0; j < tags[rows[i].Id].length ; j++)
               span.label.label-primary #{tags[rows[i].Id][j]} 
               span &nbsp;  
+
+          //- p 
+          //-   b Exp : 
+          //-   b.score #{finalScope[rows[i].Id]} (#{scope[rows[i].Id]})
+
           p 
-            b Score : 
-            b.score #{finalScope[rows[i].Id]} (#{scope[rows[i].Id]})
+            b Linear + Log: 
+            b.score #{finalLinearScope[rows[i].Id]} (#{scope[rows[i].Id]})
 
           p
             b Difficuty : 
@@ -38,9 +43,9 @@ block content
               span.label.label-warning #{bodyCode[rows[i].Id][j]}
               span &nbsp; 
 
-          p 
-            b Body : 
-            span #{bodyFull[rows[i].Id]}
+          //- p 
+          //-   b Body : 
+          //-   span #{bodyFull[rows[i].Id]}
 
           p #{rows[i].CreationDate} 
           p
