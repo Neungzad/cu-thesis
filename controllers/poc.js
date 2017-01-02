@@ -6,6 +6,7 @@ const stopWordEnglish = require('../stop-word-english').english;
 const sw = require('stopword');
 const _ = require('underscore');
 const tree = require('../data/tree.js');
+var natural = require('natural');
 const config = {
   user: 'sa',
   password: '1234',
@@ -49,19 +50,19 @@ exports.index = (req, res) => {
 
       // title
       const oldString = q.Title.split(' ');
-      kwTitle[q.Id] = sw.removeStopwords(uniqueList(removeSpecialChar(oldString)), stopWordEnglish);
+      kwTitle[q.Id] = stem(sw.removeStopwords(uniqueList(removeSpecialChar(oldString)), stopWordEnglish));
       scope[q.Id] = calScore(kwTitle[q.Id], false);
       console.log(":: Title Score = " + scope[q.Id]);
 
       // tags
-      tags[q.Id] = uniqueList(removeSpecialChar(extractTags(q.Tags)));
+      tags[q.Id] = stem(uniqueList(removeSpecialChar(extractTags(q.Tags))));
       scope[q.Id] += calScore(tags[q.Id], false);
       console.log(":: Tags Score = " + scope[q.Id]);
 
       // body 
       const tempBody = retriveBodyText(q.Body);
-      bodyContent[q.Id] = (sw.removeStopwords(uniqueList(tempBody.content), stopWordEnglish));
-      bodyCode[q.Id] = (sw.removeStopwords(uniqueList(tempBody.code), stopWordEnglish));
+      bodyContent[q.Id] = stem(sw.removeStopwords(uniqueList(tempBody.content), stopWordEnglish));
+      bodyCode[q.Id] = (sw.removeStopwords(uniqueList(tempBody.code), stopWordEnglish));   
       scope[q.Id] += calScore(bodyContent[q.Id], false) * 0.5;
       console.log(":: bodyContent Score = " + scope[q.Id]);
       scope[q.Id] += calScore(bodyCode[q.Id], true) * 0.5;
@@ -102,8 +103,17 @@ const extractTags = (tags) => {
 const removeSpecialChar = (words) => {
   return words.map(w => {
     return w.toString().replace(/[`~@?;:,"“”{}\(\);,']|^(\d+)$/gi, '').toLowerCase();
-    // replace(/[^\w\s\-\.]/gi, '')
-    // replace(/[`~!@?;:,<>\{\}\[\]\\\/]/gi, '')
+  })
+}
+
+const stem = (words) => {
+  return words.map(w => {
+    let result = w;
+
+    if (!result.match(/[\.\-]|(js)$/gi))
+      result = natural.PorterStemmer.stem(result);
+
+    return result;
   })
 }
 
@@ -191,7 +201,7 @@ function retriveBodyText(html) {
   // convert entity to tag
   code = _.unescape(code);
   // remove stop word for programming
-  console.log(code);
+  // console.log(code);
   code = removeDigi(code.replace(/([@:`\'\"{}\(\)\[\];,'\.<>\/?])/gm, ' ').split(/\s+/));
 
   return { 

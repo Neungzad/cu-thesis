@@ -37,6 +37,7 @@
     "morgan": "^1.7.0",
     "mssql": "^3.3.0",
     "multer": "^1.2.0",
+    "natural": "^0.4.0",
     "node-foursquare": "^0.3.0",
     "node-linkedin": "^0.5.4",
     "node-sass-middleware": "^0.9.8",

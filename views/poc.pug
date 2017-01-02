@@ -12,7 +12,7 @@ block content
           h3 #{i+1}. #{rows[i].Title} 
           p Title (Removed stop word) : 
             - for (var j = 0; j < kwTitle[rows[i].Id].length ; j++)
-              span.label.label-info #{kwTitle[rows[i].Id][j]} 
+              span.label.label-info #{kwTitle[rows[i].Id][j]}
               span &nbsp;
           p Tags : 
             - for (var j = 0; j < tags[rows[i].Id].length ; j++)
@@ -24,11 +24,11 @@ block content
           //-   b.score #{finalScope[rows[i].Id]} (#{scope[rows[i].Id]})
 
           p 
-            b Linear + Log: 
+            b Point: 
             b.score #{finalLinearScope[rows[i].Id]} (#{scope[rows[i].Id]})
 
           p
-            b Difficuty : 
+            b Estimate diff: 
             b.difficulty #{difficuty[i]}
           
           p 
