@@ -23,9 +23,9 @@ block content
           //-   b Exp : 
           //-   b.score #{finalScope[rows[i].Id]} (#{scope[rows[i].Id]})
 
-          p 
-            b Point: 
-            b.score #{finalLinearScope[rows[i].Id]} (#{scope[rows[i].Id]})
+          //- p 
+          //-   b Point: 
+          //-   b.score #{finalLinearScope[rows[i].Id]} (#{scope[rows[i].Id]})
 
           p
             b Estimate diff: 
@@ -50,4 +50,5 @@ block content
           p #{rows[i].CreationDate} 
           p
             a.btn.btn-default(href='http://stackoverflow.com/questions/'+rows[i].Id, target='_blank', role='button') View details »
-    
+          
+          p amount : #{checkDup[rows[i].Id]}

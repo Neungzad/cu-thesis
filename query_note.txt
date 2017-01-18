@@ -1,0 +1,94 @@
+query
+
+// 1. first 2015
+const query = `
+select top 10 * 
+from Posts
+where Tags like \'%javascript%\'
+and YEAR(CreationDate) = 2015
+`;
+
+// 2. last 2015
+const query = `
+select top 10 * 
+from Posts
+where Tags like \'%javascript%\'
+and YEAR(CreationDate) = 2015
+ORDER BY CreationDate DESC
+`;
+
+// 3. last activity 2015
+const query = `
+select top 10 * 
+from Posts
+where Tags like \'%javascript%\'
+and YEAR(CreationDate) = 2015
+ORDER BY LastActivityDate DESC
+`;
+
+
+// 4. first 2016
+const query = `
+select top 10 * 
+from Posts
+where Tags like \'%javascript%\'
+and YEAR(CreationDate) = 2016
+`;
+
+// 5. last 2016
+const query = `
+select top 10 * 
+from Posts
+where Tags like \'%javascript%\'
+and YEAR(CreationDate) = 2016
+ORDER BY CreationDate DESC
+`;
+
+// 6. last activity 2016
+const query = `
+select top 10 * 
+from Posts
+where Tags like \'%javascript%\'
+and YEAR(LastActivityDate) = 2016
+ORDER BY LastActivityDate DESC
+`;
+
+// 7. comment lowest
+const query = `
+select top 10 * 
+from Posts
+where Tags like \'%javascript%\'
+and YEAR(CreationDate) > 2013
+ORDER BY CommentCount 
+`;
+
+// 8. comment highest
+const query = `
+select top 10 * 
+from Posts
+where Tags like \'%javascript%\'
+and YEAR(CreationDate) > 2013
+ORDER BY CommentCount DESC
+`;
+
+// 9. lowest vote
+const query = `
+select top 10 * 
+from Posts
+where Tags like \'%javascript%\'
+and YEAR(CreationDate) > 2013
+ORDER BY Score 
+`;
+
+// 10. highest vote
+const query = `
+select top 10 * 
+from Posts
+where Tags like \'%javascript%\'
+and YEAR(CreationDate) > 2013
+ORDER BY Score DESC
+`;
+
+
+
+

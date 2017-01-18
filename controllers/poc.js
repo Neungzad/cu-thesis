@@ -7,6 +7,12 @@ const sw = require('stopword');
 const _ = require('underscore');
 const tree = require('../data/tree.js');
 var natural = require('natural');
+
+// Difficulty level
+const EASY = "Easy";
+const NORMAL = "Normal";
+const HARD = "Hard";
+
 const config = {
   user: 'sa',
   password: '1234',
@@ -27,10 +33,31 @@ var visitNode = {};
  * Home page.
  */
 exports.index = (req, res) => {
-  const difficuty = ["Normal", "Normal", "Easy", "Easy", "Easy", "Hard", "Normal", "Hard", "Easy", "Hard",
-    "Normal", "Normal", "Easy", "Easy", "Easy", "Normal", "Hard", "Easy", "Easy", "Hard"];
+  
+  const difficuty = [
+    // set 1
+    NORMAL, NORMAL, EASY, EASY, EASY, HARD, NORMAL, HARD, EASY, NORMAL,  // 10 
+    // set 2   
+    EASY, NORMAL, NORMAL, NORMAL, EASY, NORMAL, EASY, NORMAL, EASY, // 9 (19)
+    // set 3 
+    NORMAL, EASY, NORMAL, NORMAL, EASY, EASY, NORMAL, EASY, NORMAL,  // 9 (28)
+    // set 4 
+    HARD, NORMAL, NORMAL, NORMAL, NORMAL, EASY, NORMAL, EASY, EASY, EASY, // 10 (38)
+    // set 5 
+    NORMAL, NORMAL, EASY, EASY, NORMAL, EASY, // 6 (44)
+    // set 6 
+    NORMAL, EASY, EASY, EASY, HARD, NORMAL, NORMAL, EASY, EASY, EASY, // 10 (54)
+    // set 7 - แม้ง ๆ  
+    NORMAL, EASY, EASY, NORMAL, NORMAL, NORMAL, EASY, EASY, EASY, EASY, // 10 (64)
+    // set 8 - แม้ง ๆ  
+    NORMAL, EASY, EASY, NORMAL, NORMAL, EASY, NORMAL, EASY, NORMAL, EASY, // 10 (74)
+    // set 9 - ส่วนมากเป็นเรื่องที่ทำไม่ได้
+    NORMAL, EASY, EASY, EASY, EASY, HARD, EASY, EASY, // 8 (82)
+    // set 10 
+    NORMAL, EASY, NORMAL, NORMAL, EASY, NORMAL, NORMAL, NORMAL, NORMAL // 9 (91)
+  ];
 
-  fs.readFile('./data/questions10.json', (err, data) => {
+  fs.readFile('./data/questions_final.json', (err, data) => {
     const result = JSON.parse(data);
     const kwTitle = {};
     const tags = {};
@@ -40,6 +67,7 @@ exports.index = (req, res) => {
     const scope = {};
     const finalScope = {};
     const finalLinearScope = {};
+    const checkDup = {};
 
     result.map((q, index) => {
       visitNode = {};
@@ -49,6 +77,7 @@ exports.index = (req, res) => {
       console.log(" ---------------------------------");
 
       // title
+      console.log('Title: ',q.Title);
       const oldString = q.Title.split(' ');
       kwTitle[q.Id] = stem(sw.removeStopwords(uniqueList(removeSpecialChar(oldString)), stopWordEnglish));
       scope[q.Id] = calScore(kwTitle[q.Id], false);
@@ -76,6 +105,8 @@ exports.index = (req, res) => {
 
       finalLinearScope[q.Id] = calScopeLinearScore(scope[q.Id]);
 
+      checkDup[q.Id] = checkDup[q.Id] ? checkDup[q.Id] += 1 : 1 ;
+    
       console.log(visitNode);
     });
 
@@ -90,7 +121,8 @@ exports.index = (req, res) => {
       //finalScope,
       finalLinearScope,
       difficuty,
-      bodyFull
+      bodyFull,
+      checkDup
     });
   });
 };
@@ -246,23 +278,24 @@ const arrMulti3 = (arr) => {
     })*/
 
 /* Save to database */
-/*exports.index = (req, res) => {
-	var connection1 = new sql.Connection(config, function(err) {	
-    const query = `
-				select top 20 * 
-				from Posts
-        where Tags like \'%javascript%\'
-        and YEAR(CreationDate) = 2015
-    `;
+// exports.index = (req, res) => {
+// 	var connection1 = new sql.Connection(config, function(err) {	
+//     const query = `
+//       select top 10 * 
+//       from Posts
+//       where Tags like \'%javascript%\'
+//       and YEAR(CreationDate) > 2013
+//       ORDER BY Score DESC
+//     `;
 
-    var request = new sql.Request(connection1);
-    request.query(query, function(err, recordset) {
-      fs.writeFile('../questions.json', JSON.stringify(recordset));
-      console.log("Write Completed.");
-			res.render('poc', {
-			  title: 'PoC',
-			  rows: recordset
-			});
-		});	
-  });
-};*/
+//     var request = new sql.Request(connection1);
+//     request.query(query, function(err, recordset) {
+//       fs.writeFile('./data/questions_10_high_score.json', JSON.stringify(recordset)); 
+//       console.log("Write Completed.");
+// 			res.render('poc', {
+// 			  title: 'PoC',
+// 			  rows: recordset
+// 			});
+// 		});	
+//   });
+// };
