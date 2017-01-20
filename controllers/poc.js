@@ -67,7 +67,6 @@ exports.index = (req, res) => {
     const scope = {};
     const finalScope = {};
     const finalLinearScope = {};
-    const checkDup = {};
 
     result.map((q, index) => {
       visitNode = {};
@@ -105,8 +104,6 @@ exports.index = (req, res) => {
 
       finalLinearScope[q.Id] = calScopeLinearScore(scope[q.Id]);
 
-      checkDup[q.Id] = checkDup[q.Id] ? checkDup[q.Id] += 1 : 1 ;
-    
       console.log(visitNode);
     });
 
@@ -122,7 +119,6 @@ exports.index = (req, res) => {
       finalLinearScope,
       difficuty,
       bodyFull,
-      checkDup
     });
   });
 };
