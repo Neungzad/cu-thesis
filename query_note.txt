@@ -26,7 +26,6 @@ and YEAR(CreationDate) = 2015
 ORDER BY LastActivityDate DESC
 `;
 
-
 // 4. first 2016
 const query = `
 select top 10 * 
@@ -53,7 +52,7 @@ and YEAR(LastActivityDate) = 2016
 ORDER BY LastActivityDate DESC
 `;
 
-// 7. comment lowest
+// 7. the lowest comment
 const query = `
 select top 10 * 
 from Posts
@@ -62,7 +61,7 @@ and YEAR(CreationDate) > 2013
 ORDER BY CommentCount 
 `;
 
-// 8. comment highest
+// 8. the highest comment 
 const query = `
 select top 10 * 
 from Posts
@@ -71,7 +70,7 @@ and YEAR(CreationDate) > 2013
 ORDER BY CommentCount DESC
 `;
 
-// 9. lowest vote
+// 9. the lowest vote
 const query = `
 select top 10 * 
 from Posts
@@ -80,7 +79,7 @@ and YEAR(CreationDate) > 2013
 ORDER BY Score 
 `;
 
-// 10. highest vote
+// 10. the highest vote
 const query = `
 select top 10 * 
 from Posts
