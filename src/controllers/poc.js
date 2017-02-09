@@ -5,8 +5,9 @@ const sql = require('mssql');
 const stopWordEnglish = require('../stop-word-english').english;
 const sw = require('stopword');
 const _ = require('underscore');
-const tree = require('../data/tree.js');
+const tree = require('../data/tree.json');
 var natural = require('natural');
+const features = require('./features');
 
 // Difficulty level
 const EASY = "Easy";
@@ -57,7 +58,7 @@ exports.index = (req, res) => {
     NORMAL, EASY, NORMAL, NORMAL, EASY, NORMAL, NORMAL, NORMAL, NORMAL // 9 (91)
   ];
 
-  fs.readFile('./data/questions_final.json', (err, data) => {
+  fs.readFile(__dirname + '/../data/questions_final.json', (err, data) => {
     const result = JSON.parse(data);
     const kwTitle = {};
     const tags = {};
@@ -99,10 +100,18 @@ exports.index = (req, res) => {
       // body full
       bodyFull[q.Id] = q.Body;
 
-      // expotiential
-      // finalScope[q.Id] = calScopeScore(scope[q.Id]);
-
+      // Score
       finalLinearScope[q.Id] = calScopeLinearScore(scope[q.Id]);
+      
+      // Calculate By features
+      var connection1 = new sql.Connection(config, function(err) {
+        var resultFeatures = features.main();      
+        resultFeatures.then(result => {
+          console.log('result = ',result);
+        }).catch(e => {
+          console.log(e);
+        })
+      });
 
       console.log(visitNode);
     });
@@ -192,10 +201,6 @@ const recusiveCal = (word, isCode) => {
 
   return word.value;
 }
-
-// function calScopeScore(score) {
-//   return 1 - ( 1 / Math.pow(2.71828, score) );
-// }
 
 function calScopeLinearScore(score) {
   return 1 - (1 / Math.log(score));

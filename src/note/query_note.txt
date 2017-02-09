@@ -91,3 +91,35 @@ ORDER BY Score DESC
 
 
 
+//  All tags of userId = 3 (time:0.38)
+SELECT posts.Tags
+FROM [StackOverflow].[dbo].[Posts] as posts, [StackOverflow].[dbo].[Users] as users
+WHERE posts.OwnerUserId = users.Id
+AND posts.PostTypeId = 1
+AND users.Id = 3;
+
+// show all answer and AcceptedAnswerId 
+SELECT ans.Id AnswerId, que.AcceptedAnswerId
+FROM [StackOverflow].[dbo].[Posts] as ans
+LEFT JOIN [StackOverflow].[dbo].[Posts] as que
+ON ans.ParentId = que.Id
+WHERE ans.OwnerUserId = 70
+AND ans.PostTypeId = 2
+
+// number of day since register 
+SELECT DATEDIFF(day, CreationDate, '2016-01-01') AS DiffDate
+FROM [StackOverflow].[dbo].[Users]
+WHERE Id = 1
+
+// All answer bt question Id
+SELECT *
+FROM [StackOverflow].[dbo].[Posts]
+WHERE PostTypeId = 2
+AND ParentId = 146
+
+// ViewCount by question Id
+SELECT Id, ViewCount
+FROM [StackOverflow].[dbo].[Posts]
+WHERE Id = 273356
+
+-- MAX = 3037743

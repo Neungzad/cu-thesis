@@ -1,4 +1,4 @@
-module.exports = {
+{
 	"javascript" : {"word":"javascript","value": 1,"parent":null},
 		"language" : {"word":"language","value": 1,"parent":"javascript"},
 			"grammar" : {"word":"grammar","value": 1,"parent":"language"},
@@ -530,6 +530,5 @@ module.exports = {
 		"related languages" : {"word":"web api","value": 1,"parent":"javascript"},
 			"html" : {"word":"html","value": 1,"parent":"related languages"},
 			"css" : {"word":"css","value": 1,"parent":"related languages"},
-				"bootstrap" : {"word":"bootstrap","value": 1,"parent":"css"},
-
-};
+				"bootstrap" : {"word":"bootstrap","value": 1,"parent":"css"}
+}
