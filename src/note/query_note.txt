@@ -93,9 +93,8 @@ ORDER BY Score DESC
 
 //  All tags of userId = 3 (time:0.38)
 SELECT posts.Tags
-FROM [StackOverflow].[dbo].[Posts] as posts, [StackOverflow].[dbo].[Users] as users
-WHERE posts.OwnerUserId = users.Id
-AND posts.PostTypeId = 1
+FROM [StackOverflow].[dbo].[Posts] as posts
+WHERE posts.PostTypeId = 1
 AND users.Id = 3;
 
 // show all answer and AcceptedAnswerId 

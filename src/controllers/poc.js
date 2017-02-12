@@ -8,6 +8,8 @@ const _ = require('underscore');
 const tree = require('../data/tree.json');
 var natural = require('natural');
 const features = require('./features');
+import { featureFocus, ratioSuccessAnswered } from './features';
+
 
 // Difficulty level
 const EASY = "Easy";
@@ -34,7 +36,13 @@ var visitNode = {};
  * Home page.
  */
 exports.index = (req, res) => {
-  
+  const pm = _index();
+  pm.then(obj => {
+    res.render('poc', obj);
+  })
+};
+
+async function _index() {
   const difficuty = [
     // set 1
     NORMAL, NORMAL, EASY, EASY, EASY, HARD, NORMAL, HARD, EASY, NORMAL,  // 10 
@@ -58,79 +66,104 @@ exports.index = (req, res) => {
     NORMAL, EASY, NORMAL, NORMAL, EASY, NORMAL, NORMAL, NORMAL, NORMAL // 9 (91)
   ];
 
-  fs.readFile(__dirname + '/../data/questions_final.json', (err, data) => {
-    const result = JSON.parse(data);
-    const kwTitle = {};
-    const tags = {};
-    const bodyContent = {};
-    const bodyCode = {};
-    const bodyFull = {};
-    const scope = {};
-    const finalScope = {};
-    const finalLinearScope = {};
+  const request = await connectDB();
+  const data = await readQuestion();
+  const result = JSON.parse(data);
+  const kwTitle = {};
+  const tags = {};
+  const bodyContent = {};
+  const bodyCode = {};
+  const bodyFull = {};
+  const scope = {};
+  const finalScope = {};
+  const finalLinearScope = {};
+  const focusScore = {};
+  const ratioSuccessAnsweredScore = {};
+  let index = 0;
 
-    result.map((q, index) => {
-      visitNode = {};
+  for (let q of result) {
+    visitNode = {};
+    index++;
 
-      console.log(" ---------------------------------");
-      console.log("|       Question No. " + (index + 1) + "           |");
-      console.log(" ---------------------------------");
+    console.log(" ---------------------------------");
+    console.log("|       Question No. " + (index) + "           |");
+    console.log(" ---------------------------------");
 
-      // title
-      console.log('Title: ',q.Title);
-      const oldString = q.Title.split(' ');
-      kwTitle[q.Id] = stem(sw.removeStopwords(uniqueList(removeSpecialChar(oldString)), stopWordEnglish));
-      scope[q.Id] = calScore(kwTitle[q.Id], false);
-      console.log(":: Title Score = " + scope[q.Id]);
+    // title
+    ///console.log('Title: ',q.Title);
+    const oldString = q.Title.split(' ');
+    kwTitle[q.Id] = stem(sw.removeStopwords(uniqueList(removeSpecialChar(oldString)), stopWordEnglish));
+    scope[q.Id] = calScore(kwTitle[q.Id], false);
+    ///console.log(":: Title Score = " + scope[q.Id]);
 
-      // tags
-      tags[q.Id] = stem(uniqueList(removeSpecialChar(extractTags(q.Tags))));
-      scope[q.Id] += calScore(tags[q.Id], false);
-      console.log(":: Tags Score = " + scope[q.Id]);
+    // tags
+    tags[q.Id] = stem(uniqueList(removeSpecialChar(extractTags(q.Tags))));
+    scope[q.Id] += calScore(tags[q.Id], false);
+    ///console.log(":: Tags Score = " + scope[q.Id]);
 
-      // body 
-      const tempBody = retriveBodyText(q.Body);
-      bodyContent[q.Id] = stem(sw.removeStopwords(uniqueList(tempBody.content), stopWordEnglish));
-      bodyCode[q.Id] = (sw.removeStopwords(uniqueList(tempBody.code), stopWordEnglish));   
-      scope[q.Id] += calScore(bodyContent[q.Id], false) * 0.5;
-      console.log(":: bodyContent Score = " + scope[q.Id]);
-      scope[q.Id] += calScore(bodyCode[q.Id], true) * 0.5;
-      console.log(":: bodyCode Score = " + scope[q.Id]);
+    // body 
+    const tempBody = retriveBodyText(q.Body);
+    bodyContent[q.Id] = stem(sw.removeStopwords(uniqueList(tempBody.content), stopWordEnglish));
+    bodyCode[q.Id] = (sw.removeStopwords(uniqueList(tempBody.code), stopWordEnglish));
+    scope[q.Id] += calScore(bodyContent[q.Id], false) * 0.5;
+    ///console.log(":: bodyContent Score = " + scope[q.Id]);
+    scope[q.Id] += calScore(bodyCode[q.Id], true) * 0.5;
+    ///console.log(":: bodyCode Score = " + scope[q.Id]);
 
-      // body full
-      bodyFull[q.Id] = q.Body;
+    // body full
+    bodyFull[q.Id] = q.Body;
 
-      // Score
-      finalLinearScope[q.Id] = calScopeLinearScore(scope[q.Id]);
-      
-      // Calculate By features
-      var connection1 = new sql.Connection(config, function(err) {
-        var resultFeatures = features.main();      
-        resultFeatures.then(result => {
-          console.log('result = ',result);
-        }).catch(e => {
-          console.log(e);
-        })
-      });
+    // Score
+    finalLinearScope[q.Id] = calScopeLinearScore(scope[q.Id]);
 
-      console.log(visitNode);
+    ///console.log(visitNode);
+
+    ///console.log(':: Features');
+    focusScore[q.Id] = await featureFocus(request, q);
+    console.log('focusScore = ', focusScore[q.Id]);
+    
+    ratioSuccessAnsweredScore[q.Id] = await ratioSuccessAnswered(request, q);
+    console.log('ratioSuccessAnsweredScore = ', ratioSuccessAnsweredScore[q.Id]);
+
+
+    
+
+  }
+
+  const objectResponse = {
+    title: 'PoC',
+    rows: result,
+    kwTitle,
+    tags,
+    bodyContent,
+    bodyCode,
+    scope,
+    //finalScope,
+    finalLinearScope,
+    difficuty,
+    bodyFull,
+    focusScore,
+    ratioSuccessAnsweredScore
+  };
+
+  return Promise.resolve(objectResponse);
+} 
+
+const connectDB = () => {
+  return new Promise(resolve => {
+    const connectionDB = new sql.Connection(config, function(err) {	
+      resolve(new sql.Request(connectionDB));
     });
+  })
+}
 
-    res.render('poc', {
-      title: 'PoC',
-      rows: result,
-      kwTitle,
-      tags,
-      bodyContent,
-      bodyCode,
-      scope,
-      //finalScope,
-      finalLinearScope,
-      difficuty,
-      bodyFull,
+const readQuestion = () => {
+  return new Promise(resolve => {
+    fs.readFile(__dirname + '/../data/questions_1_first_2015.json', (err, data) => {
+      resolve(data);
     });
-  });
-};
+  })
+}
 
 const extractTags = (tags) => {
   var temp = tags.slice(1, -1);
@@ -180,7 +213,7 @@ const calScore = (words, isCode) => {
         //console.log(tree[w].word+" | isCode = "+tree[w].isCode);
       }
 
-      console.log("WORD = " + tree[w].word);
+      //console.log("WORD = " + tree[w].word);
     }
 
     sum += tree[w] ? recusiveCal(tree[w], isCode) : 0;
@@ -195,7 +228,7 @@ const recusiveCal = (word, isCode) => {
     return 0;
 
   if (word.parent) {
-    console.log(">> word = " + word.word + " , parent = " + word.parent);
+    //console.log(">> word = " + word.word + " , parent = " + word.parent);
     return word.value + recusiveCal(tree[word.parent], isCode);
   }
 
