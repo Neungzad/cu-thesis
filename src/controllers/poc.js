@@ -8,8 +8,7 @@ const _ = require('underscore');
 const tree = require('../data/tree.json');
 var natural = require('natural');
 const features = require('./features');
-import { featureFocus, ratioSuccessAnswered } from './features';
-
+import { featureFocus, ratioSuccessAnswered, experience, views, existingValue } from './features';
 
 // Difficulty level
 const EASY = "Easy";
@@ -45,25 +44,25 @@ exports.index = (req, res) => {
 async function _index() {
   const difficuty = [
     // set 1
-    NORMAL, NORMAL, EASY, EASY, EASY, HARD, NORMAL, HARD, EASY, NORMAL,  // 10 
+    NORMAL, NORMAL, EASY, EASY, EASY, NORMAL, NORMAL, NORMAL, EASY, NORMAL,  // 10 
     // set 2   
-    EASY, NORMAL, NORMAL, NORMAL, EASY, NORMAL, EASY, NORMAL, EASY, // 9 (19)
+    EASY, NORMAL, NORMAL, NORMAL, EASY, NORMAL, NORMAL, NORMAL, EASY, // 9 (19)
     // set 3 
-    NORMAL, EASY, NORMAL, NORMAL, EASY, EASY, NORMAL, EASY, NORMAL,  // 9 (28)
+    NORMAL, EASY, NORMAL, NORMAL, EASY, EASY, NORMAL, EASY, HARD,  // 9 (28)
     // set 4 
-    HARD, NORMAL, NORMAL, NORMAL, NORMAL, EASY, NORMAL, EASY, EASY, EASY, // 10 (38)
+    NORMAL, NORMAL, NORMAL, NORMAL, NORMAL, EASY, NORMAL, EASY, EASY, EASY, // 10 (38)
     // set 5 
-    NORMAL, NORMAL, EASY, EASY, NORMAL, EASY, // 6 (44)
+    NORMAL, HARD, EASY, NORMAL, NORMAL, NORMAL, // 6 (44)
     // set 6 
-    NORMAL, EASY, EASY, EASY, HARD, NORMAL, NORMAL, EASY, EASY, EASY, // 10 (54)
+    NORMAL, EASY, EASY, NORMAL, HARD, NORMAL, HARD, EASY, EASY, EASY, // 10 (54)
     // set 7 - แม้ง ๆ  
-    NORMAL, EASY, EASY, NORMAL, NORMAL, NORMAL, EASY, EASY, EASY, EASY, // 10 (64)
+    NORMAL, EASY, EASY, NORMAL, NORMAL, HARD, EASY, NORMAL, EASY, NORMAL, // 10 (64)
     // set 8 - แม้ง ๆ  
-    NORMAL, EASY, EASY, NORMAL, NORMAL, EASY, NORMAL, EASY, NORMAL, EASY, // 10 (74)
+    NORMAL, EASY, EASY, NORMAL, NORMAL, EASY, HARD, EASY, NORMAL, EASY, // 10 (74)
     // set 9 - ส่วนมากเป็นเรื่องที่ทำไม่ได้
-    NORMAL, EASY, EASY, EASY, EASY, HARD, EASY, EASY, // 8 (82)
+    NORMAL, EASY, EASY, EASY, EASY, NORMAL, EASY, EASY, // 8 (82)
     // set 10 
-    NORMAL, EASY, NORMAL, NORMAL, EASY, NORMAL, NORMAL, NORMAL, NORMAL // 9 (91)
+    NORMAL, EASY, NORMAL, EASY, EASY, NORMAL, NORMAL, NORMAL, NORMAL // 9 (91)
   ];
 
   const request = await connectDB();
@@ -75,10 +74,16 @@ async function _index() {
   const bodyCode = {};
   const bodyFull = {};
   const scope = {};
-  const finalScope = {};
   const finalLinearScope = {};
+
   const focusScore = {};
   const ratioSuccessAnsweredScore = {};
+  const experienceScore = {};
+  const viewsScore = {};
+  const existingValueScore = {};
+  const summaryFeatureScore = {};
+
+  const finalScore = {};
   let index = 0;
 
   for (let q of result) {
@@ -125,9 +130,22 @@ async function _index() {
     ratioSuccessAnsweredScore[q.Id] = await ratioSuccessAnswered(request, q);
     console.log('ratioSuccessAnsweredScore = ', ratioSuccessAnsweredScore[q.Id]);
 
+    experienceScore[q.Id] = await experience(request, q);
+    console.log('experienceScore = ', experienceScore[q.Id]);
 
+    viewsScore[q.Id] = await views(request, q);
+    console.log('viewsScore = ', viewsScore[q.Id]);
+
+    existingValueScore[q.Id] = await existingValue(request, q);
+    console.log('existingValueScore = ', existingValueScore[q.Id]);
     
+    summaryFeatureScore[q.Id] = (
+       focusScore[q.Id] + ratioSuccessAnsweredScore[q.Id] + 
+       experienceScore[q.Id] + viewsScore[q.Id] + existingValueScore[q.Id]
+      ) / 5 ;
+    console.log('summaryFeatureScore = ', summaryFeatureScore[q.Id]);
 
+    finalScore[q.Id] = (finalLinearScope[q.Id] + summaryFeatureScore[q.Id]) / 2;
   }
 
   const objectResponse = {
@@ -138,12 +156,16 @@ async function _index() {
     bodyContent,
     bodyCode,
     scope,
-    //finalScope,
     finalLinearScope,
     difficuty,
     bodyFull,
     focusScore,
-    ratioSuccessAnsweredScore
+    ratioSuccessAnsweredScore,
+    experienceScore,
+    viewsScore,
+    existingValueScore,
+    summaryFeatureScore,
+    finalScore 
   };
 
   return Promise.resolve(objectResponse);

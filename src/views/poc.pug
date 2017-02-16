@@ -4,24 +4,76 @@ block content
   h2 PoC : Classification Questions
   hr
   .row
-    .col-sm-3
-      p 
-        b Level
-      p
-        - for (var i = 0; i < rows.length ; i++)
-            if difficuty[i] == 'Easy'
-              span 1, 
-            else if difficuty[i] == 'Normal'
-              span 2, 
-            else 
-              span 3, 
-      p 
-        b Score
-      p
-        - for (var i = 0; i < rows.length ; i++) 
-            span #{finalLinearScope[rows[i].Id]}, 
+    //- .col-sm-3
+    //-   p 
+    //-     b Level
+    //-   p
+    //-     - for (var i = 0; i < rows.length ; i++)
+    //-         if difficuty[i] == 'Easy'
+    //-           span 1, 
+    //-         else if difficuty[i] == 'Normal'
+    //-           span 2, 
+    //-         else 
+    //-           span 3, 
+    //-   p 
+    //-     b Score
+    //-   p
+    //-     - for (var i = 0; i < rows.length ; i++) 
+    //-         // span #{finalLinearScope[rows[i].Id]}, 
+    //-         span #{summaryFeatureScore[rows[i].Id]}, 
           
-    .col-sm-9
+    .col-sm-12
+      textArea.inputArea
+        //- level
+        - for (var i = 0; i < rows.length ; i++)
+            if i == 0
+              | level = [
+            else 
+              | ,
+
+            if difficuty[i] == 'Easy'
+              | 1
+            else if difficuty[i] == 'Normal'
+              | 2
+            else 
+              | 3
+        | ]
+        = '\n'
+        
+        //- CH score
+        - for (var i = 0; i < rows.length ; i++)
+            if i == 0
+              | chScore = [
+            else 
+              | ,
+            
+            | #{finalLinearScope[rows[i].Id]}
+        | ]
+        = '\n'
+
+        //- Features score
+        - for (var i = 0; i < rows.length ; i++)
+            if i == 0
+              | fScore = [
+            else 
+              | ,
+            
+            | #{summaryFeatureScore[rows[i].Id]}
+        | ]
+        = '\n'
+        
+        //- finalScore
+        - for (var i = 0; i < rows.length ; i++)
+            if i == 0
+              | finalScore = [
+            else 
+              | ,
+            
+            | #{finalScore[rows[i].Id]}
+        | ]
+        = '\n'
+
+      //- all questions
       - for (var i = 0; i < rows.length ; i++) 
         .box
           h3 #{i+1}. #{rows[i].Title} 
@@ -33,44 +85,55 @@ block content
             - for (var j = 0; j < tags[rows[i].Id].length ; j++)
               span.label.label-primary #{tags[rows[i].Id][j]} 
               span &nbsp;  
-
-          //- p 
-          //-   b Exp : 
-          //-   b.score #{finalScope[rows[i].Id]} (#{scope[rows[i].Id]})
-
-          p 
-            b Point: 
-            b.score #{finalLinearScope[rows[i].Id]} (#{scope[rows[i].Id]})
-
-          p
-            b Estimate diff: 
-            b.difficulty #{difficuty[i]}
-          
-          p 
-            b Body Content : 
+   
+          p Content : 
             - for (var j = 0; j < bodyContent[rows[i].Id].length ; j++)
               span.label.label-default #{bodyContent[rows[i].Id][j]}
               span &nbsp; 
 
-          p 
-            b Body Code : 
+          p Code : 
             - for (var j = 0; j < bodyCode[rows[i].Id].length ; j++)
               span.label.label-warning #{bodyCode[rows[i].Id][j]}
               span &nbsp; 
 
+          p Difficulty Level : 
+            b.difficulty #{difficuty[i]}
+
+          p Date : #{rows[i].CreationDate} 
+          
+         
+          h4.headline Concept Hierarchy
+          div.panel
+            p.score Score: #{finalLinearScope[rows[i].Id]} (#{scope[rows[i].Id]})
+
+        
           //- p 
           //-   b Body : 
           //-   span #{bodyFull[rows[i].Id]}
           
-          h5 Features
-          hr
-          p Focus : 
-            b #{focusScore[rows[i].Id]}
+          h4.headline Features
+          div.panel
+            p Focus : 
+              b #{focusScore[rows[i].Id]}
 
-          p Ratio Success Answered : 
-            b #{ratioSuccessAnsweredScore[rows[i].Id]}
+            p Ratio Success Answered : 
+              b #{ratioSuccessAnsweredScore[rows[i].Id]}
+            
+            p Community age (Experience): 
+              b #{experienceScore[rows[i].Id]}
 
-          p #{rows[i].CreationDate} 
+            p Number Of Views: 
+              b #{viewsScore[rows[i].Id]}
+
+            p Existing Value: 
+              b #{existingValueScore[rows[i].Id]}
+            
+            p.score Normalize score: #{summaryFeatureScore[rows[i].Id]}
+
+          h4.headline CH + Features
+          div.panel
+            p.scoreFinal Score: #{finalScore[rows[i].Id]}
+
           p
             a.btn.btn-default(href='http://stackoverflow.com/questions/'+rows[i].Id, target='_blank', role='button') View details »
           

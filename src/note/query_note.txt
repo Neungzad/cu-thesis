@@ -110,6 +110,8 @@ SELECT DATEDIFF(day, CreationDate, '2016-01-01') AS DiffDate
 FROM [StackOverflow].[dbo].[Users]
 WHERE Id = 1
 
+-- MAX 2710
+
 // All answer bt question Id
 SELECT *
 FROM [StackOverflow].[dbo].[Posts]
