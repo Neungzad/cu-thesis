@@ -181,7 +181,7 @@ const connectDB = () => {
 
 const readQuestion = () => {
   return new Promise(resolve => {
-    fs.readFile(__dirname + '/../data/questions_1_first_2015.json', (err, data) => {
+    fs.readFile(__dirname + '/../data/temp.json', (err, data) => {
       resolve(data);
     });
   })
@@ -333,25 +333,27 @@ const arrMulti3 = (arr) => {
       console.log('"'+w.toLowerCase()+'" : {"word":"'+w.toLowerCase()+'","value": 1,"parent":null},');
     })*/
 
-/* Save to database */
-// exports.index = (req, res) => {
-// 	var connection1 = new sql.Connection(config, function(err) {	
-//     const query = `
-//       select top 10 * 
-//       from Posts
-//       where Tags like \'%javascript%\'
-//       and YEAR(CreationDate) > 2013
-//       ORDER BY Score DESC
-//     `;
+/**
+ * GET /
+ * Save page.
+ */
+exports.saveFile = (req, res) => {
+	var connection1 = new sql.Connection(config, function(err) {	
+    const query = `
+      SELECT *
+      FROM [StackOverflow].[dbo].[Posts]
+      WHERE Id IN (22111619)
+    `;
 
-//     var request = new sql.Request(connection1);
-//     request.query(query, function(err, recordset) {
-//       fs.writeFile('./data/questions_10_high_score.json', JSON.stringify(recordset)); 
-//       console.log("Write Completed.");
-// 			res.render('poc', {
-// 			  title: 'PoC',
-// 			  rows: recordset
-// 			});
-// 		});	
-//   });
-// };
+    var request = new sql.Request(connection1);
+    request.query(query, function(err, recordset) {
+      fs.writeFile('./temp.json', JSON.stringify(recordset)); 
+      console.log("Write Completed.");
+			/*res.render('poc', {
+			  title: 'PoC',
+			  rows: recordset
+			});*/
+      res.send(JSON.stringify(recordset));
+		});	
+  });
+};
