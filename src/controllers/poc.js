@@ -62,7 +62,9 @@ async function _index() {
     // set 9 - ส่วนมากเป็นเรื่องที่ทำไม่ได้
     NORMAL, EASY, EASY, EASY, EASY, NORMAL, EASY, EASY, // 8 (82)
     // set 10 
-    NORMAL, EASY, NORMAL, EASY, EASY, NORMAL, NORMAL, NORMAL, NORMAL // 9 (91)
+    NORMAL, EASY, NORMAL, EASY, EASY, NORMAL, NORMAL, NORMAL, NORMAL, // 9 (91)
+    // set 11 
+    HARD, HARD, HARD, HARD, HARD, HARD
   ];
 
   const request = await connectDB();
@@ -95,25 +97,25 @@ async function _index() {
     console.log(" ---------------------------------");
 
     // title
-    ///console.log('Title: ',q.Title);
+    console.log('Title: ',q.Title);
     const oldString = q.Title.split(' ');
-    kwTitle[q.Id] = stem(sw.removeStopwords(uniqueList(removeSpecialChar(oldString)), stopWordEnglish));
+    kwTitle[q.Id] = stem(sw.removeStopwords(arrMulti3(uniqueList(removeSpecialChar(oldString)), stopWordEnglish)));
     scope[q.Id] = calScore(kwTitle[q.Id], false);
-    ///console.log(":: Title Score = " + scope[q.Id]);
+    console.log(":: Title Score = " + scope[q.Id]);
 
     // tags
     tags[q.Id] = stem(uniqueList(removeSpecialChar(extractTags(q.Tags))));
     scope[q.Id] += calScore(tags[q.Id], false);
-    ///console.log(":: Tags Score = " + scope[q.Id]);
+    console.log(":: Tags Score = " + scope[q.Id]);
 
     // body 
     const tempBody = retriveBodyText(q.Body);
-    bodyContent[q.Id] = stem(sw.removeStopwords(uniqueList(tempBody.content), stopWordEnglish));
+    bodyContent[q.Id] = stem(sw.removeStopwords(arrMulti3(uniqueList(tempBody.content), stopWordEnglish)));
     bodyCode[q.Id] = (sw.removeStopwords(uniqueList(tempBody.code), stopWordEnglish));
     scope[q.Id] += calScore(bodyContent[q.Id], false) * 0.5;
-    ///console.log(":: bodyContent Score = " + scope[q.Id]);
+    console.log(":: bodyContent Score = " + scope[q.Id]);
     scope[q.Id] += calScore(bodyCode[q.Id], true) * 0.5;
-    ///console.log(":: bodyCode Score = " + scope[q.Id]);
+    console.log(":: bodyCode Score = " + scope[q.Id]);
 
     // body full
     bodyFull[q.Id] = q.Body;
@@ -121,31 +123,34 @@ async function _index() {
     // Score
     finalLinearScope[q.Id] = calScopeLinearScore(scope[q.Id]);
 
-    ///console.log(visitNode);
+    console.log(visitNode);
 
     ///console.log(':: Features');
     focusScore[q.Id] = await featureFocus(request, q);
-    console.log('focusScore = ', focusScore[q.Id]);
+    // console.log('focusScore = ', focusScore[q.Id]);
     
     ratioSuccessAnsweredScore[q.Id] = await ratioSuccessAnswered(request, q);
-    console.log('ratioSuccessAnsweredScore = ', ratioSuccessAnsweredScore[q.Id]);
+    // console.log('ratioSuccessAnsweredScore = ', ratioSuccessAnsweredScore[q.Id]);
 
     experienceScore[q.Id] = await experience(request, q);
-    console.log('experienceScore = ', experienceScore[q.Id]);
+    // console.log('experienceScore = ', experienceScore[q.Id]);
 
     viewsScore[q.Id] = await views(request, q);
-    console.log('viewsScore = ', viewsScore[q.Id]);
+    // console.log('viewsScore = ', viewsScore[q.Id]);
 
     existingValueScore[q.Id] = await existingValue(request, q);
-    console.log('existingValueScore = ', existingValueScore[q.Id]);
+    // console.log('existingValueScore = ', existingValueScore[q.Id]);
     
-    summaryFeatureScore[q.Id] = (
-       focusScore[q.Id] + ratioSuccessAnsweredScore[q.Id] + 
-       experienceScore[q.Id] + viewsScore[q.Id] + existingValueScore[q.Id]
-      ) / 5 ;
+    summaryFeatureScore[q.Id] = arithmeticMean([
+       focusScore[q.Id],
+       ratioSuccessAnsweredScore[q.Id],
+       experienceScore[q.Id],
+       viewsScore[q.Id],
+       existingValueScore[q.Id]
+    ]);
     console.log('summaryFeatureScore = ', summaryFeatureScore[q.Id]);
 
-    finalScore[q.Id] = (finalLinearScope[q.Id] + summaryFeatureScore[q.Id]) / 2;
+    finalScore[q.Id] = harmonicMean([finalLinearScope[q.Id], summaryFeatureScore[q.Id]]);
   }
 
   const objectResponse = {
@@ -181,7 +186,7 @@ const connectDB = () => {
 
 const readQuestion = () => {
   return new Promise(resolve => {
-    fs.readFile(__dirname + '/../data/temp.json', (err, data) => {
+    fs.readFile(__dirname + '/../data/questions_final.json', (err, data) => {
       resolve(data);
     });
   })
@@ -258,7 +263,7 @@ const recusiveCal = (word, isCode) => {
 }
 
 function calScopeLinearScore(score) {
-  return 1 - (1 / Math.log(score));
+  return score && 1 - (1 / Math.log(score));
 }
 
 function retriveBodyText(html) {
@@ -324,6 +329,27 @@ const arrMulti3 = (arr) => {
   }
 
   return result;
+}
+
+const arithmeticMean = (dataSet) => {
+  const numerator = dataSet.length;
+
+  let sum = dataSet.reduce((a,b) => a + b);
+
+  return sum / numerator;
+}
+
+const harmonicMean = (dataSet) => {
+
+	const numerator = dataSet.length;
+
+	var denominator = dataSet.map(function(num){
+		return 1/num;
+	}).reduce(function(a, b){
+		return a+b;
+	});
+
+	return numerator/denominator;
 }
 
 /*
