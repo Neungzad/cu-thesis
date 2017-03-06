@@ -482,7 +482,6 @@
 
 		"web api" : {"word":"web api","value": 1,"parent":"javascript"},
 
-			// Web API interface reference 
 			"AbstractWorker" : {"word":"AbstractWorker","value": 1,"parent":"web api","isCode": true},
 			"AmbientLightSensor" : {"word":"AmbientLightSensor","value": 1,"parent":"web api","isCode": true},
 				"AmbientLightSensorReading" : {"word":"AmbientLightSensorReading","value": 1,"parent":"AmbientLightSensor","isCode": true},
@@ -1013,7 +1012,7 @@
 			"ExtendableEvent" : {"word": "ExtendableEvent", "value": 1, "parent": "web api", "isCode": true},
 			"ExtendableMessageEvent" : {"word": "ExtendableMessageEvent", "value": 1, "parent": "web api", "isCode": true},			
 			"FederatedCredential" : {"word": "FederatedCredential", "value": 1, "parent": "web api", "isCode": true},
-			"File API	" : {"word": "File API	", "value": 1, "parent": "web api", "isCode": true},
+			"File API" : {"word": "File API", "value": 1, "parent": "web api"},
 				"File" : {"word": "File", "value": 1, "parent": "web api", "isCode": true},
 					"fileName" : {"word": "fileName", "value": 1, "parent": "File", "isCode": true},
 					"fileSize" : {"word": "fileSize", "value": 1, "parent": "File", "isCode": true},
@@ -1416,11 +1415,11 @@
 					"mark" : {"word": "mark", "value": 1, "parent": "Performance", "isCode": true},
 					"measure" : {"word": "measure", "value": 1, "parent": "Performance", "isCode": true},
 					"setResourceTimingBufferSize" : {"word": "setResourceTimingBufferSize", "value": 1, "parent": "Performance", "isCode": true},
-				"PerformanceEntry" : {"word": "PerformanceEntry", "value": 1, "parent": "Performance api", "isCode": true},
-				"PerformanceFrameTiming" : {"word": "PerformanceFrameTiming", "value": 1, "parent": "Performance api", "isCode": true},
-				"PerformanceMark" : {"word": "PerformanceMark", "value": 1, "parent": "Performance api", "isCode": true},
-				"PerformanceMeasure" : {"word": "PerformanceMeasure", "value": 1, "parent": "Performance api", "isCode": true},
-				"PerformanceNavigation" : {"word": "PerformanceNavigation", "value": 1, "parent": "Performance api", "isCode": true},
+				"PerformanceEntry" : {"word": "PerformanceEntry", "value": 1, "parent": "Performance API", "isCode": true},
+				"PerformanceFrameTiming" : {"word": "PerformanceFrameTiming", "value": 1, "parent": "Performance API", "isCode": true},
+				"PerformanceMark" : {"word": "PerformanceMark", "value": 1, "parent": "Performance API", "isCode": true},
+				"PerformanceMeasure" : {"word": "PerformanceMeasure", "value": 1, "parent": "Performance API", "isCode": true},
+				"PerformanceNavigation" : {"word": "PerformanceNavigation", "value": 1, "parent": "Performance API", "isCode": true},
 				"PerformanceNavigationTiming" : {"word": "PerformanceNavigationTiming", "value": 1, "parent": "Performance API", "isCode": true},
 					"domComplete" : {"word": "domComplete", "value": 1, "parent": "PerformanceNavigationTiming", "isCode": true},
 					"domContentLoadedEventEnd" : {"word": "domContentLoadedEventEnd", "value": 1, "parent": "PerformanceNavigationTiming", "isCode": true},
@@ -1431,8 +1430,8 @@
 					"redirectCount" : {"word": "redirectCount", "value": 1, "parent": "PerformanceNavigationTiming", "isCode": true},
 					"unloadEventEnd" : {"word": "unloadEventEnd", "value": 1, "parent": "PerformanceNavigationTiming", "isCode": true},
 					"unloadEventStart" : {"word": "unloadEventStart", "value": 1, "parent": "PerformanceNavigationTiming", "isCode": true},
-				"PerformanceObserver" : {"word": "PerformanceObserver", "value": 1, "parent": "Performance api", "isCode": true},
-				"PerformanceObserverEntryList" : {"word": "PerformanceObserverEntryList", "value": 1, "parent": "Performance api", "isCode": true},
+				"PerformanceObserver" : {"word": "PerformanceObserver", "value": 1, "parent": "Performance API", "isCode": true},
+				"PerformanceObserverEntryList" : {"word": "PerformanceObserverEntryList", "value": 1, "parent": "Performance API", "isCode": true},
 				"PerformanceResourceTiming" : {"word": "PerformanceResourceTiming", "value": 1, "parent": "Performance API", "isCode": true},
 					"connectEnd" : {"word": "connectEnd", "value": 1, "parent": "PerformanceResourceTiming", "isCode": true},
 					"decodedBodySize" : {"word": "decodedBodySize", "value": 1, "parent": "PerformanceResourceTiming", "isCode": true},
@@ -1960,7 +1959,6 @@
 			"XPathResult" : {"word": "XPathResult", "value": 1, "parent": "web api", "isCode": true},
 			"XSLTProcessor" : {"word": "XSLTProcessor", "value": 1, "parent": "web api", "isCode": true},
 
-			// Event reference 
 			"event" : {"word":"event","value": 1,"parent":"web api"},
 				"bubbles" : {"word": "bubbles", "value": 1, "parent": "Event", "isCode": true},
 				"cancelable" : {"word": "cancelable", "value": 1, "parent": "Event", "isCode": true},
@@ -2332,17 +2330,5 @@
 					"pointerout" : { "word": "pointerout", "value": 1, "parent": "pointer event", "isCode": true},
 					"pointerleave" : { "word": "pointerleave", "value": 1, "parent": "pointer event", "isCode": true},
 					"gotpointercapture" : { "word": "gotpointercapture", "value": 1, "parent": "pointer event", "isCode": true},
-					"lostpointercapture" : { "word": "lostpointercapture", "value": 1, "parent": "pointer event", "isCode": true}
-			
-	  // other
-		/*"related languages" : {"word":"web api","value": 1,"parent":"javascript"},
-			"html" : {"word":"html","value": 1,"parent":"related languages"},
-			"css" : {"word":"css","value": 1,"parent":"related languages"},
-				"bootstrap" : {"word":"bootstrap","value": 1,"parent":"css"}*/
-		
-		// remove later
-		/*"related platform" : {"word":"related platform","value": 3,"parent":"javascript"},
-			"facebook" : {"word":"facebook","value": 1,"parent":"related platform"},
-			"stack overflow" : {"word":"stack overflow","value": 1,"parent":"related platform"}*/
-		   
+					"lostpointercapture" : { "word": "lostpointercapture", "value": 1, "parent": "pointer event", "isCode": true}				   
 }
