@@ -6,6 +6,8 @@ const stemTree = {};
 // stem function
 const stem = (key) => {
   let word;
+  //console.log(key);
+  //console.log(tree[key]);
   if(tree[key].isCode || key.match(/[\.\-]|(js)$/gi)) {
     return key;
   }

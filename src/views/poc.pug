@@ -104,7 +104,19 @@ block content
          
           h4.headline Concept Hierarchy
           div.panel
-            p.score CH Score: #{finalLinearScope[rows[i].Id]} (#{scope[rows[i].Id]})
+            p title :
+              b #{individualScore[rows[i].Id].title}
+            
+            p tag :
+              b #{individualScore[rows[i].Id].tag}
+              
+            p content :
+              b #{individualScore[rows[i].Id].content}
+              
+            p code :
+              b #{individualScore[rows[i].Id].code}
+
+            p.score #{difficuty[i]} CH Score: #{finalLinearScope[rows[i].Id]} (#{scope[rows[i].Id]})
 
         
           //- p 
@@ -128,11 +140,11 @@ block content
             p Existing Value: 
               b #{existingValueScore[rows[i].Id]}
             
-            p.score Normalize score: #{summaryFeatureScore[rows[i].Id]}
+            p.score Normalize Score: #{summaryFeatureScore[rows[i].Id]}
 
           h4.headline CH + Features
           div.panel
-            p.scoreFinal Score: #{finalScore[rows[i].Id]}
+            p.scoreFinal Final Score: #{finalScore[rows[i].Id]}
 
           p
             a.btn.btn-default(href='http://stackoverflow.com/questions/'+rows[i].Id, target='_blank', role='button') View details »

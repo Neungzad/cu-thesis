@@ -88,9 +88,14 @@ async function _index() {
   const finalScore = {};
   let index = 0;
 
+  //debug
+  const individualScore = {};
+
   for (let q of result) {
     visitNode = {};
+    let tempScore = 0;
     index++;
+    individualScore[q.Id] = {};
 
     console.log(" ---------------------------------");
     console.log("|       Question No. " + (index) + "           |");
@@ -102,20 +107,29 @@ async function _index() {
     kwTitle[q.Id] = stem(sw.removeStopwords(arrMulti3(uniqueList(removeSpecialChar(oldString)), stopWordEnglish)));
     scope[q.Id] = calScore(kwTitle[q.Id], false);
     console.log(":: Title Score = " + scope[q.Id]);
+    individualScore[q.Id].title = scope[q.Id];
 
     // tags
     tags[q.Id] = stem(uniqueList(removeSpecialChar(extractTags(q.Tags))));
-    scope[q.Id] += calScore(tags[q.Id], false);
+    tempScore = calScore(tags[q.Id], false);
+    scope[q.Id] += tempScore;
     console.log(":: Tags Score = " + scope[q.Id]);
-
+    individualScore[q.Id].tag = tempScore;
+    
     // body 
     const tempBody = retriveBodyText(q.Body);
     bodyContent[q.Id] = stem(sw.removeStopwords(arrMulti3(uniqueList(tempBody.content), stopWordEnglish)));
     bodyCode[q.Id] = (sw.removeStopwords(uniqueList(tempBody.code), stopWordEnglish));
-    scope[q.Id] += calScore(bodyContent[q.Id], false) * 0.5;
+    
+    tempScore = calScore(bodyContent[q.Id], false) * 0.2;
+    scope[q.Id] += tempScore;
     console.log(":: bodyContent Score = " + scope[q.Id]);
-    scope[q.Id] += calScore(bodyCode[q.Id], true) * 0.5;
+    individualScore[q.Id].content = tempScore;
+
+    tempScore = calScore(bodyCode[q.Id], true) * 0.2;
+    scope[q.Id] += tempScore;
     console.log(":: bodyCode Score = " + scope[q.Id]);
+    individualScore[q.Id].code = tempScore;
 
     // body full
     bodyFull[q.Id] = q.Body;
@@ -170,7 +184,8 @@ async function _index() {
     viewsScore,
     existingValueScore,
     summaryFeatureScore,
-    finalScore 
+    finalScore,
+    individualScore
   };
 
   return Promise.resolve(objectResponse);
@@ -187,6 +202,7 @@ const connectDB = () => {
 const readQuestion = () => {
   return new Promise(resolve => {
     fs.readFile(__dirname + '/../data/questions_final.json', (err, data) => {
+    //fs.readFile(__dirname + '/../data/questions_2_last_2015.json', (err, data) => {
       resolve(data);
     });
   })
@@ -221,7 +237,7 @@ const removeDigi = (words) => {
 }
 
 const uniqueList = (words) => {
-  const result = _.without(words, 'javascript')
+  const result = _.without(words, 'javascript');
   return _.uniq(result);
 }
 
@@ -237,7 +253,7 @@ const calScore = (words, isCode) => {
       // check first time visited node 
       if ((tree[w].isCode && isCode) || !tree[w].isCode) {
         visitNode[tree[w].word] = true;
-        //console.log(tree[w].word+" | isCode = "+tree[w].isCode);
+        console.log(tree[w].word + " | isCode = " + tree[w].isCode);
       }
 
       //console.log("WORD = " + tree[w].word);
@@ -251,18 +267,29 @@ const calScore = (words, isCode) => {
 
 const recusiveCal = (word, isCode) => {
   // check isCode
-  if (word.isCode && !isCode)
+  if (word.isCode && !isCode){
     return 0;
+  }
 
   if (word.parent) {
     //console.log(">> word = " + word.word + " , parent = " + word.parent);
-    return word.value + recusiveCal(tree[word.parent], isCode);
+
+    let val = word.value;
+    if(visitNode[word.word])
+      val = 0;
+    else
+      visitNode[word.word] = true;
+
+    return val + recusiveCal(tree[word.parent], isCode);
   }
 
   return word.value;
 }
 
 function calScopeLinearScore(score) {
+  if(score < 3)
+    score = 3;
+
   return score && 1 - (1 / Math.log(score));
 }
 
@@ -270,19 +297,29 @@ function retriveBodyText(html) {
   //const html = "<p>I'm having problems getting some setup code executed when my extension is installed. I'm using chrome.runtime.onInstalled as suggested by Chrome Developers' page, but it is not firing. It seems that the issue is related with the use of Require.JS. This is my code:</p>\n\n<pre><code>requirejs.config({...});// i'll not reproduce the whole config here for brevity\n\n// Define the Global Object that will hold the extension functionality\nvar EXT = EXT || {};\n\n// Start the main app logic.\n\nrequirejs(['chrome.storage', 'chrome.settings', 'chrome.tabs'],\nfunction (chromeStorage, chromeSettings, chromeTabs) {\n    'use strict';\n\n    var getLocalRepos;\n\n    /**\n     * Executes the callback with an array of repositories as the parameter.\n     * @param {function} callback\n     */\n    getLocalRepos = function (callback) {\n        'use strict';\n\n        chromeStorage.get('localRepos', callback);\n    };\n\n    // Take care of the extension lifecycle.\n    chrome.runtime.onInstalled.addListener(function (details) {\n        \"use strict\";\n\n        // Create dummy data to populate the local storage for testing purposes.\n        var dummyData = [\n            {\n                name: 'repo1',\n                description: 'description1',\n                username: 'reydel',\n                age: 'theAge'\n            },\n            {\n                name: 'repo2',\n                description: 'description2',\n                username: 'reydel',\n                age: 'theAge'\n            }\n        ];\n\n        switch (details.reason) {\n            case 'install':\n                chromeStorage.set({ localRepos: dummyData }, function () {\n                    // Do nothing\n                });\n                break;\n        }\n    });\n\n    // Bind all functions to an object in the Global Space to make them accessible from the outside scripts\n    // referencing the BackgroundPage object\n    window.EXT.getLocalRepos = getLocalRepos;\n});\n</code></pre>\n\n<p>I have used the code inside the listener's callback in the console and it works, it's just that the event is not being triggered.</p>\n\n<p>Any ideas on how to solve this? Someone have done it before?</p>\n";
   //html = html.replace(/\\(?:n|r)/gi, ' ');
   //const re = /(?:<pre>|<\/pre>)/gi;
-  const re = /(?:<pre\s?(?:.)*?>|<\/pre\s?(?:.)*?>)/gi;
+
+  // v1
+  /*const re = /(?:<pre\s?(?:.)*?>|<\/pre\s?(?:.)*?>)/gi;
   const paragraphs = html.split(re);
 
   let content = "",
     code = "";
 
-  //console.log(paragraphs);    
   paragraphs.map(w => {
     if (w.substring(0, 6) === "<code>")
       code += "" + w;
     else
       content += "" + w;
-  });
+  });*/
+
+  // v2
+  const re = /<code>(.|\n)*?<\/code>/igm;
+  let code = html.match(re);
+
+  if(code){
+    code = code.join(' ').replace(/<(?:.|\n)*?>/gm, '');
+  } 
+  let content = html.replace(re, '');
 
   // content remove tag 
   content = content.replace(/<(?:.|\n)*?>/gm, '');
@@ -293,8 +330,8 @@ function retriveBodyText(html) {
  
   // convert entity to tag
   code = _.unescape(code);
+  
   // remove stop word for programming
-  // console.log(code);
   code = removeDigi(code.replace(/([@:`\'\"{}\(\)\[\];,'\.<>\/?])/gm, ' ').split(/\s+/));
 
   return { 
