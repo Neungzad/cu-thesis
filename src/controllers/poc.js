@@ -48,7 +48,7 @@ async function _index() {
     // set 2   
     EASY, NORMAL, NORMAL, NORMAL, EASY, NORMAL, NORMAL, NORMAL, EASY, // 9 (19)
     // set 3 
-    NORMAL, EASY, NORMAL, NORMAL, EASY, EASY, NORMAL, EASY, HARD,  // 9 (28)
+    NORMAL, EASY, NORMAL, NORMAL, EASY, NORMAL, NORMAL, EASY, HARD,  // 9 (28)
     // set 4 
     NORMAL, NORMAL, NORMAL, NORMAL, NORMAL, EASY, NORMAL, EASY, EASY, EASY, // 10 (38)
     // set 5 
