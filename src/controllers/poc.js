@@ -42,30 +42,34 @@ exports.index = (req, res) => {
 };
 
 async function _index() {
-  const difficuty = [
+ /* const difficuty = [
     // set 1
     NORMAL, NORMAL, EASY, EASY, EASY, NORMAL, NORMAL, NORMAL, EASY, NORMAL,  // 10 
     // set 2   
-    EASY, NORMAL, NORMAL, NORMAL, EASY, NORMAL, NORMAL, NORMAL, EASY, // 9 (19)
+    EASY, NORMAL, NORMAL, NORMAL, EASY, NORMAL, NORMAL, NORMAL, EASY, HARD, // 10 (19)
     // set 3 
     NORMAL, EASY, NORMAL, NORMAL, EASY, NORMAL, NORMAL, EASY, HARD,  // 9 (28)
     // set 4 
     NORMAL, NORMAL, NORMAL, NORMAL, NORMAL, EASY, NORMAL, EASY, EASY, EASY, // 10 (38)
     // set 5 
-    NORMAL, HARD, EASY, NORMAL, NORMAL, NORMAL, // 6 (44)
+    NORMAL, HARD, EASY, NORMAL, NORMAL, NORMAL, HARD, HARD, EASY, // 9 (44)
     // set 6 
-    NORMAL, EASY, EASY, NORMAL, HARD, NORMAL, HARD, EASY, EASY, EASY, // 10 (54)
+    NORMAL, EASY, EASY, NORMAL, HARD, NORMAL, HARD, EASY, EASY, HARD, // 10 (54)
     // set 7 - แม้ง ๆ  
     NORMAL, EASY, EASY, NORMAL, NORMAL, HARD, EASY, NORMAL, EASY, NORMAL, // 10 (64)
     // set 8 - แม้ง ๆ  
     NORMAL, EASY, EASY, NORMAL, NORMAL, EASY, HARD, EASY, NORMAL, EASY, // 10 (74)
     // set 9 - ส่วนมากเป็นเรื่องที่ทำไม่ได้
-    NORMAL, EASY, EASY, EASY, EASY, NORMAL, EASY, EASY, // 8 (82)
+    NORMAL, EASY, EASY, EASY, EASY, NORMAL, EASY, EASY, HARD, // 9 (82)
     // set 10 
-    NORMAL, EASY, NORMAL, EASY, EASY, NORMAL, NORMAL, NORMAL, NORMAL, // 9 (91)
-    // set 11 
-    HARD, HARD, HARD, HARD, HARD, HARD
-  ];
+    NORMAL, EASY, NORMAL, EASY, EASY, NORMAL, NORMAL, NORMAL, NORMAL, HARD // 10 (91)     
+  ];*/
+
+  const difficuty = [ 
+    // set 10 
+    NORMAL, EASY, NORMAL, EASY, EASY, NORMAL, NORMAL, NORMAL, NORMAL, HARD // 10 (91)   
+  ]
+
 
   const request = await connectDB();
   const data = await readQuestion();
@@ -201,7 +205,7 @@ const connectDB = () => {
 
 const readQuestion = () => {
   return new Promise(resolve => {
-    fs.readFile(__dirname + '/../data/questions_final.json', (err, data) => {
+    fs.readFile(__dirname + '/../data/prd/set-10.json', (err, data) => {
     //fs.readFile(__dirname + '/../data/questions_2_last_2015.json', (err, data) => {
       resolve(data);
     });
