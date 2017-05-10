@@ -1,0 +1,72 @@
+{
+  "items": [
+    {
+      "tags": [
+        "javascript",
+        "c#",
+        "jquery",
+        "asp.net"
+      ],
+      "answers": [
+        {
+          "is_accepted": false,
+          "score": -1,
+          "question_id": 43885250
+        },
+        {
+          "is_accepted": false,
+          "score": 1,
+          "question_id": 43885250
+        },
+        {
+          "is_accepted": false,
+          "score": 1,
+          "question_id": 43885250
+        },
+        {
+          "is_accepted": false,
+          "score": 1,
+          "question_id": 43885250
+        },
+        {
+          "is_accepted": false,
+          "score": 0,
+          "question_id": 43885250
+        },
+        {
+          "is_accepted": false,
+          "score": 0,
+          "question_id": 43885250
+        },
+        {
+          "is_accepted": false,
+          "score": 0,
+          "question_id": 43885250
+        }
+      ],
+      "owner": {
+        "reputation": 2262,
+        "user_id": 4925134,
+        "user_type": "registered",
+        "accept_rate": 50,
+        "profile_image": "https://i.stack.imgur.com/lrNR1.jpg?s=128&g=1",
+        "display_name": "Ivin Raj",
+        "link": "http://stackoverflow.com/users/4925134/ivin-raj"
+      },
+      "is_answered": true,
+      "view_count": 51,
+      "answer_count": 7,
+      "score": 0,
+      "last_activity_date": 1494401002,
+      "creation_date": 1494398591,
+      "last_edit_date": 1494400167,
+      "question_id": 43885250,
+      "link": "http://stackoverflow.com/questions/438852  50/text-box-minimum-length-validation-in-java-script",
+      "title": "text box minimum length validation in java script",
+      "body": "<p>Total Counts 100 ..after i entered 101 letter show alerts or error message its do not working in this code Please help me...</p>\n\n<p>Html</p>\n\n<pre><code>&lt;asp:TextBox ID=\"txtarea\" runat=\"server\" Width=\"700px\" Height=\"80px\" TextMode=\"MultiLine\"\n    onkeyup=\"cnt(this)\" MaxLength=\"100\"&gt;&lt;/asp:TextBox&gt;\n&lt;p style=\"text-align: right;\"&gt;\n    &lt;asp:Label ID=\"lblcharcnt\" runat=\"server\" Text=\"100\"&gt;&lt;/asp:Label&gt;\n&lt;/p&gt;\n&lt;asp:Label ID=\"lblcount\" runat=\"server\" Text='&lt;%#Eval(\"row\") %&gt;' Visible=\"false\"&gt;&lt;/asp:Label&gt;\n</code></pre>\n\n<p>JavScript   </p>\n\n<pre><code>&lt;script type=\"text/javascript\"&gt;\n    function cnt(text) {\n        var a = text.value;\n        var b = \"character left.\";\n        text.parentNode.getElementsByTagName('span')[0].innerHTML = 100 - a.length + \" \" + b;\n    }\n&lt;/script&gt;\n</code></pre>\n"
+    }
+  ],
+  "has_more": true,
+  "quota_max": 300,
+  "quota_remaining": 270
+}

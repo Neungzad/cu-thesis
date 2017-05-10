@@ -1,9 +1,9 @@
 {
-  "name": "hackathon-starter",
-  "version": "4.2.1",
+  "name": "cu-thesis",
+  "version": "0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/Neungzad/cu-thesis"
   },
   "scripts": {
     "start": "nodemon src/app.js --exec babel-node",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "async": "^2.0.1",
+    "axios": "^0.16.1",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.15.2",
     "chalk": "^1.1.3",
