@@ -8,7 +8,8 @@ const _ = require('underscore');
 const tree = require('../data/tree.json');
 var natural = require('natural');
 const features = require('./features');
-import { featureFocus, ratioSuccessAnswered, experience, views, existingValue } from './features';
+const chalk = require('chalk');
+import { featureFocus, ratioSuccessAnswered, experience, views, views_prd, existingValue, existingValue_prd } from './features';
 
 // Difficulty level
 const EASY = "Easy";
@@ -29,6 +30,82 @@ const config = {
 };
 
 var visitNode = {};
+
+export const getDifficultyLevel = async (question, request) => {
+  console.log(chalk.magenta(" ---------------------------------"));
+  console.log(chalk.magenta("|      Question No. " + (question.question_id) + "      |"));
+  console.log(chalk.magenta(" ---------------------------------"));
+
+  const questionScope = getScoreQuestionScope(question)
+  const featureScore = await getFeatureScore(question, request)
+  let finalScore = harmonicMean([questionScope, featureScore]);
+  
+  return finalScore
+}
+
+const getScoreQuestionScope = (q) => {
+  let qs = 0
+
+  // title
+  console.log('Title: ', q.title);
+
+  console.log(chalk.bgMagenta('Question Scope')); 
+  const oldString = q.title.split(' ');
+  let kwTitle = stem(sw.removeStopwords(arrMulti3(uniqueList(removeSpecialChar(oldString)), stopWordEnglish)));
+  qs = calScore(kwTitle, false);
+  console.log(chalk.blue(":: Title Score = " + qs));
+
+  // tags
+  let tags = stem(uniqueList(removeSpecialChar(q.tags)));
+  qs += calScore(tags, false);
+  console.log(chalk.blue(":: Tags Score = " + qs));
+
+  // body 
+  const tempBody = retriveBodyText(q.body);
+  const bodyContent = stem(sw.removeStopwords(arrMulti3(uniqueList(tempBody.content), stopWordEnglish)));
+  const bodyCode = (sw.removeStopwords(uniqueList(tempBody.code), stopWordEnglish));
+
+  qs += calScore(bodyContent, false) * 0.2;
+  console.log(chalk.blue(":: bodyContent Score = " + qs))
+
+  qs += calScore(bodyCode, true) * 0.2;
+  console.log(chalk.blue(":: bodyCode Score = " + qs))
+
+  // Question Scope Score
+  const questionScope = calScopeLinearScore(qs);
+  console.log(chalk.cyan('Question Scope = ', questionScope))
+  
+  return questionScope
+}
+
+const getFeatureScore = async (q, request) => {
+  console.log(chalk.bgMagenta('Features'));
+  const focusScore = await featureFocus(request, q);
+  console.log(chalk.blue(':: FocusScore = ', focusScore))
+    
+  const ratioSuccessAnsweredScore = await ratioSuccessAnswered(request, q);
+  console.log(chalk.blue(':: RatioSuccessAnsweredScore = ', ratioSuccessAnsweredScore));
+
+  let experienceScore = await experience(request, q);
+  console.log(chalk.blue(':: ExperienceScore = ', experienceScore));
+
+  let viewsScore = await views_prd(request, q);
+  console.log(chalk.blue(':: ViewsScore = ', viewsScore));  
+
+  let existingValueScore = await existingValue_prd(request, q);
+  console.log(chalk.blue(':: ExistingValueScore = ', existingValueScore));
+
+  const summaryFeatureScore = arithmeticMean([
+      focusScore,
+      ratioSuccessAnsweredScore,
+      experienceScore,
+      viewsScore,
+      existingValueScore
+  ]);
+  console.log(chalk.cyan('SummaryFeatureScore = ', summaryFeatureScore))
+
+  return Promise.resolve(summaryFeatureScore);
+}
 
 /**
  * GET /
@@ -138,12 +215,12 @@ async function _index() {
     // body full
     bodyFull[q.Id] = q.Body;
 
-    // Score
+    // Question Scope Score
     finalLinearScope[q.Id] = calScopeLinearScore(scope[q.Id]);
 
     console.log(visitNode);
 
-    ///console.log(':: Features');
+    // console.log(':: Features');
     focusScore[q.Id] = await featureFocus(request, q);
     // console.log('focusScore = ', focusScore[q.Id]);
     
@@ -195,7 +272,7 @@ async function _index() {
   return Promise.resolve(objectResponse);
 } 
 
-const connectDB = () => {
+export const connectDB = () => {
   return new Promise(resolve => {
     const connectionDB = new sql.Connection(config, function(err) {	
       resolve(new sql.Request(connectionDB));
@@ -285,12 +362,12 @@ const recusiveCal = (word, isCode) => {
     else
       visitNode[word.word] = true;  
 
-    console.log('--> ' + word.word + ' = ' + val);
+    // console.log(chalk.gray('--> ' + word.word + ' = ' + val));
 
     return val + recusiveCal(tree[word.parent], isCode);
   }
 
-  console.log('--> (L) ' + word.word + ' = ' + word.value);  
+  // console.log(chalk.gray('--> (L) ' + word.word + ' = ' + word.value))  
 
   // root node is "javascript"
   if(visitNode[word.word])
@@ -330,10 +407,11 @@ function retriveBodyText(html) {
   // v2
   const re = /<code>(.|\n)*?<\/code>/igm;
   let code = html.match(re);
-
+ 
   if(code){
     code = code.join(' ').replace(/<(?:.|\n)*?>/gm, '');
   } 
+  
   let content = html.replace(re, '');
 
   // content remove tag 
