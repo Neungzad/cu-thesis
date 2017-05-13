@@ -32,6 +32,8 @@ const config = {
 var visitNode = {}
 
 export const getDifficultyLevel = async (question, request) => {
+  visitNode = {}
+
   console.log(chalk.magenta(' ---------------------------------'))
   console.log(chalk.magenta('|      Question No. ' + (question.question_id) + '      |'))
   console.log(chalk.magenta(' ---------------------------------'))

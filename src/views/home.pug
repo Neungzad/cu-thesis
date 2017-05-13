@@ -1,19 +1,50 @@
 extends layout
 
-block content
-  h1 Stack Overflow Level
-  p.lead Classifycation of difficulty level of JavaScipt Questions.
-  hr
+block content  
   .row
     .col-sm-8
-      .tab-bar 
-        h4 Top Questions
-        hr
-        each question in questions
-          .q-con
-            p #{question.title}
+      .tab-bar-warpper
+        .row
+          .col-sm-5
+            h4 Top Questions
+          .col-sm-7
+            ul.pull-right.list-inline.tab-bar
+              li
+                a(href='./?tab=activity' class=(tab == 'activity') ? 'active' : undefined) activity 
+              li
+                a(href='./?tab=creation' class=(tab == 'creation') ? 'active' : undefined) creation 
+              li
+                a(href='./?tab=hot' class=(tab == 'hot') ? 'active' : undefined) hot
+              li
+                a(href='./?tab=week' class=(tab == 'week') ? 'active' : undefined) week 
+              li
+                a(href='./?tab=month' class=(tab == 'month') ? 'active' : undefined) month
+
+      each question in questions
+        .q-card
+          .row
+            .col-sm-3
+              .row
+                .col-sm-4.text-center 
+                  p.digit 10
+                  p.txtCount vote
+                .col-sm-4.text-center
+                  p.digit 10
+                  p.txtCount anwser
+                .col-sm-4.text-center
+                  p.digit 100
+                  p.txtCount views
+                
+            .col-sm-9
+              // title              
+              p #{question.title} (#{question.difScore})
+
+              // des
+
+              // tags 
+
+              // update May 6 at 17:34
         
-        //  a.btn.btn-default(href='#', role='button') View details »
     .col-sm-4
       h2 Heading
       p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.

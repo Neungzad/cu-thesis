@@ -127,13 +127,14 @@ export function existingValuePrd(request, q) {
   return new Promise((resolve) => {
     let sumValue = 0
 
-    q.answers.map(answer => {
-      sumValue += answer.score
-      if (answer.is_accepted)
-        sumValue += 2
-      else
-        sumValue += 1
-    })
+    if (q.answers)
+      q.answers.map(answer => {
+        sumValue += answer.score
+        if (answer.is_accepted)
+          sumValue += 2
+        else
+          sumValue += 1
+      })
 
     // console.log('sumValue = ', sumValue)
     resolve(1 - (Math.min(5, sumValue) / 5))

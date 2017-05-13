@@ -1,24 +1,128 @@
+body {
+    padding-top: 78px;
+    margin-bottom: 75px;
+}
+
+/* bootstrap */
+
+.navbar-default {
+	background-color: #fafafb;
+	border-top: 3px solid #F47983;
+}
+
+/* Navbar */
+
+.tab-bar-warpper {
+	border-bottom: 1px solid #e4e6e8;
+	margin-bottom: 25px;
+}
+
+.so-lv-logo {
+	text-indent: -9999em;
+	height: 36px;
+	width: 150px;
+	margin-top: 6px;
+	margin-left: 0 !important;
+	background-image: url(../img/so-lv-logo.png);
+	background-position: 0 0;
+}
+
+.logoDesc {
+	padding: 15px;
+	margin: 0;
+	color: #666;
+}
+
+.logo-so {
+	text-indent: -9999em;
+	height: 30px;
+	width: 150px;
+	margin-top: 6px;
+	margin-left: 0;
+	background-image: url(../img/sprites.svg?v=1b3cdae197be);
+	background-position: 0 -500px;
+}
+
+/* Tab-bar */
+
+.tab-bar {
+	margin-top: 13px;
+}
+
+.tab-bar li {
+
+}
+
+.tab-bar li a {
+	border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
+	border-top: 1px solid #fff;
+	color: #aaa;
+	font-size: 12px;
+	padding: 13px 12px;
+	text-decoration: none;
+}
+
+.tab-bar li a:hover {
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	border-top: 1px solid #eee;
+	background-color: rgba(132,141,149,0.05);
+}
+
+.tab-bar li a.active {
+	border-left: 1px solid #e4e6e8;
+	border-right: 1px solid #e4e6e8;
+	border-top: 2px solid #f47a84;
+	border-bottom: 1px solid #fff;
+	color: #111;
+}
+
+/* Main */
+
+.q-card {
+	padding: 18px;
+	box-shadow: 0 2px 18px 0 rgba(0,0,0,.13);
+	margin-bottom: 25px;
+	border-radius: 2px;
+}
+
+.digit {
+	font-size: 18px;
+	font-weight: 300;
+	color: #6a737c;
+	margin-bottom: 0;
+}
+
+.txtCount {
+	font-size: 11px;
+	color: #777
+}
+
 .box {
 	margin-bottom: 40px;
 }
+
 .score {
 	font-size: 16px;
 	color: #5a89fb;
 	margin: 0;
 }
+
 .scoreFinal {
 	font-size: 16px;
 	color: #f43699;
 	margin: 0;
 }
+
 .difficulty {
 	font-size: 15px;
 	color: #4d90fc;
 }
 
 h4.headline {
-  font-size: 16px;
-  font-weight: bold;
+	font-size: 16px;
+	font-weight: bold;
 	margin-top: 18px;
 }
 
@@ -30,4 +134,17 @@ h4.headline {
 
 .inputArea {
 	width: 100%;
+}
+
+
+/* Footer */
+footer {
+	color: #9fa6ad;
+	background: #242729;
+}
+
+footer a,
+footer a:hover {
+	color: #9fa6ad;
+	text-decoration: underline;
 }

@@ -6,20 +6,22 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/')
-        i.fa.fa-cube
-        | Master Project
+      a.navbar-brand.so-lv-logo(href='/' title="Stack Overflow Level") Stack Overflow Level
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li(class=(title == 'Home') ? 'active' : undefined)
-          a(href='/') Home
+        li
+          p.logoDesc Classification of difficulty level of JavaScipt questions
         //- li(class=(title == 'API Examples') ? 'active' : undefined)
         //-   a(href='/api') API Examples
         //- li(class=(title == 'Contact') ? 'active' : undefined)
         //-   a(href='/contact') Contact
         //- li
         //-   a(href='/status') Status
-      //- ul.nav.navbar-nav.navbar-right
+      ul.nav.navbar-nav.navbar-right
+        li
+          p.logoDesc Official website 
+        li
+          a.logo-so(href='/' title="Stack Overflow Website") Stack Overflow 
       //-   if !user
       //-     li(class=(title == 'Login') ? 'active' : undefined)
       //-       a(href='/login') Login

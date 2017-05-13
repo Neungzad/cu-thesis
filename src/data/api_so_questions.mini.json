@@ -3,40 +3,74 @@
     {
       "tags": [
         "javascript",
-        "html",
-        "html5"
+        "mysql"
       ],
       "answers": [
         {
           "is_accepted": false,
-          "score": 2,
-          "question_id": 43885970
-        },
-        {
-          "is_accepted": false,
-          "score": 1,
-          "question_id": 43885970
+          "score": 0,
+          "question_id": 43886001
         }
       ],
       "owner": {
-        "reputation": 1493,
-        "user_id": 1417801,
+        "reputation": 55,
+        "user_id": 7826324,
         "user_type": "registered",
-        "accept_rate": 31,
-        "profile_image": "https://www.gravatar.com/avatar/8824489e133536c57d46d54e5d7bdf96?s=128&d=identicon&r=PG",
-        "display_name": "Konza",
-        "link": "http://stackoverflow.com/users/1417801/konza"
+        "accept_rate": 73,
+        "profile_image": "https://www.gravatar.com/avatar/33caa309f37fb9caacce6c5b45bdcc04?s=128&d=identicon&r=PG&f=1",
+        "display_name": "JonasSH",
+        "link": "http://stackoverflow.com/users/7826324/jonassh"
       },
-      "is_answered": true,
-      "view_count": 16,
+      "is_answered": false,
+      "view_count": 23,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1494401681,
+      "creation_date": 1494401122,
+      "last_edit_date": 1494401491,
+      "question_id": 43886001,
+      "link": "http://stackoverflow.com/questions/43886001/how-to-make-a-function-wait-for-call-back-before-continuing",
+      "title": "How to make a function wait for call back, before continuing",
+      "body": "<p>In my chat program, I am trying to create a function, that checks if there exists a conversation in the database. If a conversation exists with <code>peopleName</code> it should get retrieved on the client. If a conversation with that name does NOT exist, a new conversation should get created.</p>\n\n<p>It seems that the 'checkConversation' function is not waiting for the result, because it is creating a new conversation every time, even though the conversation exists.</p>\n\n<p>Client-side:\n<div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>//Starting conversation\r\n$(\"#people\").on(\"click\", \".list-group-item\", function() {\r\n  var peopleName = $(this).children(\"span\").text();\r\n  var peopleID = $(this).children(\"span\").attr(\"class\");\r\n  var conversationExists = false;\r\n  socket.emit(\"checkConversation\", peopleName, function(data) {\r\n    conversationExists = data.result;\r\n    if (conversationExists) {\r\n      console.log(\"Retrieved existing conversation with \", peopleName);\r\n      return;\r\n      // Check if there is a conversation in the Database where this name is conversationReceiver. ------------------------------------\r\n      // if there is: retrieve conversation/messages\r\n      // else: create conversation.\r\n    } else {\r\n      console.log(\"NEW conversation with \", peopleName);\r\n      socket.emit(\"serverCreateConversation\", peopleName, peopleID);\r\n      $(\"#msg\").prop(\"readonly\", false);\r\n      $(\"#msg\").attr(\"placeholder\", \"Your message\");\r\n      $(\"#send\").attr(\"disabled\", false);\r\n      $(\"#chat\").empty();\r\n    }\r\n  });\r\n});</code></pre>\r\n</div>\r\n</div>\r\n</p>\n\n<p>Server-side:\n<div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>client.on(\"checkConversation\", function(peopleName, fn) {\r\n  var match = false;\r\n  connection.query(\"SELECT * FROM `conversations` WHERE `conversation_receiver` = '\" + peopleName + \"'\", function(error, results, fields) {\r\n    if (error) {\r\n      console.log(error);\r\n    } else if (results) {\r\n      console.log(\"Conversation exists!\", results);\r\n      match = true;\r\n    } else {\r\n      console.log(fields);\r\n    }\r\n  });\r\n  console.log(\"match: \" + match);\r\n  fn({ result: match });\r\n});</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "node.js",
+        "angular",
+        "angular-cli"
+      ],
+      "answers": [
+        {
+          "is_accepted": false,
+          "score": 0,
+          "question_id": 43885602
+        },
+        {
+          "is_accepted": false,
+          "score": 0,
+          "question_id": 43885602
+        }
+      ],
+      "owner": {
+        "reputation": 730,
+        "user_id": 5423108,
+        "user_type": "registered",
+        "profile_image": "https://i.stack.imgur.com/WtfBG.png?s=128&g=1",
+        "display_name": "Alireza",
+        "link": "http://stackoverflow.com/users/5423108/alireza"
+      },
+      "is_answered": false,
+      "view_count": 22,
       "answer_count": 2,
       "score": 0,
-      "last_activity_date": 1494401170,
-      "creation_date": 1494401016,
-      "question_id": 43885970,
-      "link": "http://stackoverflow.com/questions/43885970/input-file-accept-attribute-not-working",
-      "title": "Input file accept attribute not working",
-      "body": "<p>I want the user to select these files listed in the accept attributes. But its not allowing the user to select <strong>*.mov</strong> files. I am not sure why.\nGiven below is the html I have used. </p>\n\n<pre><code> &lt;input type=\"file\" tabindex=\"0\"\n                    accept=\"video/mov, video/3g2, video/3gp, video/3gp2, video/3gpp, video/asf, video/asx, video/avi, video/divx, video/m4v,  video/mp4, video/mpe, video/x-m4v, video/mpeg, video/mpg, video/ogg, video/wmv\"\n                    name=\"video\"&gt;\n</code></pre>\n\n<p>I couldn't find much after googling. Any help is appreciated. </p>\n"
+      "last_activity_date": 1494400922,
+      "creation_date": 1494399868,
+      "last_edit_date": 1494400079,
+      "question_id": 43885602,
+      "link": "http://stackoverflow.com/questions/43885602/angular-4-i-keep-getting-cannot-find-module-portfinder-even-after-installing",
+      "title": "Angular 4 - I keep getting Cannot find module &#39;portfinder&#39; even after installing portfinder manually JS: OpenWeatherMap API returns &quot;undefinded&quot; for parameter &quot;rain.3h&quot;",
+      "body": "<p>I keep getting this error in my Terminal using <strong>ng serve</strong> in terminal, I already tried <code>='npm install portfinder</code>, also <code>npm uninstall -g angular-cli, npm cache clean, npm install npm -g, npm install -g angular-cli</code>, but none working and I keep getting it, I'm using npm 3.10.10, Angular4 and the error as below:</p>\n\n<pre><code>Cannot find module 'portfinder'\nError: Cannot find module 'portfinder'\n    at Function.Module._resolveFilename (module.js:469:15)\n    at Function.Module._load (module.js:417:25)\n    at Module.require (module.js:497:17)\n    at require (internal/module.js:20:19)\n    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/angular-cli/commands/serve.js:6:18)\n    at Module._compile (module.js:570:32)\n    at Object.Module._extensions..js (module.js:579:10)\n    at Module.load (module.js:487:32)\n    at tryModuleLoad (module.js:446:12)\n    at Function.Module._load (module.js:438:3)\n    at Module.require (module.js:497:17)\n    at require (internal/module.js:20:19)\n    at Class.includedCommands (/usr/local/lib/node_modules/angular-cli/addon/index.js:21:16)\n    at /usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/models/project.js:392:61\n    at Array.forEach (native)\n    at Project.addonCommands (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/models/project.js:391:15)\n    at Project.eachAddonCommand (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/models/project.js:426:30)\n    at module.exports (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/cli/lookup-command.js:33:13)\n    at CLI.&lt;anonymous&gt; (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/cli/cli.js:34:26)\n    at tryCatch (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/-internal.js:215:12)\n    at invokeCallback (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/-internal.js:230:13)\n    at publish (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/-internal.js:198:7)\n    at flush (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/asap.js:82:5)\n    at _combinedTickCallback (internal/process/next_tick.js:73:7)\n    at process._tickCallback (internal/process/next_tick.js:104:9)\n</code></pre>\n"
     }
   ],
   "has_more": true,
