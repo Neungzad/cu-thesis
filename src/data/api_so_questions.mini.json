@@ -3,43 +3,40 @@
     {
       "tags": [
         "javascript",
-        "jquery",
-        "ignite-ui",
-        "igcombo"
+        "html",
+        "html5"
       ],
       "answers": [
         {
           "is_accepted": false,
           "score": 2,
-          "question_id": 42905335
+          "question_id": 43885970
         },
         {
-          "is_accepted": true,
-          "score": 2,
-          "question_id": 42905335
+          "is_accepted": false,
+          "score": 1,
+          "question_id": 43885970
         }
       ],
       "owner": {
-        "reputation": 55,
-        "user_id": 7475408,
+        "reputation": 1493,
+        "user_id": 1417801,
         "user_type": "registered",
-        "accept_rate": 58,
-        "profile_image": "https://www.gravatar.com/avatar/7b70560a7220fcd41c783d088f3c83d9?s=128&d=identicon&r=PG&f=1",
-        "display_name": "Somepub",
-        "link": "http://stackoverflow.com/users/7475408/somepub"
+        "accept_rate": 31,
+        "profile_image": "https://www.gravatar.com/avatar/8824489e133536c57d46d54e5d7bdf96?s=128&d=identicon&r=PG",
+        "display_name": "Konza",
+        "link": "http://stackoverflow.com/users/1417801/konza"
       },
       "is_answered": true,
-      "view_count": 15,
-      "accepted_answer_id": 42945119,
+      "view_count": 16,
       "answer_count": 2,
-      "score": 1,
-      "last_activity_date": 1494401231,
-      "creation_date": 1490017781,
-      "last_edit_date": 1494401231,
-      "question_id": 42905335,
-      "link": "http://stackoverflow.com/questions/42905335/igcombobox-how-do-i-prevent-submisson-if-nothing-selected",
-      "title": "igCombobox, how do I prevent submisson if nothing selected?",
-      "body": "<p>I have an igCombobox \"checkbox\", when nothing is selected it still submits the form, which I dont want to happen.</p>\n\n<p>I'm using this code to submit:</p>\n\n<pre><code> &lt;div id=\"checkboxSelectCombo\" name=\"kanal\" style=\"position:absolute;\" &gt;&lt;/div&gt;\n\n $(\"#checkboxSelectCombo\").on( \"focusout\",function() {\n  $(this).closest(\"form\").submit();\n     });\n</code></pre>\n\n<p>So, I tried to use if statement, if value is greater than zero or is not an empty string</p>\n\n<pre><code>$(\"#checkboxSelectCombo\").on( \"focusout\",function() {\n             if($(this).val()&gt;0 || $(this).val()!=\"\"){\n  $(this).closest(\"form\").submit();}\n     });\n</code></pre>\n\n<p>But since I cant get the value  from checkboxSelectCombo it wont work.\nI already searched igCombobox documentation, but didn't find anything.</p>\n"
+      "score": 0,
+      "last_activity_date": 1494401170,
+      "creation_date": 1494401016,
+      "question_id": 43885970,
+      "link": "http://stackoverflow.com/questions/43885970/input-file-accept-attribute-not-working",
+      "title": "Input file accept attribute not working",
+      "body": "<p>I want the user to select these files listed in the accept attributes. But its not allowing the user to select <strong>*.mov</strong> files. I am not sure why.\nGiven below is the html I have used. </p>\n\n<pre><code> &lt;input type=\"file\" tabindex=\"0\"\n                    accept=\"video/mov, video/3g2, video/3gp, video/3gp2, video/3gpp, video/asf, video/asx, video/avi, video/divx, video/m4v,  video/mp4, video/mpe, video/x-m4v, video/mpeg, video/mpg, video/ogg, video/wmv\"\n                    name=\"video\"&gt;\n</code></pre>\n\n<p>I couldn't find much after googling. Any help is appreciated. </p>\n"
     }
   ],
   "has_more": true,

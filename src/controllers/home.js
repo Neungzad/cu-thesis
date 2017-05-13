@@ -1,8 +1,8 @@
-import axios from 'axios'
 import chalk from 'chalk'
-import appConfig from '../config/appConfig'
-import so_questions from '../data/api_so_questions.mini.json';
-import { getDifficultyLevel, connectDB } from './poc';
+// import axios from 'axios'
+// import appConfig from '../config/appConfig'
+import soQuestions from '../data/api_so_questions.mini.json'
+import { getDifficultyLevel, connectDB } from './poc'
 
 
 /**
@@ -11,23 +11,24 @@ import { getDifficultyLevel, connectDB } from './poc';
  */
 export const index = async (req, res) => {
   try {
-    const request = await connectDB();
+    const request = await connectDB()
+    const questions = []
 
     // const response = await axios.get(`${appConfig.API_URL}/2.2/questions?order=desc&sort=activity&tagged=javascript&site=stackoverflow&filter=!)s1i5tEVpAsjaocok1rN`)
-    // console.log(response.data);
+    // console.log(response.data)
 
-    for (let question of so_questions.items) {
+    for (let question of soQuestions.items) {
       const difficulty = await getDifficultyLevel(question, request)
       console.log(chalk.green('Difficulty = ' + difficulty))
     }     
 
   } catch (e) {
-    console.log(e);
+    console.log(e)
   }
 
   res.render('home', {
     title: 'Stack Overflow Level',
-    questions: so_questions.items
-  });
-};
+    questions: soQuestions.items
+  })
+}
 
