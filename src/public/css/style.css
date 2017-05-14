@@ -173,6 +173,8 @@ body {
 .question-title {
 	color: #f47983;
 	font-size: 16px;
+	min-height: 48px;
+	display: block;
 }
 
 .question-title:hover,
@@ -194,6 +196,7 @@ body {
 	font-size: 12px;
 	color: #f47983;
 	margin-right: 10px;
+	line-height: 28px;
 }
 
 .score-warpper {
@@ -233,6 +236,7 @@ body {
 .text-lv {
 	margin-bottom: 3px;
 	font-size: 15px;
+	text-transform: uppercase;
 }
 
 .sub-lv {
