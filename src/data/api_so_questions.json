@@ -3,84 +3,550 @@
     {
       "tags": [
         "javascript",
-        "html",
-        "internet-explorer"
+        "vue.js"
       ],
       "owner": {
         "reputation": 1,
-        "user_id": 7568026,
+        "user_id": 8007804,
         "user_type": "registered",
-        "profile_image": "https://lh6.googleusercontent.com/-WhA4CXZVGC0/AAAAAAAAAAI/AAAAAAAAA0g/shXss8RLCEw/photo.jpg?sz=128",
-        "display_name": "Danny Verpoort",
-        "link": "http://stackoverflow.com/users/7568026/danny-verpoort"
+        "profile_image": "https://www.gravatar.com/avatar/8bf20fa9f534ad1ab2b9e169efe44eb8?s=128&d=identicon&r=PG&f=1",
+        "display_name": "dannnnnnn",
+        "link": "http://stackoverflow.com/users/8007804/dannnnnnn"
       },
       "is_answered": false,
-      "view_count": 3,
+      "view_count": 5,
       "answer_count": 0,
       "score": 0,
-      "last_activity_date": 1494401718,
-      "creation_date": 1494401718,
-      "question_id": 43886215,
-      "link": "http://stackoverflow.com/questions/43886215/internet-explorer-not-parsing-javascript-method",
-      "title": "Internet Explorer not parsing javascript method",
-      "body": "<p>I've got a webpage with filtering. The filtering uses a javascript file which is linked in the header like such:</p>\n\n<p><code>&lt;script type=\"text/javascript\" src=\"https://www.werkenbijtauw.nl/static/default/script/autotag.js\"&gt;&lt;/script&gt;\n</code></p>\n\n<p>The contents of the file define a autotag method:</p>\n\n<p>```\nvar autotag = {\n    filter: function(container, resetPage = true){\n        if(resetPage)\n            $('#filter-page').val('1')</p>\n\n<pre><code>    var form    = $('#'+container);\n    var action  = form.attr('action');\n    var method  = form.attr('method');\n    var data    = form.serialize()+'&amp;method=ajax';\n\n    $.ajax({\n      url: action,\n      data: data,\n      method:method,\n      success: function(response, status, xhr){\n        history.pushState(null,null, window.location.pathname+'?'+form.serialize());\n        $('#'+container).html(response);\n      }\n    });\n}\n</code></pre>\n\n<p>};\n```</p>\n\n<p>In the body of my html I've got the following html:</p>\n\n<p><code>&lt;input type=\"checkbox\" id=\"Bodem\" name=\"filters['function'][]\" value=\"Bodem\" onchange=\"autotag.filter('vacancies-filters');\" /&gt;\n</code></p>\n\n<p>In Chrome and Firefox this doesn't result in any problems. On the other hand IE throws an autotag is not defined error. Any ideas why these IE would consider the autotag variable undefined?</p>\n"
+      "last_activity_date": 1494723979,
+      "creation_date": 1494722394,
+      "last_edit_date": 1494723979,
+      "question_id": 43959320,
+      "body_markdown": "I am trying to declare getTemp variable global so that i can  use it in other function. VUE.JS\r\n\r\n    var weather = new Vue({\r\n        el: &#39;#weather&#39;,\r\n\r\n        data: {\r\n            getTemp: []\r\n        },\r\n\r\n        created: function () {\r\n            this.fetchData();\r\n        },        \r\n\r\n        methods: {\r\n            fetchData: function () {\r\n                this.$http.get(&#39;https://vt&#39;)\r\n                          .then(response =&gt; {\r\n                             this.getTemp = response.data;\r\n\t\t\t\t\t\t\t \r\n                          })\r\n            }\r\n        },\r\n\t})\r\n    ;",
+      "link": "http://stackoverflow.com/questions/43959320/i-am-trying-to-declare-gettemp-variable-global-so-that-i-can-use-it-in-other-fun",
+      "title": "I am trying to declare getTemp variable global so that i can use it in other function. VUE.JS",
+      "body": "<p>I am trying to declare getTemp variable global so that i can  use it in other function. VUE.JS</p>\n\n<pre><code>var weather = new Vue({\n    el: '#weather',\n\n    data: {\n        getTemp: []\n    },\n\n    created: function () {\n        this.fetchData();\n    },        \n\n    methods: {\n        fetchData: function () {\n            this.$http.get('https://vt')\n                      .then(response =&gt; {\n                         this.getTemp = response.data;\n\n                      })\n        }\n    },\n})\n;\n</code></pre>\n"
     },
     {
       "tags": [
-        "javascript",
-        "node.js",
-        "image"
-      ],
-      "owner": {
-        "reputation": 6,
-        "user_id": 6464463,
-        "user_type": "registered",
-        "profile_image": "https://www.gravatar.com/avatar/82c96f7084bf2ee339431263b2ca8766?s=128&d=identicon&r=PG&f=1",
-        "display_name": "eltongonc",
-        "link": "http://stackoverflow.com/users/6464463/eltongonc"
-      },
-      "is_answered": false,
-      "view_count": 3,
-      "answer_count": 0,
-      "score": 0,
-      "last_activity_date": 1494401704,
-      "creation_date": 1494401704,
-      "question_id": 43886211,
-      "link": "http://stackoverflow.com/questions/43886211/how-do-i-turn-node-js-static-images-from-a-document-type-to-a-image-mime-type",
-      "title": "How do I turn Node.js static images from a Document type to a image mime type",
-      "body": "<p>I am building a web application with Node.js. The basic app structure is set, but in order for me to do an API call to a specific API I need to have a static image.</p>\n\n<p>I've already set up a static folder with app.use(express.static(path.join(__dirname, 'public')));</p>\n\n<p>And if I try to view an image via the url i.e: localhost:3000/img/img.png, It displays: <strong>Resource interpreted as Document but transferred with MIME type image/png: \"<a href=\"http://localhost:3000/img/img.png\" rel=\"nofollow noreferrer\">http://localhost:3000/img/img.png</a>\"</strong> in the console.</p>\n\n<p>Does someone know how to serve all image with the correct mime type?</p>\n\n<p><strong>This is my entry file <code>app.js</code></strong></p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>var express = require('express');\r\nvar path = require('path');\r\nvar bodyParser = require('body-parser');\r\nvar exphbs  = require('express-handlebars');\r\nvar ioServer = require('socket.io');\r\nvar request = require('request');\r\nvar imagecolors = require('imagecolors');\r\n\r\n// These are the routers\r\nvar dashboard = require('./routes/dashboard');\r\nvar index = require('./routes/index');\r\n\r\nvar app = express();\r\n\r\n\r\n// view engine setup\r\napp.engine('handlebars', exphbs({\r\n    defaultLayout: 'main',\r\n    partialsDir: ['views/partials/']\r\n}));\r\napp.set('views', path.join(__dirname, 'views'));\r\napp.set('view engine', 'handlebars');\r\n\r\napp.use(bodyParser.json());\r\napp.use(bodyParser.urlencoded({\r\n    extended: true\r\n}));\r\n// static folder\r\napp.use(express.static(path.join(__dirname, 'public')));\r\n\r\napp.use('/', dashboard);\r\napp.use('/image', index);\r\n\r\n/// catch 404 and forward to error handler\r\napp.use(function(req, res, next) {\r\n    var err = new Error('Not Found');\r\n    err.status = 404;\r\n    next(err);\r\n});\r\n\r\n/// error handlers\r\n\r\n// development error handler\r\napp.use(function(err, req, res, next) {\r\n    res.status(err.status || 500);\r\n    res.render('error', {\r\n        message: err.message,\r\n        error: err,\r\n        title: 'error'\r\n    });\r\n});\r\n\r\napp.set('port', process.env.PORT || 3000);\r\n\r\nvar server = app.listen(app.get('port'), function() {\r\n    console.log('Express server listening on port ' + server.address().port);\r\n});</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "jquery"
+        "javascript"
       ],
       "answers": [
         {
           "is_accepted": false,
-          "score": -1,
-          "question_id": 43885978
+          "score": 0,
+          "answer_id": 43959333,
+          "question_id": 43959240
+        },
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43959338,
+          "question_id": 43959240
+        },
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43959349,
+          "question_id": 43959240
+        },
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43959402,
+          "question_id": 43959240
         }
       ],
       "owner": {
-        "reputation": 20,
-        "user_id": 7686159,
+        "reputation": 1,
+        "user_id": 7929209,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/d8485a306d1a9b83f2054cddf2625eab?s=128&d=identicon&r=PG&f=1",
+        "display_name": "N00B",
+        "link": "http://stackoverflow.com/users/7929209/n00b"
+      },
+      "is_answered": false,
+      "view_count": 28,
+      "answer_count": 4,
+      "score": 0,
+      "last_activity_date": 1494723909,
+      "creation_date": 1494721538,
+      "last_edit_date": 1494723001,
+      "question_id": 43959240,
+      "body_markdown": "How do I get `charAt()` to display the letters of all the splitted values at index=0? I don&#39;t know what to write before the `.charAt()` in order to arrange to give me the letters of all the splitted values at index=0, it gives me one value though:\r\n\r\n    &lt;button onclick=&quot;occurence(&#39;The quick brown fox jumps over the lazy \r\n    dog&#39;)&quot;&gt;Go&lt;/button&gt;\r\n\r\n    &lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;\r\n\r\n    &lt;script&gt;\r\n    function occurence(str) {\r\n    //conversion to string to make get the value of every single letter\r\n    var spl = str.split(&quot;&quot;);\r\n    //loop to subtract from spl.length to get value for chartAt\r\n    for (i = 0; i &lt; spl.length; i++) {\r\n    }\r\n    document.getElementById(&quot;demo&quot;).innerHTML = spl[i - spl.length].charAt(0) + \r\n    &quot;&lt;br&gt;&quot;;\r\n    }\r\n    &lt;/script&gt;",
+      "link": "http://stackoverflow.com/questions/43959240/how-do-i-get-charat-to-check-every-first-letter-after-splitting-a-string",
+      "title": "how do I get charAt() to check every first letter after splitting a string?",
+      "body": "<p>How do I get <code>charAt()</code> to display the letters of all the splitted values at index=0? I don't know what to write before the <code>.charAt()</code> in order to arrange to give me the letters of all the splitted values at index=0, it gives me one value though:</p>\n\n<pre><code>&lt;button onclick=\"occurence('The quick brown fox jumps over the lazy \ndog')\"&gt;Go&lt;/button&gt;\n\n&lt;p id=\"demo\"&gt;&lt;/p&gt;\n\n&lt;script&gt;\nfunction occurence(str) {\n//conversion to string to make get the value of every single letter\nvar spl = str.split(\"\");\n//loop to subtract from spl.length to get value for chartAt\nfor (i = 0; i &lt; spl.length; i++) {\n}\ndocument.getElementById(\"demo\").innerHTML = spl[i - spl.length].charAt(0) + \n\"&lt;br&gt;\";\n}\n&lt;/script&gt;\n</code></pre>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "jquery",
+        "html",
+        "css"
+      ],
+      "owner": {
+        "reputation": 4,
+        "user_id": 7460478,
+        "user_type": "registered",
+        "profile_image": "https://lh4.googleusercontent.com/-lkbp4-dEJCM/AAAAAAAAAAI/AAAAAAAAABI/BXTfdbqmrI8/photo.jpg?sz=128",
+        "display_name": "Ally B",
+        "link": "http://stackoverflow.com/users/7460478/ally-b"
+      },
+      "is_answered": false,
+      "view_count": 5,
+      "answer_count": 0,
+      "score": -1,
+      "last_activity_date": 1494723839,
+      "creation_date": 1494723839,
+      "question_id": 43959430,
+      "body_markdown": "So I&#39;m a complete JS noob and have no idea what I&#39;m doing or what to do. But, I&#39;m making my friend a website, since my minor HTML and CSS knowledge is much more than she has. She&#39;s requested these buttons that upon click open different boxes on the homepage to show off different things. I know you have to use JS to do that but that&#39;s about as much as I know.\r\n\r\nWhat I would like would be the divs with each box she wants to be hidden unless you click on the corresponding button for one of them to show it. I&#39;d also like it to be set up where if you click outside of the box (aka somewhere else on the homepage) the div goes back to not showing, or if you click on a different button, it hides the div that WAS showing and shows the div for the button you just pressed.\r\n\r\nThere are 6 different divs I&#39;ve already made for it, and I&#39;ve done everything besides the JS, so any and all help is very appreciated!!!",
+      "link": "http://stackoverflow.com/questions/43959430/js-button-shows-and-hides-div-help-for-a-js-noob",
+      "title": "JS button shows and hides div - Help for a JS Noob",
+      "body": "<p>So I'm a complete JS noob and have no idea what I'm doing or what to do. But, I'm making my friend a website, since my minor HTML and CSS knowledge is much more than she has. She's requested these buttons that upon click open different boxes on the homepage to show off different things. I know you have to use JS to do that but that's about as much as I know.</p>\n\n<p>What I would like would be the divs with each box she wants to be hidden unless you click on the corresponding button for one of them to show it. I'd also like it to be set up where if you click outside of the box (aka somewhere else on the homepage) the div goes back to not showing, or if you click on a different button, it hides the div that WAS showing and shows the div for the button you just pressed.</p>\n\n<p>There are 6 different divs I've already made for it, and I've done everything besides the JS, so any and all help is very appreciated!!!</p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "arrays",
+        "performance",
+        "stream",
+        "javascript-objects"
+      ],
+      "answers": [
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43927356,
+          "question_id": 43927220
+        },
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43927435,
+          "question_id": 43927220
+        }
+      ],
+      "owner": {
+        "reputation": 31,
+        "user_id": 2203974,
+        "user_type": "registered",
+        "accept_rate": 12,
+        "profile_image": "https://www.gravatar.com/avatar/501d993bdd0b88c2beccd2d74eec86c2?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Arrow",
+        "link": "http://stackoverflow.com/users/2203974/arrow"
+      },
+      "is_answered": false,
+      "view_count": 50,
+      "answer_count": 2,
+      "score": 0,
+      "last_activity_date": 1494723817,
+      "creation_date": 1494545975,
+      "last_edit_date": 1494723817,
+      "question_id": 43927220,
+      "body_markdown": "I am using a Map to match incoming requests. I want to match those requests with their pair as soon as I get them. Order matters because it&#39;s first to come, first to match. Avoiding unnecessary operations is a requirement. My understanding is hash maps are faster than arrays iterations, and Maps maintain order. What is the best implementation for matching streaming objects with little to no space or time complexity? The data structure is not set in stone, it can be modified and encoded in whatever format optimizes, as long as the information is not lost. From my understanding is the best that can be achieved is O(n). Another problem I am facing with hashing is overwriting duplicates in the queue.  This is what I have.\r\n\r\n\r\n&lt;!-- begin snippet: js hide: false console: true babel: false --&gt;\r\n\r\n&lt;!-- language: lang-js --&gt;\r\n\r\n    function* match(items, identity, remaining = new Map()) { \r\n      for (let item of items) {\r\n       let id = identity(item);\r\n       let pair = x =&gt;({type:x.type===&quot;passenger&quot;? &quot;driver&quot;: &quot;passenger&quot;, direction:x.direction,          time:x.time})\r\n        let  key = item=&gt; item.type + item.direction + item.time;\r\n        let candidate = remaining.get(key(pair(id)));\r\n        if (candidate) {\r\n          remaining.delete(key(pair(id)));\r\n          yield [item, candidate];\r\n        } else {\r\n          remaining.set(key(id), item);\r\n        }\r\n      }\r\n    }\r\n    // Example:\r\n    let items = [{\r\n        type: &#39;driver&#39;,\r\n        direction: &#39;east&#39;,\r\n        time: &#39;9:15&#39;,\r\n        name:[&#39;Archibald Trump&#39;]\r\n      },{ \r\n        type: &#39;passenger&#39;,\r\n        direction: &#39;east&#39;,\r\n        time: &#39;9:15&#39;,\r\n        name:[&#39;Bacon Eater&#39;]\r\n      },{ \r\n        type: &#39;passenger&#39;,\r\n        direction: &#39;east&#39;,\r\n        time: &#39;9:15&#39;,\r\n        name:[&#39;Banjo Barney&#39;]\r\n      },{ \r\n        type: &#39;passenger&#39;,\r\n        direction: &#39;east&#39;,\r\n        time: &#39;9:15&#39;,\r\n        name:[&#39;Flimsy Stick&#39;]\r\n      }, {\r\n        type: &#39;passenger&#39;,\r\n        direction: &#39;west&#39;,\r\n        time: &#39;9:30&#39;,\r\n        name:[&#39;Big Red&#39;]\r\n      },{\r\n        type: &#39;passenger&#39;,\r\n        direction: &#39;west&#39;,\r\n        time: &#39;9:35&#39;,\r\n        name:[&#39;Hathaway Anne&#39;]\r\n      }];\r\n    let remaining = new Map();\r\n    let pairs = match(items, item =&gt; item, remaining);\r\n    console.log(&#39;pairs&#39;,...pairs);\r\n    console.log(&#39;remaining&#39;,...remaining.values());\r\n\r\n&lt;!-- end snippet --&gt;\r\n\r\n\r\n",
+      "link": "http://stackoverflow.com/questions/43927220/i-want-to-match-requests-from-a-stream-as-fast-as-possible",
+      "title": "I want to match requests from a stream as fast as possible",
+      "body": "<p>I am using a Map to match incoming requests. I want to match those requests with their pair as soon as I get them. Order matters because it's first to come, first to match. Avoiding unnecessary operations is a requirement. My understanding is hash maps are faster than arrays iterations, and Maps maintain order. What is the best implementation for matching streaming objects with little to no space or time complexity? The data structure is not set in stone, it can be modified and encoded in whatever format optimizes, as long as the information is not lost. From my understanding is the best that can be achieved is O(n). Another problem I am facing with hashing is overwriting duplicates in the queue.  This is what I have.</p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>function* match(items, identity, remaining = new Map()) { \r\n  for (let item of items) {\r\n   let id = identity(item);\r\n   let pair = x =&gt;({type:x.type===\"passenger\"? \"driver\": \"passenger\", direction:x.direction,          time:x.time})\r\n    let  key = item=&gt; item.type + item.direction + item.time;\r\n    let candidate = remaining.get(key(pair(id)));\r\n    if (candidate) {\r\n      remaining.delete(key(pair(id)));\r\n      yield [item, candidate];\r\n    } else {\r\n      remaining.set(key(id), item);\r\n    }\r\n  }\r\n}\r\n// Example:\r\nlet items = [{\r\n    type: 'driver',\r\n    direction: 'east',\r\n    time: '9:15',\r\n    name:['Archibald Trump']\r\n  },{ \r\n    type: 'passenger',\r\n    direction: 'east',\r\n    time: '9:15',\r\n    name:['Bacon Eater']\r\n  },{ \r\n    type: 'passenger',\r\n    direction: 'east',\r\n    time: '9:15',\r\n    name:['Banjo Barney']\r\n  },{ \r\n    type: 'passenger',\r\n    direction: 'east',\r\n    time: '9:15',\r\n    name:['Flimsy Stick']\r\n  }, {\r\n    type: 'passenger',\r\n    direction: 'west',\r\n    time: '9:30',\r\n    name:['Big Red']\r\n  },{\r\n    type: 'passenger',\r\n    direction: 'west',\r\n    time: '9:35',\r\n    name:['Hathaway Anne']\r\n  }];\r\nlet remaining = new Map();\r\nlet pairs = match(items, item =&gt; item, remaining);\r\nconsole.log('pairs',...pairs);\r\nconsole.log('remaining',...remaining.values());</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "regex",
+        "string"
+      ],
+      "answers": [
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43959418,
+          "question_id": 43959384
+        }
+      ],
+      "owner": {
+        "reputation": 62,
+        "user_id": 7234777,
+        "user_type": "registered",
+        "accept_rate": 75,
+        "profile_image": "https://i.stack.imgur.com/G6TQX.png?s=128&g=1",
+        "display_name": "dev.arguiot",
+        "link": "http://stackoverflow.com/users/7234777/dev-arguiot"
+      },
+      "is_answered": false,
+      "view_count": 11,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1494724043,
+      "creation_date": 1494723279,
+      "question_id": 43959384,
+      "body_markdown": "I have a string, and in this string, I have words that aren&#39;t separated by a space character, the only way to identify them is by looking at the first letter of the word, which is always a capital letter. I&#39;ve searched a bit Google, but I didn&#39;t find anything.\r\n&gt; Do you guys think that is possible to add a space character before a capital letter?\r\n\r\nAs I said in the title, I would like the JavaScript way to do it, because, when I searched on Google, I only found a way to do it Ruby, which I think it&#39;s different from JavaScript.",
+      "link": "http://stackoverflow.com/questions/43959384/how-to-insert-a-space-before-a-capital-letter-in-javascript",
+      "title": "How to insert a space before a capital letter in JavaScript",
+      "body": "<p>I have a string, and in this string, I have words that aren't separated by a space character, the only way to identify them is by looking at the first letter of the word, which is always a capital letter. I've searched a bit Google, but I didn't find anything.</p>\n\n<blockquote>\n  <p>Do you guys think that is possible to add a space character before a capital letter?</p>\n</blockquote>\n\n<p>As I said in the title, I would like the JavaScript way to do it, because, when I searched on Google, I only found a way to do it Ruby, which I think it's different from JavaScript.</p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "jqgrid"
+      ],
+      "owner": {
+        "reputation": 1,
+        "user_id": 8008707,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/632441cb02920ff05db0ca97d954c077?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Steve",
+        "link": "http://stackoverflow.com/users/8008707/steve"
+      },
+      "is_answered": false,
+      "view_count": 2,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1494723677,
+      "creation_date": 1494723677,
+      "question_id": 43959414,
+      "body_markdown": "While implementing the jqGrid objects as interactive as when they have live interaction with backend server when the Browser is Offline. Current jqGrid (v4.5.2) is able to persist when the Browser becomes offline but the newly added rows are not editable which are added when Browser is Offline. The localStorage.getItem(&#39;storatedData&#39;) is also not binding back to jqGrid (JSON Format).\r\n\r\nIt would be great if someone help me with suggestions.\r\n\r\n-Steve",
+      "link": "http://stackoverflow.com/questions/43959414/how-to-manage-jqgrid-object-when-browser-goes-offline-as-live-object-and-retriev",
+      "title": "How to manage jqGrid object when Browser goes offline as live object and retrieve data back to jqGrid when its Online from localstorage",
+      "body": "<p>While implementing the jqGrid objects as interactive as when they have live interaction with backend server when the Browser is Offline. Current jqGrid (v4.5.2) is able to persist when the Browser becomes offline but the newly added rows are not editable which are added when Browser is Offline. The localStorage.getItem('storatedData') is also not binding back to jqGrid (JSON Format).</p>\n\n<p>It would be great if someone help me with suggestions.</p>\n\n<p>-Steve</p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "reactjs",
+        "web"
+      ],
+      "owner": {
+        "reputation": 1,
+        "user_id": 8008718,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/cdeab22d26d14335a2a4004ce0239633?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Drew Furniss",
+        "link": "http://stackoverflow.com/users/8008718/drew-furniss"
+      },
+      "is_answered": false,
+      "view_count": 7,
+      "answer_count": 0,
+      "score": -1,
+      "last_activity_date": 1494723350,
+      "creation_date": 1494723350,
+      "question_id": 43959394,
+      "body_markdown": "Creating a web app using ReactJS + Firebase. Didn&#39;t know if there was a best way to pass data from page to page. For instance, once a user is logged in, I don&#39;t want to keep having to make API calls to get the same info. I come from an Android background. ",
+      "link": "http://stackoverflow.com/questions/43959394/best-way-to-pass-data-from-page-to-page",
+      "title": "best way to pass data from page to page",
+      "body": "<p>Creating a web app using ReactJS + Firebase. Didn't know if there was a best way to pass data from page to page. For instance, once a user is logged in, I don't want to keep having to make API calls to get the same info. I come from an Android background. </p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "reactjs",
+        "rubymine"
+      ],
+      "owner": {
+        "reputation": 1,
+        "user_id": 6484371,
+        "user_type": "registered",
+        "accept_rate": 40,
+        "profile_image": "https://www.gravatar.com/avatar/9739ce20bf000c611ddf35e50443aadd?s=128&d=identicon&r=PG&f=1",
+        "display_name": "ByteMe",
+        "link": "http://stackoverflow.com/users/6484371/byteme"
+      },
+      "is_answered": false,
+      "view_count": 7,
+      "answer_count": 0,
+      "score": -2,
+      "last_activity_date": 1494723317,
+      "creation_date": 1494723317,
+      "question_id": 43959389,
+      "body_markdown": "I&#39;m using Rubymine and it keeps changing my .jsx file into a .tsx file. How do I stop it from doing that and what is the difference between the two files? [See picture of files here on RubyMine][1]\r\n\r\n\r\n  [1]: https://i.stack.imgur.com/xb8Dj.png",
+      "link": "http://stackoverflow.com/questions/43959389/difference-between-jsx-and-tsx",
+      "title": "Difference between .jsx and .tsx",
+      "body": "<p>I'm using Rubymine and it keeps changing my .jsx file into a .tsx file. How do I stop it from doing that and what is the difference between the two files? <a href=\"https://i.stack.imgur.com/xb8Dj.png\" rel=\"nofollow noreferrer\">See picture of files here on RubyMine</a></p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "php"
+      ],
+      "owner": {
+        "reputation": 323,
+        "user_id": 1753923,
+        "user_type": "registered",
+        "accept_rate": 66,
+        "profile_image": "https://i.stack.imgur.com/pg8Ic.png?s=128&g=1",
+        "display_name": "Tompina",
+        "link": "http://stackoverflow.com/users/1753923/tompina"
+      },
+      "is_answered": false,
+      "view_count": 4,
+      "answer_count": 0,
+      "score": 0,
+      "last_activity_date": 1494723248,
+      "creation_date": 1494723248,
+      "question_id": 43959381,
+      "body_markdown": "I currently got this code in PHP which formats my blog posts title.  \r\nExample, from this:  \r\n\r\n&gt; F&#246;rsta blogg-posten\r\n\r\n  \r\nto this:  \r\n\r\n&gt; forsta-blogg-posten\r\n\r\n    function formatURL($str) {\r\n        $clean = iconv(&#39;UTF-8&#39;, &#39;ASCII//TRANSLIT&#39;, $str);\r\n        $clean = preg_replace(&quot;/[^a-zA-Z0-9\\/_|+ -]/&quot;, &#39;&#39;, $clean);\r\n        $clean = strtolower(trim($clean, &#39;-&#39;));\r\n        $clean = preg_replace(&quot;/[\\/_|+ -]+/&quot;, &#39;-&#39;, $clean);\r\n        return $clean;\r\n    }\r\n\r\nI&#39;m trying to replicate this code for Javascript and I&#39;m already stuck on the first line.   \r\nWhat would be the equivalent for **iconv** in javascript?  \r\nIs there a more simple way of doing all of this?  ",
+      "link": "http://stackoverflow.com/questions/43959381/format-url-in-js-identical-to-my-php-function",
+      "title": "Format URL in JS - Identical to my PHP function",
+      "body": "<p>I currently got this code in PHP which formats my blog posts title.<br>\nExample, from this:  </p>\n\n<blockquote>\n  <p>Första blogg-posten</p>\n</blockquote>\n\n<p>to this:  </p>\n\n<blockquote>\n  <p>forsta-blogg-posten</p>\n</blockquote>\n\n<pre><code>function formatURL($str) {\n    $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);\n    $clean = preg_replace(\"/[^a-zA-Z0-9\\/_|+ -]/\", '', $clean);\n    $clean = strtolower(trim($clean, '-'));\n    $clean = preg_replace(\"/[\\/_|+ -]+/\", '-', $clean);\n    return $clean;\n}\n</code></pre>\n\n<p>I'm trying to replicate this code for Javascript and I'm already stuck on the first line.<br>\nWhat would be the equivalent for <strong>iconv</strong> in javascript?<br>\nIs there a more simple way of doing all of this?  </p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "angularjs",
+        "angular-ui-router"
+      ],
+      "answers": [
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43959373,
+          "question_id": 43958229
+        }
+      ],
+      "owner": {
+        "reputation": 1460,
+        "user_id": 4278870,
         "user_type": "registered",
         "accept_rate": 100,
-        "profile_image": "https://lh3.googleusercontent.com/-yZnw6fGSVd8/AAAAAAAAAAI/AAAAAAAAXak/4FqpV755NcI/photo.jpg?sz=128",
-        "display_name": "Arun Kumar",
-        "link": "http://stackoverflow.com/users/7686159/arun-kumar"
+        "profile_image": "https://i.stack.imgur.com/zncMp.jpg?s=128&g=1",
+        "display_name": "Tom Nijs",
+        "link": "http://stackoverflow.com/users/4278870/tom-nijs"
+      },
+      "is_answered": false,
+      "view_count": 9,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1494723101,
+      "creation_date": 1494711451,
+      "question_id": 43958229,
+      "body_markdown": "I&#39;ve been dabbling with `angular-ui-router 1.0` but I&#39;m encountering an issue when creating a state interceptor.\r\n\r\nMy `ui.router` 1.0 example below &quot;works&quot; as in it redirects the user to the `login` state and the login content is displayed if they&#39;re not authenticated but the URL remains as the state they initially tried to navigate to.\r\n\r\n&lt;h3&gt;deprecated angular-ui-router 0.x example&lt;/h3&gt;\r\nThis prevents users from going to a state that has the secure attribute set to `true` if they&#39;re not authenticated.\r\n\r\n    $rootScope.$on(&quot;$stateChangeStart&quot;, function(event, toState, toParams, fromState, fromParams){\r\n        if (toState.secure &amp;&amp; !$rootScope.isAuthenticated) {\r\n            $state.go(&quot;login&quot;);\r\n            event.preventDefault(); \r\n        }\r\n    });\r\n\r\n&lt;h3&gt;new angular-ui-router 1.0 example&lt;/h3&gt;\r\n\r\n    $transitions.onEnter(\r\n        {\r\n            to: (state) =&gt; {\r\n                return state.self.secure &amp;&amp; !$rootScope.isAuthenticated;\r\n            }\r\n        },\r\n        (trans) =&gt; {\r\n            console.log(&quot;redirecting to login state&quot;);\r\n            return trans.router.stateService.target(&quot;login&quot;);\r\n        }\r\n    )\r\n\r\nI have consulted the docs [here][1] and [here][2] to no avail.\r\n\r\nDoes anyone have experience with this bug?\r\n\r\nAny input is appreciated.\r\n\r\n\r\n  [1]: https://ui-router.github.io/guide/ng1/migrate-to-1_0\r\n  [2]: https://ui-router.github.io/ng2/docs/latest/classes/transition.transitionservice.html#onbefore",
+      "link": "http://stackoverflow.com/questions/43958229/angular-ui-router-1-0-route-interception-changes-state-but-doesnt-change-url",
+      "title": "angular-ui-router 1.0 route interception changes state but doesn&#39;t change url",
+      "body": "<p>I've been dabbling with <code>angular-ui-router 1.0</code> but I'm encountering an issue when creating a state interceptor.</p>\n\n<p>My <code>ui.router</code> 1.0 example below \"works\" as in it redirects the user to the <code>login</code> state and the login content is displayed if they're not authenticated but the URL remains as the state they initially tried to navigate to.</p>\n\n<h3>deprecated angular-ui-router 0.x example</h3>\n\n<p>This prevents users from going to a state that has the secure attribute set to <code>true</code> if they're not authenticated.</p>\n\n<pre><code>$rootScope.$on(\"$stateChangeStart\", function(event, toState, toParams, fromState, fromParams){\n    if (toState.secure &amp;&amp; !$rootScope.isAuthenticated) {\n        $state.go(\"login\");\n        event.preventDefault(); \n    }\n});\n</code></pre>\n\n<h3>new angular-ui-router 1.0 example</h3>\n\n<pre><code>$transitions.onEnter(\n    {\n        to: (state) =&gt; {\n            return state.self.secure &amp;&amp; !$rootScope.isAuthenticated;\n        }\n    },\n    (trans) =&gt; {\n        console.log(\"redirecting to login state\");\n        return trans.router.stateService.target(\"login\");\n    }\n)\n</code></pre>\n\n<p>I have consulted the docs <a href=\"https://ui-router.github.io/guide/ng1/migrate-to-1_0\" rel=\"nofollow noreferrer\">here</a> and <a href=\"https://ui-router.github.io/ng2/docs/latest/classes/transition.transitionservice.html#onbefore\" rel=\"nofollow noreferrer\">here</a> to no avail.</p>\n\n<p>Does anyone have experience with this bug?</p>\n\n<p>Any input is appreciated.</p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "html",
+        "regex"
+      ],
+      "answers": [
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43959183,
+          "question_id": 43958974
+        }
+      ],
+      "owner": {
+        "reputation": 4075,
+        "user_id": 3086,
+        "user_type": "registered",
+        "accept_rate": 87,
+        "profile_image": "https://i.stack.imgur.com/x0jZ9.jpg?s=128&g=1",
+        "display_name": "Nacho",
+        "link": "http://stackoverflow.com/users/3086/nacho"
       },
       "is_answered": false,
       "view_count": 24,
       "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1494723001,
+      "creation_date": 1494718455,
+      "question_id": 43958974,
+      "body_markdown": "I&#39;m trying to highlight vowels for a simple reading aid website.\r\n\r\nI have some HTML and want to highlight vowels, but there&#39;s also some HTML that I don&#39;t want to mess with. Basically only just `&lt;mark data-trigger=&quot;&quot;&gt;other word&lt;/mark&gt;`\r\n\r\nSample:\r\n\r\n    Hello, this is a &lt;mark data-trigger=&quot;&quot;&gt;word&lt;/mark&gt; that is in the text. I \r\n    want to get all vowels and wrap it in spans, but avoid messing with the other \r\n    html.\r\n\r\nI know this replaces all vowels &gt; `replace(/(a|e|i|o|u)/ig, &quot;&lt;span class=&#39;vowel&#39;&gt;$1&lt;/span&gt;&quot;)`\r\n\r\nIt would be enough to add &quot;don&#39;t mess with anything inside &lt;mark&gt;&lt;/mark&gt;s&quot;\r\n\r\nCan I achieve this using RegExp?\r\n\r\nI can use external libraries, jQuery or whatever.",
+      "link": "http://stackoverflow.com/questions/43958974/regex-to-march-vowels-not-in-certain-word",
+      "title": "Regex to march vowels not in certain word",
+      "body": "<p>I'm trying to highlight vowels for a simple reading aid website.</p>\n\n<p>I have some HTML and want to highlight vowels, but there's also some HTML that I don't want to mess with. Basically only just <code>&lt;mark data-trigger=\"\"&gt;other word&lt;/mark&gt;</code></p>\n\n<p>Sample:</p>\n\n<pre><code>Hello, this is a &lt;mark data-trigger=\"\"&gt;word&lt;/mark&gt; that is in the text. I \nwant to get all vowels and wrap it in spans, but avoid messing with the other \nhtml.\n</code></pre>\n\n<p>I know this replaces all vowels > <code>replace(/(a|e|i|o|u)/ig, \"&lt;span class='vowel'&gt;$1&lt;/span&gt;\")</code></p>\n\n<p>It would be enough to add \"don't mess with anything inside s\"</p>\n\n<p>Can I achieve this using RegExp?</p>\n\n<p>I can use external libraries, jQuery or whatever.</p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "jquery",
+        "timer",
+        "prototype",
+        "trivial"
+      ],
+      "answers": [
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43959359,
+          "question_id": 43958967
+        }
+      ],
+      "owner": {
+        "reputation": 3,
+        "user_id": 7700030,
+        "user_type": "registered",
+        "profile_image": "https://lh3.googleusercontent.com/-2N1h4Rikwqs/AAAAAAAAAAI/AAAAAAAAGnQ/WIaEvOlCrso/photo.jpg?sz=128",
+        "display_name": "John Bendfeldt",
+        "link": "http://stackoverflow.com/users/7700030/john-bendfeldt"
+      },
+      "is_answered": false,
+      "view_count": 10,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1494722959,
+      "creation_date": 1494718394,
+      "question_id": 43958967,
+      "body_markdown": "So I made a trivia game for class and every time I hit Restart the seconds get faster, or if I click too many answers at once? Is there a way to prevent multiple clicks from happening?\r\nhttps://alil0rphan.github.io/TriviaGame/\r\n\r\n&lt;!-- begin snippet: js hide: false console: true babel: false --&gt;\r\n\r\n&lt;!-- language: lang-js --&gt;\r\n\r\n    $(document).ready(function () {\r\n    \t// Variables that I need\r\n        var correct = 0;\r\n    \t\twrong = 0;\r\n    \t\tnoanswer = 0;\r\n    \t\tquestion = 0;\r\n    \t\ttimer = 10;\r\n    \t\t$(&#39;.restart&#39;).hide();\r\n    \t//Function to start game\r\n    \tfunction setupGame() {\r\n    \t\t$(&#39;.timeLeft&#39;).hide();\r\n    \t\t$(&#39;.question&#39;).hide();\r\n    \t\t$(&#39;.options&#39;).hide();\r\n    \t\t$(&#39;.result&#39;).hide();\r\n    \t\t$(&#39;.restart&#39;).hide();\r\n    \t\t$(&#39;.directions&#39;).show();\r\n    \t};\r\n    \t//Establish start button behavior\r\n    \t$(&#39;.start&#39;).on(&#39;click&#39;, function(startGame) {\r\n    \t\t$(&#39;.timeLeft&#39;).show();\r\n    \t\t$(&#39;.question&#39;).show();\r\n    \t\t$(&#39;.options&#39;).show();\r\n    \t\t$(&#39;.result&#39;).show();\r\n    \t\t$(&#39;.restart&#39;).show();\r\n    \t\t$(&#39;.start&#39;).hide();\r\n    \t\t$(&#39;.directions&#39;).hide();\r\n    \t\tshowQuestion();\r\n    \t});\r\n    \t//Showing the question\r\n    \tfunction showQuestion(){\r\n    \t\t$(this).off(&#39;click&#39;);\r\n    \t\t$(&#39;.result&#39;).html(&#39;&#39;);\r\n    \t\tstartTimer();\r\n    \t\tvar obj = questions[question];\r\n    \t\t\r\n    \t\tvar qText = obj.q_text;\r\n    \t\t$(&#39;.question&#39;).html(qText);\r\n    \t\t\r\n    \t\tvar qAnswers = [obj.q_options_1, obj.q_options_2, obj.q_options_3, obj.q_options_4]\r\n    \t\t$(&#39;.options&#39;).html(&#39;&#39;);\r\n    \t\tfor (var i = 0; i &lt; qAnswers.length; i++) {\r\n    \t\t\tvar ans = qAnswers[i];\r\n    \t\t\tvar id = i + 1;\r\n    \t\t\tvar first = &#39;&lt;li id=&quot;&#39;+id+&#39;&quot;&gt;&#39;\r\n    \t\t\tvar last = &#39;&lt;/li&gt;&#39;\r\n    \t\t\t$(&#39;.options&#39;).append(first+ans+last);\r\n    \t\t}\r\n\r\n    \t\tfor (var j = 1; j &lt;= 4; j++) {\r\n    \t\t\t$(&#39;#&#39;+j).click(function(){\r\n    \t\t\t\tshowAnswer($(this).attr(&#39;id&#39;));\r\n    \t\t\t});\r\n    \t\t}\r\n    \t\t$(this).off(&#39;click&#39;);\r\n    \t}\r\n    \t//Shows the answer\r\n    \tfunction showAnswer(num) {\r\n    \t\tstopTimer();\r\n    \t\ttimer = 10;\r\n    \t\tvar count = question;\r\n    \t\tvar obj = questions[count];\r\n    \t\tvar objCorrect = obj.q_correct_option\r\n    \t\tif (num == 0){\r\n    \t\t\tnoanswer++\r\n    \t\t\t$(&#39;.result&#39;).html(&#39;Please Answer the Questions&#39;);\r\n    \t\t} else if (num == objCorrect) {\r\n    \t\t\tcorrect++\r\n    \t\t\t$(&#39;.result&#39;).html(&#39;Correct!&#39;);\r\n    \t\t} else {\r\n    \t\t\twrong++\r\n    \t\t\t$(&#39;.result&#39;).html(&#39;Incorrect!&#39;);\r\n    \t\t\t$(&#39;#&#39;+num).addClass(&#39;wrong&#39;);\r\n    \t\t}\r\n    \t\t$(&#39;#&#39;+objCorrect).addClass(&#39;correct&#39;);\r\n    \t\t$(&#39;.result&#39;).append(&#39;&lt;br&gt; Correct: &#39; + correct + &#39;&lt;br&gt;&#39;);\r\n    \t\t$(&#39;.result&#39;).append(&#39;Wrong: &#39; + wrong + &#39;&lt;br&gt;&#39;);\r\n    \t\t$(&#39;.result&#39;).append(&#39;Missed: &#39; + noanswer);\r\n    \t\tquestion++\r\n    \t\tif (question &lt; 15) {\r\n    \t\t\tsetTimeout(showQuestion, 2000);\t\r\n    \t\t} else {\r\n    \t\t\tsetTimeout(gameOver);\r\n    \t\t}\r\n    \t\t$(this).off(&#39;click&#39;);\r\n    \t}\r\n        //Establish timer for each question\r\n        function startTimer(){\r\n    \t\ttimer = 10;\r\n    \t\t$(&#39;.timeLeft&#39;).html(&#39;Time Remaining: &#39; + timer + &#39; seconds&#39;);\r\n    \t\tcounter = setInterval(runTimer, 1000);\r\n    \t\t$(this).off(&#39;click&#39;);\r\n        }\r\n        // run the timer\r\n        function runTimer(){\r\n        \t\r\n        \t// remove a second\r\n    \t\ttimer--\r\n\r\n    \t\t// display timer\r\n    \t\t$(&#39;.timeLeft&#39;).html(&#39;Time Remaining: &#39; + timer + &#39; seconds&#39;);\r\n    \t\t\r\n    \t\t// you ran out of time\r\n    \t\tif (timer === 0){\r\n\r\n    \t\t\t// stop the counter from going negative\r\n    \t\t\tstopTimer();\r\n\r\n    \t\t\t// show answer and mark no answer\r\n    \t\t\tshowAnswer(0);\r\n    \t\t}\r\n        }\r\n        // stop counting down\r\n        function stopTimer(){\r\n    \t\tclearInterval(counter);\r\n        }\r\n\r\n        //Establishes a restart buttom\r\n        $(&#39;.restart&#39;).on(&#39;click&#39;, restart);\r\n    \t// Restart\r\n    \tfunction restart() {\r\n    \t\tstopTimer();\r\n    \t\t$(&#39;.start&#39;).show();\r\n    \t\tcorrect = 0;\r\n    \t\twrong = 0;\r\n    \t\tnoanswer = 0;\r\n    \t\tquestion = 0;\r\n    \t\ttimer = 10;\r\n    \t\tsetupGame();\r\n    \t}\r\n    \t\r\n    \tfunction gameOver() {\r\n    \t\t\r\n    \t\t$(&#39;.options&#39;).html(&#39;Hit Restart if you want to try again!&#39;);\r\n    \t\t$(&#39;.question&#39;).html(&#39;&#39;);\r\n    \t\t$(&#39;.result&#39;).html(&#39;&lt;br&gt; Correct: &#39; + correct + &#39;&lt;br&gt;&#39;);\r\n    \t\t$(&#39;.result&#39;).append(&#39;Wrong: &#39; + wrong + &#39;&lt;br&gt;&#39;);\r\n    \t\t$(&#39;.result&#39;).append(&#39;Missed: &#39; + noanswer);\r\n\r\n    \t\tif (correct == 15) {\r\n    \t\t\t$(&#39;.timeLeft&#39;).html(&#39;You are a Menu Master!&#39;);\r\n    \t\t} else if (correct &gt; wrong) {\r\n    \t\t\t$(&#39;.timeLeft&#39;).html(&#39;Almost! See if you can get the all correct.&#39;);\r\n    \t\t} else if (noanswer == 15) {\r\n    \t\t\t$(&#39;.timeLeft&#39;).html(&#39;Do you even care?&#39;);\r\n    \t\t} else if (wrong &gt; correct) {\r\n    \t\t\t$(&#39;.timeLeft&#39;).html(&#39;Sad! Try again.&#39;);\r\n    \t\t} else if (wrong == correct) {\r\n    \t\t\t$(&#39;.timeLeft&#39;).html(&#39;You should keep studying the menu.&#39;);\r\n    \t\t} else {\r\n    \t\t\t$(&#39;.timeLeft&#39;).html(&#39;Thanks for trying!&#39;);\r\n    \t\t}\r\n    \t\t$(&#39;.restart&#39;).on(&#39;click&#39;, restart);\r\n    \t}\r\n\r\n    });\r\n    \t//Establish questions\r\n    \tfunction question(number, text, opt1, opt2, opt3, opt4, ans) {\r\n    \t\tthis.id = number;\r\n    \t\tthis.q_text = text;\r\n    \t\tthis.q_options_1 = opt1;\r\n    \t\tthis.q_options_2 = opt2;\r\n    \t\tthis.q_options_3 = opt3;\r\n    \t\tthis.q_options_4 = opt4;\r\n    \t\tthis.q_correct_option = ans;\r\n    \t};\r\n\r\n    \tvar question1 = new question (\r\n    \t\t1,\r\n    \t\t&#39;What makes Slims unique?&#39;,\r\n    \t\t&#39;They are smaller.&#39;,\r\n    \t\t&#39;They have only meats or cheese, we can\\&#39;t add veggies or sauce.&#39;,\r\n    \t\t&#39;They get less mayo.&#39;,\r\n    \t\t&#39;They get extra veggies.&#39;,\r\n    \t\t2\r\n    \t)\r\n\r\n    \tvar question2 = new question (\r\n    \t\t2,\r\n    \t\t&#39;Which subs and clubs have lettuce and tomato?&#39;,\r\n    \t\t&#39;All of them.&#39;,\r\n    \t\t&#39;All but the ones with tuna.&#39;,\r\n    \t\t&#39;The clubs only.&#39;,\r\n    \t\t&#39;The subs only.&#39;,\r\n    \t\t1\r\n    \t)\r\n\r\n    \tvar question3 = new question (\r\n    \t\t3,\r\n    \t\t&#39;Which sandwiches have no mayo?&#39;,\r\n    \t\t&#39;The 3, 5 and 15.&#39;,\r\n    \t\t&#39;The 2, 3, 4, 14, 16 and 17.&#39;,\r\n    \t\t&#39;The 6 and 13.&#39;,\r\n    \t\t&#39;The Gargantuan.&#39;,\r\n    \t\t1\r\n    \t)\r\n\r\n    \tvar question4 = new question (\r\n    \t\t4,\r\n    \t\t&#39;Which sandwiches get Onions, Herbs and Sauce?&#39;,\r\n    \t\t&#39;The ones with Cheese.&#39;,\r\n    \t\t&#39;The ones with Tuna.&#39;,\r\n    \t\t&#39;The Billy Club and the Ultimate Porker.&#39;,\r\n    \t\t&#39;The ones with Vito.&#39;,\r\n    \t\t4\r\n    \t)\r\n\r\n    \tvar question5 = new question (\r\n    \t\t5,\r\n    \t\t&#39;What comes on the #8?&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Bacon and Ham.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef and Turkey.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, more Beef and Cheese.&#39;,\r\n    \t\t3\r\n    \t)\r\n\r\n    \tvar question6 = new question (\r\n    \t\t6,\r\n    \t\t&#39;How many pieces of bacon do we put as a portion?&#39;,\r\n    \t\t&#39;4.&#39;,\r\n    \t\t&#39;Enough to cover the sandwich.&#39;,\r\n    \t\t&#39;6.&#39;,\r\n    \t\t&#39;5.&#39;,\r\n    \t\t4\r\n    \t)\r\n\r\n    \tvar question7 = new question (\r\n    \t\t7,\r\n    \t\t&#39;What comes on a #14?&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Turkey and Bacon.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef and Turkey.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Ham and Bacon.&#39;,\r\n    \t\t2\r\n    \t)\r\n\r\n    \tvar question8 = new question (\r\n    \t\t8,\r\n    \t\t&#39;What comes on the #10?&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Bacon and Ham.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef and Turkey.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, more Beef and Cheese.&#39;,\r\n    \t\t4\r\n    \t)\r\n\r\n    \tvar question9 = new question (\r\n    \t\t9,\r\n    \t\t&#39;What comes on the #17?&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Bacon and Ham.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef and Turkey.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, more Beef and Cheese.&#39;,\r\n    \t\t1\r\n    \t)\r\n\r\n    \tvar question10 = new question (\r\n    \t\t10,\r\n    \t\t&#39;Which sandwiches have Avo spread on them?&#39;,\r\n    \t\t&#39;The 5 and 9.&#39;,\r\n    \t\t&#39;The 6, 12 and 13.&#39;,\r\n    \t\t&#39;The 3 and 15.&#39;,\r\n    \t\t&#39;The 16 and 17.&#39;,\r\n    \t\t2\r\n    \t)\r\n\r\n    \tvar question11 = new question (\r\n    \t\t11,\r\n    \t\t&#39;What comes on the #12?&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Bacon and Ham.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef and Turkey.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Turkey, Cheese, Avo and Cheese.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, more Beef and Cheese.&#39;,\r\n    \t\t3\r\n    \t)\r\n\r\n    \tvar question12 = new question (\r\n    \t\t12,\r\n    \t\t&#39;What comes on the #9?&#39;,\r\n    \t\t&#39;Mayo, tomato, onions, lettuce, sauce, herbs, Vito, Ham and Cheese.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef and Turkey.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, more Beef and Cheese.&#39;,\r\n    \t\t1\r\n    \t)\r\n\r\n    \tvar question13 = new question (\r\n    \t\t13,\r\n    \t\t&#39;What comes on the #11?&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Bacon and Ham.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef and Turkey.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Turkey, Ham and Cheese.&#39;,\r\n    \t\t4\r\n    \t)\r\n\r\n    \tvar question14 = new question (\r\n    \t\t14,\r\n    \t\t&#39;What comes on the #16?&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Bacon and Ham.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Bacon and Turkey.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Turkey, Ham and Cheese.&#39;,\r\n    \t\t&#39;Mayo, tomato, lettuce, Beef, more Beef and Cheese.&#39;,\r\n    \t\t2\r\n    \t)\r\n\r\n    \tvar question15 = new question (\r\n    \t\t15,\r\n    \t\t&#39;Which sandwiches have cucumbers?&#39;,\r\n    \t\t&#39;Sandwiches with Tuna.&#39;,\r\n    \t\t&#39;Sandwiches with Avo.&#39;,\r\n    \t\t&#39;The 3, 6, 12, 13 and 15.&#39;,\r\n    \t\t&#39;All of the above.&#39;,\r\n    \t\t4\r\n    \t)\r\n    \tvar questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15]\r\n\r\n&lt;!-- language: lang-html --&gt;\r\n\r\n    &lt;!DOCTYPE html&gt;\r\n    &lt;html lang=&quot;en-us&quot;&gt;\r\n\r\n    &lt;head&gt;\r\n    \t&lt;meta charset=&#39;UTF-8&#39;&gt;\r\n    \t&lt;meta name=&#39;viewport&#39; content=&#39;width=device-width, initial-scale=1.0&#39;&gt;\r\n    \t&lt;title&gt;Jimmy Trivia&lt;/title&gt;\r\n    \t&lt;link rel=&#39;stylesheet&#39; type=&#39;text/css&#39; href=&#39;assets/css/style.css&#39;&gt;\r\n    \t&lt;script src=&#39;https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js&#39;&gt;&lt;/script&gt;\r\n    \t&lt;script type=&#39;text/javascript&#39; src=&#39;assets/javascript/app.js&#39;&gt;&lt;/script&gt;\r\n    &lt;/head&gt;\r\n    &lt;body&gt;\r\n    \t&lt;section id=&#39;container&#39;&gt;\r\n    \t\t&lt;img src=&#39;assets/images/jimmy.png&#39; title=&quot;Jimmy John&#39;s&quot; alt=&quot;Jimmy John&#39;s Logo&quot; id=&#39;jjlogo&#39;&gt;\r\n    \t\t&lt;h1&gt;Menu Madness&lt;/h1&gt;\r\n    \t\t&lt;button class=&#39;start&#39;&gt;Start&lt;/button&gt;\r\n    \t\t&lt;p class=&#39;directions&#39;&gt;Press Start to continue the quiz. &lt;br&gt;Only select one answer at a time. &lt;br&gt;Press Restart if you are having any problems.&lt;/p&gt;\r\n    \t\t&lt;h2 class=&#39;timeLeft&#39;&gt;&lt;/h2&gt;\r\n    \t\t&lt;h3 class=&#39;question&#39;&gt;&lt;/h3&gt;\r\n    \t\t&lt;p class=&#39;options&#39;&gt;&lt;/p&gt;\r\n    \t\t&lt;p class=&#39;result&#39;&gt;&lt;/p&gt;\r\n    \t\t&lt;button class=&#39;restart&#39;&gt;Restart&lt;/button&gt;\r\n    \t\t&lt;br&gt;\r\n    \t\t&lt;br&gt;\r\n    \t&lt;/section&gt;\r\n    &lt;/body&gt;\r\n    &lt;/html&gt;\r\n\r\n&lt;!-- end snippet --&gt;\r\n\r\nI hope that makes sense. It&#39;s been driving me crazy.",
+      "link": "http://stackoverflow.com/questions/43958967/timer-on-trivia-game-keeps-speeding-up-on-restart",
+      "title": "Timer on trivia game keeps speeding up on restart",
+      "body": "<p>So I made a trivia game for class and every time I hit Restart the seconds get faster, or if I click too many answers at once? Is there a way to prevent multiple clicks from happening?\n<a href=\"https://alil0rphan.github.io/TriviaGame/\" rel=\"nofollow noreferrer\">https://alil0rphan.github.io/TriviaGame/</a></p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>$(document).ready(function () {\r\n\t// Variables that I need\r\n    var correct = 0;\r\n\t\twrong = 0;\r\n\t\tnoanswer = 0;\r\n\t\tquestion = 0;\r\n\t\ttimer = 10;\r\n\t\t$('.restart').hide();\r\n\t//Function to start game\r\n\tfunction setupGame() {\r\n\t\t$('.timeLeft').hide();\r\n\t\t$('.question').hide();\r\n\t\t$('.options').hide();\r\n\t\t$('.result').hide();\r\n\t\t$('.restart').hide();\r\n\t\t$('.directions').show();\r\n\t};\r\n\t//Establish start button behavior\r\n\t$('.start').on('click', function(startGame) {\r\n\t\t$('.timeLeft').show();\r\n\t\t$('.question').show();\r\n\t\t$('.options').show();\r\n\t\t$('.result').show();\r\n\t\t$('.restart').show();\r\n\t\t$('.start').hide();\r\n\t\t$('.directions').hide();\r\n\t\tshowQuestion();\r\n\t});\r\n\t//Showing the question\r\n\tfunction showQuestion(){\r\n\t\t$(this).off('click');\r\n\t\t$('.result').html('');\r\n\t\tstartTimer();\r\n\t\tvar obj = questions[question];\r\n\t\t\r\n\t\tvar qText = obj.q_text;\r\n\t\t$('.question').html(qText);\r\n\t\t\r\n\t\tvar qAnswers = [obj.q_options_1, obj.q_options_2, obj.q_options_3, obj.q_options_4]\r\n\t\t$('.options').html('');\r\n\t\tfor (var i = 0; i &lt; qAnswers.length; i++) {\r\n\t\t\tvar ans = qAnswers[i];\r\n\t\t\tvar id = i + 1;\r\n\t\t\tvar first = '&lt;li id=\"'+id+'\"&gt;'\r\n\t\t\tvar last = '&lt;/li&gt;'\r\n\t\t\t$('.options').append(first+ans+last);\r\n\t\t}\r\n\r\n\t\tfor (var j = 1; j &lt;= 4; j++) {\r\n\t\t\t$('#'+j).click(function(){\r\n\t\t\t\tshowAnswer($(this).attr('id'));\r\n\t\t\t});\r\n\t\t}\r\n\t\t$(this).off('click');\r\n\t}\r\n\t//Shows the answer\r\n\tfunction showAnswer(num) {\r\n\t\tstopTimer();\r\n\t\ttimer = 10;\r\n\t\tvar count = question;\r\n\t\tvar obj = questions[count];\r\n\t\tvar objCorrect = obj.q_correct_option\r\n\t\tif (num == 0){\r\n\t\t\tnoanswer++\r\n\t\t\t$('.result').html('Please Answer the Questions');\r\n\t\t} else if (num == objCorrect) {\r\n\t\t\tcorrect++\r\n\t\t\t$('.result').html('Correct!');\r\n\t\t} else {\r\n\t\t\twrong++\r\n\t\t\t$('.result').html('Incorrect!');\r\n\t\t\t$('#'+num).addClass('wrong');\r\n\t\t}\r\n\t\t$('#'+objCorrect).addClass('correct');\r\n\t\t$('.result').append('&lt;br&gt; Correct: ' + correct + '&lt;br&gt;');\r\n\t\t$('.result').append('Wrong: ' + wrong + '&lt;br&gt;');\r\n\t\t$('.result').append('Missed: ' + noanswer);\r\n\t\tquestion++\r\n\t\tif (question &lt; 15) {\r\n\t\t\tsetTimeout(showQuestion, 2000);\t\r\n\t\t} else {\r\n\t\t\tsetTimeout(gameOver);\r\n\t\t}\r\n\t\t$(this).off('click');\r\n\t}\r\n    //Establish timer for each question\r\n    function startTimer(){\r\n\t\ttimer = 10;\r\n\t\t$('.timeLeft').html('Time Remaining: ' + timer + ' seconds');\r\n\t\tcounter = setInterval(runTimer, 1000);\r\n\t\t$(this).off('click');\r\n    }\r\n    // run the timer\r\n    function runTimer(){\r\n    \t\r\n    \t// remove a second\r\n\t\ttimer--\r\n\r\n\t\t// display timer\r\n\t\t$('.timeLeft').html('Time Remaining: ' + timer + ' seconds');\r\n\t\t\r\n\t\t// you ran out of time\r\n\t\tif (timer === 0){\r\n\r\n\t\t\t// stop the counter from going negative\r\n\t\t\tstopTimer();\r\n\r\n\t\t\t// show answer and mark no answer\r\n\t\t\tshowAnswer(0);\r\n\t\t}\r\n    }\r\n    // stop counting down\r\n    function stopTimer(){\r\n\t\tclearInterval(counter);\r\n    }\r\n\r\n    //Establishes a restart buttom\r\n    $('.restart').on('click', restart);\r\n\t// Restart\r\n\tfunction restart() {\r\n\t\tstopTimer();\r\n\t\t$('.start').show();\r\n\t\tcorrect = 0;\r\n\t\twrong = 0;\r\n\t\tnoanswer = 0;\r\n\t\tquestion = 0;\r\n\t\ttimer = 10;\r\n\t\tsetupGame();\r\n\t}\r\n\t\r\n\tfunction gameOver() {\r\n\t\t\r\n\t\t$('.options').html('Hit Restart if you want to try again!');\r\n\t\t$('.question').html('');\r\n\t\t$('.result').html('&lt;br&gt; Correct: ' + correct + '&lt;br&gt;');\r\n\t\t$('.result').append('Wrong: ' + wrong + '&lt;br&gt;');\r\n\t\t$('.result').append('Missed: ' + noanswer);\r\n\r\n\t\tif (correct == 15) {\r\n\t\t\t$('.timeLeft').html('You are a Menu Master!');\r\n\t\t} else if (correct &gt; wrong) {\r\n\t\t\t$('.timeLeft').html('Almost! See if you can get the all correct.');\r\n\t\t} else if (noanswer == 15) {\r\n\t\t\t$('.timeLeft').html('Do you even care?');\r\n\t\t} else if (wrong &gt; correct) {\r\n\t\t\t$('.timeLeft').html('Sad! Try again.');\r\n\t\t} else if (wrong == correct) {\r\n\t\t\t$('.timeLeft').html('You should keep studying the menu.');\r\n\t\t} else {\r\n\t\t\t$('.timeLeft').html('Thanks for trying!');\r\n\t\t}\r\n\t\t$('.restart').on('click', restart);\r\n\t}\r\n\r\n});\r\n\t//Establish questions\r\n\tfunction question(number, text, opt1, opt2, opt3, opt4, ans) {\r\n\t\tthis.id = number;\r\n\t\tthis.q_text = text;\r\n\t\tthis.q_options_1 = opt1;\r\n\t\tthis.q_options_2 = opt2;\r\n\t\tthis.q_options_3 = opt3;\r\n\t\tthis.q_options_4 = opt4;\r\n\t\tthis.q_correct_option = ans;\r\n\t};\r\n\r\n\tvar question1 = new question (\r\n\t\t1,\r\n\t\t'What makes Slims unique?',\r\n\t\t'They are smaller.',\r\n\t\t'They have only meats or cheese, we can\\'t add veggies or sauce.',\r\n\t\t'They get less mayo.',\r\n\t\t'They get extra veggies.',\r\n\t\t2\r\n\t)\r\n\r\n\tvar question2 = new question (\r\n\t\t2,\r\n\t\t'Which subs and clubs have lettuce and tomato?',\r\n\t\t'All of them.',\r\n\t\t'All but the ones with tuna.',\r\n\t\t'The clubs only.',\r\n\t\t'The subs only.',\r\n\t\t1\r\n\t)\r\n\r\n\tvar question3 = new question (\r\n\t\t3,\r\n\t\t'Which sandwiches have no mayo?',\r\n\t\t'The 3, 5 and 15.',\r\n\t\t'The 2, 3, 4, 14, 16 and 17.',\r\n\t\t'The 6 and 13.',\r\n\t\t'The Gargantuan.',\r\n\t\t1\r\n\t)\r\n\r\n\tvar question4 = new question (\r\n\t\t4,\r\n\t\t'Which sandwiches get Onions, Herbs and Sauce?',\r\n\t\t'The ones with Cheese.',\r\n\t\t'The ones with Tuna.',\r\n\t\t'The Billy Club and the Ultimate Porker.',\r\n\t\t'The ones with Vito.',\r\n\t\t4\r\n\t)\r\n\r\n\tvar question5 = new question (\r\n\t\t5,\r\n\t\t'What comes on the #8?',\r\n\t\t'Mayo, tomato, lettuce, Bacon and Ham.',\r\n\t\t'Mayo, tomato, lettuce, Beef and Turkey.',\r\n\t\t'Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.',\r\n\t\t'Mayo, tomato, lettuce, Beef, more Beef and Cheese.',\r\n\t\t3\r\n\t)\r\n\r\n\tvar question6 = new question (\r\n\t\t6,\r\n\t\t'How many pieces of bacon do we put as a portion?',\r\n\t\t'4.',\r\n\t\t'Enough to cover the sandwich.',\r\n\t\t'6.',\r\n\t\t'5.',\r\n\t\t4\r\n\t)\r\n\r\n\tvar question7 = new question (\r\n\t\t7,\r\n\t\t'What comes on a #14?',\r\n\t\t'Mayo, tomato, lettuce, Turkey and Bacon.',\r\n\t\t'Mayo, tomato, lettuce, Beef and Turkey.',\r\n\t\t'Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.',\r\n\t\t'Mayo, tomato, lettuce, Ham and Bacon.',\r\n\t\t2\r\n\t)\r\n\r\n\tvar question8 = new question (\r\n\t\t8,\r\n\t\t'What comes on the #10?',\r\n\t\t'Mayo, tomato, lettuce, Bacon and Ham.',\r\n\t\t'Mayo, tomato, lettuce, Beef and Turkey.',\r\n\t\t'Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.',\r\n\t\t'Mayo, tomato, lettuce, Beef, more Beef and Cheese.',\r\n\t\t4\r\n\t)\r\n\r\n\tvar question9 = new question (\r\n\t\t9,\r\n\t\t'What comes on the #17?',\r\n\t\t'Mayo, tomato, lettuce, Bacon and Ham.',\r\n\t\t'Mayo, tomato, lettuce, Beef and Turkey.',\r\n\t\t'Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.',\r\n\t\t'Mayo, tomato, lettuce, Beef, more Beef and Cheese.',\r\n\t\t1\r\n\t)\r\n\r\n\tvar question10 = new question (\r\n\t\t10,\r\n\t\t'Which sandwiches have Avo spread on them?',\r\n\t\t'The 5 and 9.',\r\n\t\t'The 6, 12 and 13.',\r\n\t\t'The 3 and 15.',\r\n\t\t'The 16 and 17.',\r\n\t\t2\r\n\t)\r\n\r\n\tvar question11 = new question (\r\n\t\t11,\r\n\t\t'What comes on the #12?',\r\n\t\t'Mayo, tomato, lettuce, Bacon and Ham.',\r\n\t\t'Mayo, tomato, lettuce, Beef and Turkey.',\r\n\t\t'Mayo, tomato, lettuce, Turkey, Cheese, Avo and Cheese.',\r\n\t\t'Mayo, tomato, lettuce, Beef, more Beef and Cheese.',\r\n\t\t3\r\n\t)\r\n\r\n\tvar question12 = new question (\r\n\t\t12,\r\n\t\t'What comes on the #9?',\r\n\t\t'Mayo, tomato, onions, lettuce, sauce, herbs, Vito, Ham and Cheese.',\r\n\t\t'Mayo, tomato, lettuce, Beef and Turkey.',\r\n\t\t'Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.',\r\n\t\t'Mayo, tomato, lettuce, Beef, more Beef and Cheese.',\r\n\t\t1\r\n\t)\r\n\r\n\tvar question13 = new question (\r\n\t\t13,\r\n\t\t'What comes on the #11?',\r\n\t\t'Mayo, tomato, lettuce, Bacon and Ham.',\r\n\t\t'Mayo, tomato, lettuce, Beef and Turkey.',\r\n\t\t'Mayo, tomato, lettuce, Beef, Dijon, Ham and Cheese.',\r\n\t\t'Mayo, tomato, lettuce, Turkey, Ham and Cheese.',\r\n\t\t4\r\n\t)\r\n\r\n\tvar question14 = new question (\r\n\t\t14,\r\n\t\t'What comes on the #16?',\r\n\t\t'Mayo, tomato, lettuce, Bacon and Ham.',\r\n\t\t'Mayo, tomato, lettuce, Bacon and Turkey.',\r\n\t\t'Mayo, tomato, lettuce, Turkey, Ham and Cheese.',\r\n\t\t'Mayo, tomato, lettuce, Beef, more Beef and Cheese.',\r\n\t\t2\r\n\t)\r\n\r\n\tvar question15 = new question (\r\n\t\t15,\r\n\t\t'Which sandwiches have cucumbers?',\r\n\t\t'Sandwiches with Tuna.',\r\n\t\t'Sandwiches with Avo.',\r\n\t\t'The 3, 6, 12, 13 and 15.',\r\n\t\t'All of the above.',\r\n\t\t4\r\n\t)\r\n\tvar questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15]</code></pre>\r\n<pre class=\"snippet-code-html lang-html prettyprint-override\"><code>&lt;!DOCTYPE html&gt;\r\n&lt;html lang=\"en-us\"&gt;\r\n\r\n&lt;head&gt;\r\n\t&lt;meta charset='UTF-8'&gt;\r\n\t&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;\r\n\t&lt;title&gt;Jimmy Trivia&lt;/title&gt;\r\n\t&lt;link rel='stylesheet' type='text/css' href='assets/css/style.css'&gt;\r\n\t&lt;script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'&gt;&lt;/script&gt;\r\n\t&lt;script type='text/javascript' src='assets/javascript/app.js'&gt;&lt;/script&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;\r\n\t&lt;section id='container'&gt;\r\n\t\t&lt;img src='assets/images/jimmy.png' title=\"Jimmy John's\" alt=\"Jimmy John's Logo\" id='jjlogo'&gt;\r\n\t\t&lt;h1&gt;Menu Madness&lt;/h1&gt;\r\n\t\t&lt;button class='start'&gt;Start&lt;/button&gt;\r\n\t\t&lt;p class='directions'&gt;Press Start to continue the quiz. &lt;br&gt;Only select one answer at a time. &lt;br&gt;Press Restart if you are having any problems.&lt;/p&gt;\r\n\t\t&lt;h2 class='timeLeft'&gt;&lt;/h2&gt;\r\n\t\t&lt;h3 class='question'&gt;&lt;/h3&gt;\r\n\t\t&lt;p class='options'&gt;&lt;/p&gt;\r\n\t\t&lt;p class='result'&gt;&lt;/p&gt;\r\n\t\t&lt;button class='restart'&gt;Restart&lt;/button&gt;\r\n\t\t&lt;br&gt;\r\n\t\t&lt;br&gt;\r\n\t&lt;/section&gt;\r\n&lt;/body&gt;\r\n&lt;/html&gt;</code></pre>\r\n</div>\r\n</div>\r\n</p>\n\n<p>I hope that makes sense. It's been driving me crazy.</p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "vue.js"
+      ],
+      "answers": [
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43959358,
+          "question_id": 43959322
+        }
+      ],
+      "owner": {
+        "reputation": 1,
+        "user_id": 7919616,
+        "user_type": "registered",
+        "profile_image": "https://i.stack.imgur.com/sUJAE.jpg?s=128&g=1",
+        "display_name": "Darryl King",
+        "link": "http://stackoverflow.com/users/7919616/darryl-king"
+      },
+      "is_answered": false,
+      "view_count": 11,
+      "answer_count": 1,
       "score": -1,
-      "last_activity_date": 1494401698,
-      "creation_date": 1494401034,
-      "question_id": 43885978,
-      "link": "http://stackoverflow.com/questions/43885978/read-and-display-data-using-jquery",
-      "title": "Read and Display data using Jquery",
-      "body": "<p>I tyring read from the data listCards and displaying the list of cards in a loop using jquery.</p>\n\n<p>But its showing an error in console \"forEach is not a function.</p>\n\n<p>Please tell me what i'm doing wrong ?</p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>&lt;script&gt;\r\nvar listCards = [{\r\n    \"cardTitle\": \"Sample Ttile\",\r\n    \"cardDate\": \"05 April 2017\",\r\n    \"cardLinkURL\": \"#\",\r\n    \"cardLinkDTM\": \"data-tracker-id=\\\"cards_1_1\\\" data-tracker-type=\\\"button\\\" data-tracker_ei=\\\"cards_1_1\\\" \"\r\n},\r\n{\r\n    \"cardTitle\": \"Sample Ttile 2\",\r\n    \"cardDate\": \"05 April 2017\",\r\n    \"cardLinkURL\": \"#\",\r\n    \"cardLinkDTM\": \"data-tracker-id=\\\"cards_1_1\\\" data-tracker-type=\\\"button\\\" data-tracker_ei=\\\"cards_1_1\\\" \"\r\n}]\r\n&lt;/script&gt;</code></pre>\r\n<pre class=\"snippet-code-html lang-html prettyprint-override\"><code>&lt;div class=\"list-card-wrapper\"&gt;\r\n  &lt;a href=\"link\"&gt;\r\n    &lt;article&gt;\r\n      &lt;time&gt;time&lt;/time&gt;\r\n      &lt;h3&gt;title&lt;/h3&gt;\r\n    &lt;/article&gt; \r\n   &lt;/a&gt;\r\n&lt;/div&gt;</code></pre>\r\n</div>\r\n</div>\r\n</p>\n\n<p>So what i've done so far is </p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>\t$(\".list-view\").on('click', staticListCards);\r\n\r\n\tfunction staticListCards() {\r\n\r\n\t    return new Promise(function(resolve) {\r\n\r\n\t        if ((typeof(listCards) !== 'undefined')) {\r\n\r\n\t            var listCards = staticListCards;\r\n\t            console.log(listCards);\r\n\r\n\t            listCards.forEach(function(listCards, i) {\r\n\r\n\t                listCards[i] = {\r\n\r\n\t                    link: listCards.cardLinkURL,\r\n\t                    'date-time': listCards.cardDate,\r\n\t                    title: listCards.cardTitle,\r\n\t                    trackerId: listCards.trackerId,\r\n\t                    trackerType: listCards.trackerType,\r\n\t                };\r\n\r\n\t            });\r\n\r\n\t            resolve(listCards);\r\n\t            console.log(listCards);\r\n\r\n\t        } else {\r\n\t            resolve([]);\r\n\t        }\r\n\r\n\t    });\r\n\r\n\t}</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
+      "last_activity_date": 1494722931,
+      "creation_date": 1494722421,
+      "question_id": 43959322,
+      "body_markdown": "I&#39;m having a frustrating time trying to get this to work, Chrome keeps displaying an Uncaught Syntax error, but being a beginner to Vue, I have no idea where to look. Im at the part of the tutorial where it says Adding the listing area. Also here is a link to the tutorial as well. Any help or pointers would be appreciated. Thank you! \r\n\r\n&lt;!-- begin snippet: js hide: false console: true babel: false --&gt;\r\n\r\n&lt;!-- language: lang-js --&gt;\r\n\r\n    new Vue({\r\n\r\n      el: &#39;#events&#39;,\r\n\r\n\r\n\r\n      data: {\r\n        event: {\r\n          name: &quot;&quot;,\r\n          description: &quot;&quot;,\r\n          date: &quot;&quot;\r\n        },\r\n        events: []\r\n\r\n        ready: function() {\r\n          // When the application loads, we want to call the method that initializes\r\n          // some data\r\n          this.fetchEvents();\r\n        },\r\n        fetchEvents: function() {\r\n\r\n          var events = [{\r\n\r\n              id: 1,\r\n              name: &quot;TIFF&quot;,\r\n              description: &quot;Toronto International Film Festival&quot;,\r\n              date: &quot;2015-09-10&quot;\r\n            },\r\n            {\r\n\r\n              id: 2,\r\n              name: &quot;The Martian Premiere&quot;,\r\n              description: &quot;The Martian Comes to Theatres.&quot;,\r\n              date: &quot;2015-10-02&quot;\r\n            },\r\n            {\r\n\r\n              id: 3\r\n              name: &quot;SXSW&quot;,\r\n              description: &quot;Music, film and interactive festival in Austin, TX.&quot;,\r\n              date: &quot;2016-03-11&quot;\r\n            }\r\n\r\n\r\n\r\n\r\n          ];\r\n\r\n          this.$set(&quot;events&quot;, events);\r\n        },\r\n\r\n        addEvent: function() {\r\n\r\n          if (this.event.name) {\r\n\r\n            this.events.push(this.event);\r\n            this.event = {\r\n              name: &quot;&quot;,\r\n              description: &quot;&quot;,\r\n              date: &quot;&quot;\r\n            };\r\n          }\r\n        }\r\n      }\r\n    })\r\n\r\n&lt;!-- language: lang-html --&gt;\r\n\r\n    &lt;!doctype html&gt;\r\n\r\n    &lt;head&gt;\r\n      &lt;meta charset=&quot;utf-8&quot;&gt;\r\n      &lt;title&gt;Vue&lt;/title&gt;\r\n\r\n      &lt;!---CSS--&gt;\r\n      &lt;link rel=&quot;stylesheet&quot; href=&quot;node_modules/bootstrap/dist/css/bootstrap.min.css&quot;&gt;\r\n    &lt;/head&gt;\r\n\r\n    &lt;body&gt;\r\n\r\n      &lt;!--Nav bar--&gt;\r\n      &lt;nav class=&quot;navbar navbar-default&quot;&gt;\r\n        &lt;div class=&quot;container fluid&quot;&gt;\r\n          &lt;a class=&quot;navbar-brand&quot;&gt;&lt;i class= &quot;glyphicon glyphicon-bullhorn&quot;&gt;&lt;/i&gt; Vue Events Bulletin Board&lt;/a&gt;\r\n        &lt;/div&gt;\r\n      &lt;/nav&gt;\r\n\r\n      &lt;!--main body of our application--&gt;\r\n      &lt;div class=&quot;container&quot; id=&quot;events&quot;&gt;\r\n\r\n        &lt;!--add an event form--&gt;\r\n        &lt;div class=&quot;col-sm-6&quot;&gt;\r\n          &lt;div class=&quot;panel panel-default&quot;&gt;\r\n            &lt;div class=&quot;panel-heading&quot;&gt;\r\n              &lt;h3&gt; Add An Event&lt;/h3&gt;\r\n            &lt;/div&gt;\r\n\r\n            &lt;div class=&quot;panel-body&quot;&gt;\r\n\r\n\r\n              &lt;div class=&quot;form-group&quot;&gt;\r\n                &lt;input class=&quot;form-control&quot; placeholoder=&quot;Event Name&quot; v-model=&quot;event.name&quot;&gt;\r\n              &lt;/div&gt;\r\n\r\n              &lt;div class=&quot;form-group&quot;&gt;\r\n                &lt;textarea class=&quot;form-control&quot; placeholder=&quot;Event Description&quot; v-model=&quot;event.description&quot;&gt;&lt;/textarea&gt;\r\n              &lt;/div&gt;\r\n\r\n              &lt;div class=&quot;form-group&quot;&gt;\r\n                &lt;input type=&quot;date&quot; class=&quot;form-control&quot; placeholoder=&quot;Date&quot; v-model=&quot;event.date&quot;&gt;\r\n              &lt;/div&gt;\r\n\r\n\r\n\r\n\r\n\r\n              &lt;button class=&quot;btn btn-primary&quot; v-on=&quot;click: addEvent&quot;&gt;Submit&lt;/button&gt;\r\n            &lt;/div&gt;\r\n\r\n\r\n            &lt;div class=&quot;list-group&quot; &lt;a href=&quot;#&quot; class=&quot;list-group-item&quot; v-repeat=&quot;event in events&quot;&gt;\r\n              &lt;h4 class=&quot;list-group-item-heading&quot;&gt;\r\n                &lt;i class=&quot;glyphicon glyphicon-bullhorn&quot;&gt;&lt;/i&gt;\r\n\r\n              &lt;/h4&gt;\r\n\r\n\r\n              &lt;h5&gt;\r\n                &lt;i class=&quot;glyphicon glyphicon-calender&quot; v-if=&quot;event.date&quot;&gt;&lt;/i&gt;\r\n\r\n              &lt;/h5&gt;\r\n\r\n              &lt;p class=&quot;list-group-item-text&quot; v-if=&quot;event.description&quot;&gt; &lt;/p&gt;\r\n\r\n              &lt;button class=&quot;btn btn-xs btn-danger&quot; v-on=&quot;click: deleteEvent($index)&quot;&gt;Delete&lt;/button&gt;\r\n\r\n            &lt;/div&gt;\r\n\r\n\r\n\r\n            &lt;!--show the events--&gt;\r\n            &lt;div class=&quot;col-sm-6&quot;&gt;\r\n              &lt;div class=&quot;list-group&quot;&gt;\r\n\r\n              &lt;/div&gt;\r\n\r\n            &lt;/div&gt;\r\n          &lt;/div&gt;\r\n\r\n          &lt;!--JS--&gt;\r\n          &lt;script src=&quot;node_modules/vue/dist/vue.js&quot;&gt;&lt;/script&gt;\r\n          &lt;script src=&quot;node_modules/vue-resource/dist/vue-resource.js&quot;&gt;&lt;/script&gt;\r\n          &lt;script src=&quot;app1.js&quot;&gt;\r\n            &lt; /script &lt; /\r\n            body &gt; &lt;\r\n              /html&gt;\r\n\r\n&lt;!-- end snippet --&gt;\r\n\r\n\r\n",
+      "link": "http://stackoverflow.com/questions/43959322/javascript-uncaught-syntaxerror-unexpected-identifier-vue-js",
+      "title": "Javascript Uncaught SyntaxError: Unexpected Identifier (vue.js)",
+      "body": "<p>I'm having a frustrating time trying to get this to work, Chrome keeps displaying an Uncaught Syntax error, but being a beginner to Vue, I have no idea where to look. Im at the part of the tutorial where it says Adding the listing area. Also here is a link to the tutorial as well. Any help or pointers would be appreciated. Thank you! </p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>new Vue({\r\n\r\n  el: '#events',\r\n\r\n\r\n\r\n  data: {\r\n    event: {\r\n      name: \"\",\r\n      description: \"\",\r\n      date: \"\"\r\n    },\r\n    events: []\r\n\r\n    ready: function() {\r\n      // When the application loads, we want to call the method that initializes\r\n      // some data\r\n      this.fetchEvents();\r\n    },\r\n    fetchEvents: function() {\r\n\r\n      var events = [{\r\n\r\n          id: 1,\r\n          name: \"TIFF\",\r\n          description: \"Toronto International Film Festival\",\r\n          date: \"2015-09-10\"\r\n        },\r\n        {\r\n\r\n          id: 2,\r\n          name: \"The Martian Premiere\",\r\n          description: \"The Martian Comes to Theatres.\",\r\n          date: \"2015-10-02\"\r\n        },\r\n        {\r\n\r\n          id: 3\r\n          name: \"SXSW\",\r\n          description: \"Music, film and interactive festival in Austin, TX.\",\r\n          date: \"2016-03-11\"\r\n        }\r\n\r\n\r\n\r\n\r\n      ];\r\n\r\n      this.$set(\"events\", events);\r\n    },\r\n\r\n    addEvent: function() {\r\n\r\n      if (this.event.name) {\r\n\r\n        this.events.push(this.event);\r\n        this.event = {\r\n          name: \"\",\r\n          description: \"\",\r\n          date: \"\"\r\n        };\r\n      }\r\n    }\r\n  }\r\n})</code></pre>\r\n<pre class=\"snippet-code-html lang-html prettyprint-override\"><code>&lt;!doctype html&gt;\r\n\r\n&lt;head&gt;\r\n  &lt;meta charset=\"utf-8\"&gt;\r\n  &lt;title&gt;Vue&lt;/title&gt;\r\n\r\n  &lt;!---CSS--&gt;\r\n  &lt;link rel=\"stylesheet\" href=\"node_modules/bootstrap/dist/css/bootstrap.min.css\"&gt;\r\n&lt;/head&gt;\r\n\r\n&lt;body&gt;\r\n\r\n  &lt;!--Nav bar--&gt;\r\n  &lt;nav class=\"navbar navbar-default\"&gt;\r\n    &lt;div class=\"container fluid\"&gt;\r\n      &lt;a class=\"navbar-brand\"&gt;&lt;i class= \"glyphicon glyphicon-bullhorn\"&gt;&lt;/i&gt; Vue Events Bulletin Board&lt;/a&gt;\r\n    &lt;/div&gt;\r\n  &lt;/nav&gt;\r\n\r\n  &lt;!--main body of our application--&gt;\r\n  &lt;div class=\"container\" id=\"events\"&gt;\r\n\r\n    &lt;!--add an event form--&gt;\r\n    &lt;div class=\"col-sm-6\"&gt;\r\n      &lt;div class=\"panel panel-default\"&gt;\r\n        &lt;div class=\"panel-heading\"&gt;\r\n          &lt;h3&gt; Add An Event&lt;/h3&gt;\r\n        &lt;/div&gt;\r\n\r\n        &lt;div class=\"panel-body\"&gt;\r\n\r\n\r\n          &lt;div class=\"form-group\"&gt;\r\n            &lt;input class=\"form-control\" placeholoder=\"Event Name\" v-model=\"event.name\"&gt;\r\n          &lt;/div&gt;\r\n\r\n          &lt;div class=\"form-group\"&gt;\r\n            &lt;textarea class=\"form-control\" placeholder=\"Event Description\" v-model=\"event.description\"&gt;&lt;/textarea&gt;\r\n          &lt;/div&gt;\r\n\r\n          &lt;div class=\"form-group\"&gt;\r\n            &lt;input type=\"date\" class=\"form-control\" placeholoder=\"Date\" v-model=\"event.date\"&gt;\r\n          &lt;/div&gt;\r\n\r\n\r\n\r\n\r\n\r\n          &lt;button class=\"btn btn-primary\" v-on=\"click: addEvent\"&gt;Submit&lt;/button&gt;\r\n        &lt;/div&gt;\r\n\r\n\r\n        &lt;div class=\"list-group\" &lt;a href=\"#\" class=\"list-group-item\" v-repeat=\"event in events\"&gt;\r\n          &lt;h4 class=\"list-group-item-heading\"&gt;\r\n            &lt;i class=\"glyphicon glyphicon-bullhorn\"&gt;&lt;/i&gt;\r\n\r\n          &lt;/h4&gt;\r\n\r\n\r\n          &lt;h5&gt;\r\n            &lt;i class=\"glyphicon glyphicon-calender\" v-if=\"event.date\"&gt;&lt;/i&gt;\r\n\r\n          &lt;/h5&gt;\r\n\r\n          &lt;p class=\"list-group-item-text\" v-if=\"event.description\"&gt; &lt;/p&gt;\r\n\r\n          &lt;button class=\"btn btn-xs btn-danger\" v-on=\"click: deleteEvent($index)\"&gt;Delete&lt;/button&gt;\r\n\r\n        &lt;/div&gt;\r\n\r\n\r\n\r\n        &lt;!--show the events--&gt;\r\n        &lt;div class=\"col-sm-6\"&gt;\r\n          &lt;div class=\"list-group\"&gt;\r\n\r\n          &lt;/div&gt;\r\n\r\n        &lt;/div&gt;\r\n      &lt;/div&gt;\r\n\r\n      &lt;!--JS--&gt;\r\n      &lt;script src=\"node_modules/vue/dist/vue.js\"&gt;&lt;/script&gt;\r\n      &lt;script src=\"node_modules/vue-resource/dist/vue-resource.js\"&gt;&lt;/script&gt;\r\n      &lt;script src=\"app1.js\"&gt;\r\n        &lt; /script &lt; /\r\n        body &gt; &lt;\r\n          /html&gt;</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "typescript",
+        "console.log"
+      ],
+      "answers": [
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43927497,
+          "question_id": 43927304
+        }
+      ],
+      "owner": {
+        "reputation": 131,
+        "user_id": 4088106,
+        "user_type": "registered",
+        "accept_rate": 100,
+        "profile_image": "https://i.stack.imgur.com/U8a4E.png?s=128&g=1",
+        "display_name": "stevenvanc",
+        "link": "http://stackoverflow.com/users/4088106/stevenvanc"
+      },
+      "is_answered": false,
+      "view_count": 65,
+      "bounty_amount": 100,
+      "bounty_closes_date": 1495327675,
+      "answer_count": 1,
+      "score": 4,
+      "last_activity_date": 1494722875,
+      "creation_date": 1494546651,
+      "last_edit_date": 1494682131,
+      "question_id": 43927304,
+      "body_markdown": "I made the following class to &#39;hijack&#39; the `console.log` function. The reason behind this is that I want to add and remove values\r\n**dynamically**. It will be used for debug purposes, so the **origin of the function call** `console.log()` is important. In the following code I will explain my logic in the comments.\r\n\r\n    export class ConsoleLog {\r\n      private _isActive = false;\r\n      private _nativeLogFn: any;\r\n    \r\n      constructor() {\r\n\r\n        // ----------------------\r\n        // Store the native console.log function, so it can be restored later \r\n        // ----------------------\r\n\r\n        this._nativeLogFn = console.log;\r\n\r\n      }\r\n        \r\n      public start() {\r\n        if (!this._isActive) {\r\n\r\n          // ----------------------\r\n          // Create a new function as replacement for the native console.log \r\n          // function. *** This will be the subject of my question ***\r\n          // ----------------------\r\n\r\n          console.log = console.log.bind(console, Math.random());\r\n\r\n          this._isActive = true;\r\n        }\r\n      }\r\n    \r\n      public stop() {\r\n        if (this._isActive) {\r\n          // Restore to native function\r\n          console.log = this._nativeLogFn;\r\n          this._isActive = false;\r\n        }\r\n      }\r\n    }\r\n\r\nThe problem with this setup is, that the new function is assigned in a static form.\r\n\r\n    // Function random() generates a number at the moment I assign the function. \r\n    // Let&#39;s say it&#39;s the number *99* for example sake. \r\n\r\n    console.log.bind(console, Math.random());\r\n\r\nEvery time the `console.log(...)` is called, it will output *99*. So it&#39;s pretty much static. (To be ahead of you: no my goal isn&#39;t outputting a random number, lol, but I just use it to test if the output is dynamic or not.). \r\n\r\nThe annoying part is, using the function with the\r\n`console.log.bind` is the only way I found that actually preserves the \r\norigin caller and line number.\r\n\r\nI wrote the following simple test. \r\n\r\n        console.log(&#39;Before call, active?&#39;, &#39;no&#39;); // native log\r\n\r\n        obj.start();  // Calls start and replaces the console.log function\r\n\r\n        console.log(&#39;foo&#39;); // This will output &#39;our&#39; 99 to the console.\r\n        console.log(&#39;bar&#39;); // This will output &#39;our&#39; 99 again.\r\n\r\n        obj.stop(); // Here we restore the native console.log function\r\n\r\n        console.log(&#39;stop called, not active&#39;); // native log again\r\n\r\n        // Now if I call it again, the random number has changed. What is \r\n        // logical, because I re-assign the function.\r\n\r\n        obj.start();  // Calls start and replaces the console.log function\r\n        console.log(&#39;foo&#39;); // This will output N to the console.\r\n        // But then I have to call start/log/stop all the time. \r\n\r\n\r\n \r\n**Question**: How can I add values to the console.log at run time without losing the origin caller filename and line number... AND without bothering the library consumer once this class is initiated with start().\r\n\r\n\r\n&gt; **EDIT:** Added a plkr: https://embed.plnkr.co/Zgrz1dRhSnu6OCEUmYN0",
+      "link": "http://stackoverflow.com/questions/43927304/add-dynamic-values-to-the-console-log-function-at-run-time",
+      "title": "Add dynamic values to the console.log function at run-time",
+      "body": "<p>I made the following class to 'hijack' the <code>console.log</code> function. The reason behind this is that I want to add and remove values\n<strong>dynamically</strong>. It will be used for debug purposes, so the <strong>origin of the function call</strong> <code>console.log()</code> is important. In the following code I will explain my logic in the comments.</p>\n\n<pre><code>export class ConsoleLog {\n  private _isActive = false;\n  private _nativeLogFn: any;\n\n  constructor() {\n\n    // ----------------------\n    // Store the native console.log function, so it can be restored later \n    // ----------------------\n\n    this._nativeLogFn = console.log;\n\n  }\n\n  public start() {\n    if (!this._isActive) {\n\n      // ----------------------\n      // Create a new function as replacement for the native console.log \n      // function. *** This will be the subject of my question ***\n      // ----------------------\n\n      console.log = console.log.bind(console, Math.random());\n\n      this._isActive = true;\n    }\n  }\n\n  public stop() {\n    if (this._isActive) {\n      // Restore to native function\n      console.log = this._nativeLogFn;\n      this._isActive = false;\n    }\n  }\n}\n</code></pre>\n\n<p>The problem with this setup is, that the new function is assigned in a static form.</p>\n\n<pre><code>// Function random() generates a number at the moment I assign the function. \n// Let's say it's the number *99* for example sake. \n\nconsole.log.bind(console, Math.random());\n</code></pre>\n\n<p>Every time the <code>console.log(...)</code> is called, it will output <em>99</em>. So it's pretty much static. (To be ahead of you: no my goal isn't outputting a random number, lol, but I just use it to test if the output is dynamic or not.). </p>\n\n<p>The annoying part is, using the function with the\n<code>console.log.bind</code> is the only way I found that actually preserves the \norigin caller and line number.</p>\n\n<p>I wrote the following simple test. </p>\n\n<pre><code>    console.log('Before call, active?', 'no'); // native log\n\n    obj.start();  // Calls start and replaces the console.log function\n\n    console.log('foo'); // This will output 'our' 99 to the console.\n    console.log('bar'); // This will output 'our' 99 again.\n\n    obj.stop(); // Here we restore the native console.log function\n\n    console.log('stop called, not active'); // native log again\n\n    // Now if I call it again, the random number has changed. What is \n    // logical, because I re-assign the function.\n\n    obj.start();  // Calls start and replaces the console.log function\n    console.log('foo'); // This will output N to the console.\n    // But then I have to call start/log/stop all the time. \n</code></pre>\n\n<p><strong>Question</strong>: How can I add values to the console.log at run time without losing the origin caller filename and line number... AND without bothering the library consumer once this class is initiated with start().</p>\n\n<blockquote>\n  <p><strong>EDIT:</strong> Added a plkr: <a href=\"https://embed.plnkr.co/Zgrz1dRhSnu6OCEUmYN0\" rel=\"nofollow noreferrer\">https://embed.plnkr.co/Zgrz1dRhSnu6OCEUmYN0</a></p>\n</blockquote>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "arrays",
+        "immutable.js"
+      ],
+      "answers": [
+        {
+          "is_accepted": false,
+          "score": 2,
+          "answer_id": 41516175,
+          "question_id": 41516039
+        },
+        {
+          "is_accepted": false,
+          "score": 1,
+          "answer_id": 41516201,
+          "question_id": 41516039
+        },
+        {
+          "is_accepted": false,
+          "score": 1,
+          "answer_id": 41516274,
+          "question_id": 41516039
+        }
+      ],
+      "owner": {
+        "reputation": 24,
+        "user_id": 7386126,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/f51bf65b3a6ec51aa585df2f131f9dc9?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Elken Chen",
+        "link": "http://stackoverflow.com/users/7386126/elken-chen"
+      },
+      "is_answered": true,
+      "view_count": 246,
+      "answer_count": 3,
+      "score": 4,
+      "last_activity_date": 1494722658,
+      "creation_date": 1483745402,
+      "question_id": 41516039,
+      "body_markdown": "I want to have a immutable original array of object and extend a new one, but seems the code below did nto produce the right result. obj3 became an object instead of an array of object. I even tried lodash&#39;s extend.\r\n\r\n\r\n    var obj1 = [{\r\n      abc: &#39;abc value&#39;\r\n    }, {\r\n      def: &#39;def value&#39;\r\n    }];\r\n    \r\n    var obj2 = {\r\n      def: &#39;new def value&#39;\r\n    };\r\n    \r\n    /*var obj3 = _.extend({}, obj1, obj2);\r\n    console.log(obj3)\r\n    */\r\n    \r\n    var obj3 = Object.assign({},obj1,obj2);\r\n\r\nhttps://jsbin.com/bawadeqicu/edit?html,js,output\r\n\r\nMy desire output is\r\n\r\n    obj1: [{&quot;abc&quot;:&quot;abc value&quot;},{&quot;def&quot;:&quot;def value&quot;}] // immutable\r\n    obj3: [{&quot;abc&quot;:&quot;abc value&quot;},{&quot;def&quot;:&quot;new def value&quot;}]",
+      "link": "http://stackoverflow.com/questions/41516039/object-assign-extend-immutable-array-of-object",
+      "title": "Object assign extend immutable array of object",
+      "body": "<p>I want to have a immutable original array of object and extend a new one, but seems the code below did nto produce the right result. obj3 became an object instead of an array of object. I even tried lodash's extend.</p>\n\n<pre><code>var obj1 = [{\n  abc: 'abc value'\n}, {\n  def: 'def value'\n}];\n\nvar obj2 = {\n  def: 'new def value'\n};\n\n/*var obj3 = _.extend({}, obj1, obj2);\nconsole.log(obj3)\n*/\n\nvar obj3 = Object.assign({},obj1,obj2);\n</code></pre>\n\n<p><a href=\"https://jsbin.com/bawadeqicu/edit?html,js,output\" rel=\"nofollow noreferrer\">https://jsbin.com/bawadeqicu/edit?html,js,output</a></p>\n\n<p>My desire output is</p>\n\n<pre><code>obj1: [{\"abc\":\"abc value\"},{\"def\":\"def value\"}] // immutable\nobj3: [{\"abc\":\"abc value\"},{\"def\":\"new def value\"}]\n</code></pre>\n"
+    },
+    {
+      "tags": [
+        "javascript",
+        "angularjs",
+        "node.js",
+        "git",
+        "gulp"
+      ],
+      "answers": [
+        {
+          "is_accepted": true,
+          "score": 0,
+          "answer_id": 43959335,
+          "question_id": 41627938
+        }
+      ],
+      "owner": {
+        "reputation": 65,
+        "user_id": 5593788,
+        "user_type": "registered",
+        "accept_rate": 79,
+        "profile_image": "https://graph.facebook.com/1498900803746281/picture?type=large",
+        "display_name": "Anu Rajan",
+        "link": "http://stackoverflow.com/users/5593788/anu-rajan"
+      },
+      "is_answered": true,
+      "view_count": 9,
+      "accepted_answer_id": 43959335,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1494722620,
+      "creation_date": 1484285529,
+      "question_id": 41627938,
+      "body_markdown": "trying to create a gulp task runner with angular . followed the textbook instruction (https://github.com/Swiip/generator-gulp-angular ). but when i execute yo gulp-angular . i am getting all these gyp error saying python and all. my computer currently dont have python . below are the screenshot of errors . i tried variable path change in environment variable , tried it on git shell, node, power-shell . git is installed on my pc as well \r\n\r\n[![enter image description here][1]][1]\r\n\r\n\r\n[![enter image description here][2]][2]\r\n\r\n\r\n  [1]: https://i.stack.imgur.com/vInpG.png\r\n  [2]: https://i.stack.imgur.com/F1FlJ.png",
+      "link": "http://stackoverflow.com/questions/41627938/gyp-error-while-installing-angular-gulp",
+      "title": "gyp error while installing angular gulp",
+      "body": "<p>trying to create a gulp task runner with angular . followed the textbook instruction (<a href=\"https://github.com/Swiip/generator-gulp-angular\" rel=\"nofollow noreferrer\">https://github.com/Swiip/generator-gulp-angular</a> ). but when i execute yo gulp-angular . i am getting all these gyp error saying python and all. my computer currently dont have python . below are the screenshot of errors . i tried variable path change in environment variable , tried it on git shell, node, power-shell . git is installed on my pc as well </p>\n\n<p><a href=\"https://i.stack.imgur.com/vInpG.png\" rel=\"nofollow noreferrer\"><img src=\"https://i.stack.imgur.com/vInpG.png\" alt=\"enter image description here\"></a></p>\n\n<p><a href=\"https://i.stack.imgur.com/F1FlJ.png\" rel=\"nofollow noreferrer\"><img src=\"https://i.stack.imgur.com/F1FlJ.png\" alt=\"enter image description here\"></a></p>\n"
     },
     {
       "tags": [
@@ -88,387 +554,114 @@
         "php",
         "jquery",
         "html",
-        "css"
+        "ajax"
       ],
       "answers": [
         {
+          "is_accepted": true,
+          "score": 13,
+          "answer_id": 26567502,
+          "question_id": 26567486
+        },
+        {
           "is_accepted": false,
-          "score": 0,
-          "question_id": 43886014
-        }
-      ],
-      "owner": {
-        "reputation": 255,
-        "user_id": 6918052,
-        "user_type": "registered",
-        "accept_rate": 40,
-        "profile_image": "https://i.stack.imgur.com/v9MP5.jpg?s=128&g=1",
-        "display_name": "Dennisrec",
-        "link": "http://stackoverflow.com/users/6918052/dennisrec"
-      },
-      "is_answered": false,
-      "view_count": 18,
-      "answer_count": 1,
-      "score": 0,
-      "last_activity_date": 1494401689,
-      "creation_date": 1494401156,
-      "question_id": 43886014,
-      "link": "http://stackoverflow.com/questions/43886014/javascript-formulae-for-setting-image-width-basing-on-its-original-width-but-in",
-      "title": "Javascript formulae for setting image width basing on its original width but in percentage",
-      "body": "<p>This seems basic but i can't wrap my head around it.Honest ain't got no clue but what i need is set the image width in percentage just like in css file but this time around i wonna know the method or technique used to do that.</p>\n\n<p>Example..</p>\n\n\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>//I have tried this but it didn't work\r\n//var image_width_from_server=(the_img_width_from_php);\r\n\r\n//image_width_from_server=image_width_from_server/$(parent).width()*90\r\n\r\n\r\n//Now the result i get from the console does not match the browser set width of the image's p-ercentage width.</code></pre>\r\n<pre class=\"snippet-code-css lang-css prettyprint-override\"><code>#parent{\r\nwidth:250px;\r\nheight:250px;\r\nbackground:deepskyblue;\r\nborder:5px;\r\n}\r\n\r\n#parent img{\r\nwidth:90%;/**Now how can i do this in javaScript..?*/\r\nheight:auto;\r\n}\r\n\r\n\r\n/**Please note that direct css code won't help.\r\nI need a way in javaScript to set the image's width using percentage but also basing on both the image's width size and the parent width size too.\r\n*/</code></pre>\r\n<pre class=\"snippet-code-html lang-html prettyprint-override\"><code>&lt;div id='parent'&gt;\r\n  &lt;img src='https://i.vimeocdn.com/video/584087165_780x439.jpg'/&gt;\r\n&lt;/div&gt;</code></pre>\r\n</div>\r\n</div>\r\n</p>\n\n<p>Please note that direct css code won't help.\nI need a way in javaScript to set the image's width using percentage but also basing on both the image's width size and the parent width size too.</p>\n\n<p>Am really out-of ideas, Any help appreciated. </p>\n\n<p>Thanks</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "mysql"
-      ],
-      "answers": [
+          "score": 2,
+          "answer_id": 26567509,
+          "question_id": 26567486
+        },
+        {
+          "is_accepted": false,
+          "score": 1,
+          "answer_id": 26567554,
+          "question_id": 26567486
+        },
         {
           "is_accepted": false,
           "score": 0,
-          "question_id": 43886001
-        }
-      ],
-      "owner": {
-        "reputation": 55,
-        "user_id": 7826324,
-        "user_type": "registered",
-        "accept_rate": 73,
-        "profile_image": "https://www.gravatar.com/avatar/33caa309f37fb9caacce6c5b45bdcc04?s=128&d=identicon&r=PG&f=1",
-        "display_name": "JonasSH",
-        "link": "http://stackoverflow.com/users/7826324/jonassh"
-      },
-      "is_answered": false,
-      "view_count": 23,
-      "answer_count": 1,
-      "score": 0,
-      "last_activity_date": 1494401681,
-      "creation_date": 1494401122,
-      "last_edit_date": 1494401491,
-      "question_id": 43886001,
-      "link": "http://stackoverflow.com/questions/43886001/how-to-make-a-function-wait-for-call-back-before-continuing",
-      "title": "How to make a function wait for call back, before continuing",
-      "body": "<p>In my chat program, I am trying to create a function, that checks if there exists a conversation in the database. If a conversation exists with <code>peopleName</code> it should get retrieved on the client. If a conversation with that name does NOT exist, a new conversation should get created.</p>\n\n<p>It seems that the 'checkConversation' function is not waiting for the result, because it is creating a new conversation every time, even though the conversation exists.</p>\n\n<p>Client-side:\n<div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>//Starting conversation\r\n$(\"#people\").on(\"click\", \".list-group-item\", function() {\r\n  var peopleName = $(this).children(\"span\").text();\r\n  var peopleID = $(this).children(\"span\").attr(\"class\");\r\n  var conversationExists = false;\r\n  socket.emit(\"checkConversation\", peopleName, function(data) {\r\n    conversationExists = data.result;\r\n    if (conversationExists) {\r\n      console.log(\"Retrieved existing conversation with \", peopleName);\r\n      return;\r\n      // Check if there is a conversation in the Database where this name is conversationReceiver. ------------------------------------\r\n      // if there is: retrieve conversation/messages\r\n      // else: create conversation.\r\n    } else {\r\n      console.log(\"NEW conversation with \", peopleName);\r\n      socket.emit(\"serverCreateConversation\", peopleName, peopleID);\r\n      $(\"#msg\").prop(\"readonly\", false);\r\n      $(\"#msg\").attr(\"placeholder\", \"Your message\");\r\n      $(\"#send\").attr(\"disabled\", false);\r\n      $(\"#chat\").empty();\r\n    }\r\n  });\r\n});</code></pre>\r\n</div>\r\n</div>\r\n</p>\n\n<p>Server-side:\n<div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>client.on(\"checkConversation\", function(peopleName, fn) {\r\n  var match = false;\r\n  connection.query(\"SELECT * FROM `conversations` WHERE `conversation_receiver` = '\" + peopleName + \"'\", function(error, results, fields) {\r\n    if (error) {\r\n      console.log(error);\r\n    } else if (results) {\r\n      console.log(\"Conversation exists!\", results);\r\n      match = true;\r\n    } else {\r\n      console.log(fields);\r\n    }\r\n  });\r\n  console.log(\"match: \" + match);\r\n  fn({ result: match });\r\n});</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "node.js",
-        "multer"
-      ],
-      "answers": [
+          "answer_id": 26567904,
+          "question_id": 26567486
+        },
+        {
+          "is_accepted": false,
+          "score": 2,
+          "answer_id": 41352597,
+          "question_id": 26567486
+        },
         {
           "is_accepted": false,
           "score": 0,
-          "question_id": 43884461
-        }
-      ],
-      "owner": {
-        "reputation": 18,
-        "user_id": 7278112,
-        "user_type": "registered",
-        "profile_image": "https://i.stack.imgur.com/q5Zxy.jpg?s=128&g=1",
-        "display_name": "Brian",
-        "link": "http://stackoverflow.com/users/7278112/brian"
-      },
-      "is_answered": false,
-      "view_count": 15,
-      "answer_count": 1,
-      "score": 0,
-      "last_activity_date": 1494401621,
-      "creation_date": 1494395351,
-      "question_id": 43884461,
-      "link": "http://stackoverflow.com/questions/43884461/multer-unexpected-field",
-      "title": "Multer Unexpected field",
-      "body": "<p>I'm trying to upload a file into my project using multer, but I have no idea how to do it.</p>\n\n<p>here's some of the code I wrote thinking it could work</p>\n\n<p>// here's my ejs view</p>\n\n<pre><code>&lt;form action=\"/wistia\" method=\"post\" enctype=\"multipart/form-data\"&gt;\n    &lt;input type=\"file\" name=\"archivo\"&gt;\n    &lt;input type=\"submit\"&gt;\n&lt;/form&gt;\n</code></pre>\n\n<p>// here's my route file</p>\n\n<pre><code>const multer = require(\"multer\");\nconst express = require('express');\nconst router = express.Router();\n\nlet location = path.join(__dirname, '/uploads');\nlet upload = multer({ dest: location });\n\nrouter.get(\"/wistia\",function(req, res){\n    res.render(\"wistia\");\n});\nrouter.post(\"/wistia\", upload.single(\"archivo\") , function(req, res) {\n    console.log(req.file);\n});\n</code></pre>\n\n<p>thanks.</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "html"
-      ],
-      "owner": {
-        "reputation": 1,
-        "user_id": 7990227,
-        "user_type": "registered",
-        "profile_image": "https://www.gravatar.com/avatar/d288d5599869185a4faf556412d2eae8?s=128&d=identicon&r=PG&f=1",
-        "display_name": "mogcai",
-        "link": "http://stackoverflow.com/users/7990227/mogcai"
-      },
-      "is_answered": false,
-      "view_count": 10,
-      "answer_count": 0,
-      "score": -2,
-      "last_activity_date": 1494401596,
-      "creation_date": 1494401596,
-      "question_id": 43886175,
-      "link": "http://stackoverflow.com/questions/43886175/how-to-extract-the-data-from-dynamic-website",
-      "title": "How to extract the data from dynamic website?",
-      "body": "<p>I'd like to locate the exchange rate data from this website. I believe it is a so called dynamic website (Sorry, I am new to javascript) and the data is located somewhere else. May I know how to extract the exchange rates? (e.g. using Google sheets IMPORTXML function or extracting data by creating a new website with javascript)</p>\n\n<p>Data link: <a href=\"http://www.amcm.gov.mo/en/financial-information/middle-rates\" rel=\"nofollow noreferrer\">http://www.amcm.gov.mo/en/financial-information/middle-rates</a></p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "angularjs"
-      ],
-      "owner": {
-        "reputation": 24,
-        "user_id": 5454239,
-        "user_type": "registered",
-        "accept_rate": 50,
-        "profile_image": "https://www.gravatar.com/avatar/d624ca1fba34108eed219196107dd90d?s=128&d=identicon&r=PG&f=1",
-        "display_name": "Joe.Herylee",
-        "link": "http://stackoverflow.com/users/5454239/joe-herylee"
-      },
-      "is_answered": false,
-      "view_count": 5,
-      "answer_count": 0,
-      "score": 1,
-      "last_activity_date": 1494401570,
-      "creation_date": 1494401570,
-      "question_id": 43886167,
-      "link": "http://stackoverflow.com/questions/43886167/i-define-one-countdown-function-but-no-output",
-      "title": "I define one countdown function, but no output?",
-      "body": "<p>html, this is my code, following is the detail. My purpose is realized countdown function with using angularJS.</p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>var app = angular.module('myCountDown', []);\r\n\r\napp.controller(\"Countdown\",function($scope){\r\n\r\n$scope.start = function(){\r\nvar temp = $scope.inputValue;\r\n\r\nsetInterval(function(){\r\nif(temp&lt;1){\r\n\treturn ;\r\n}\r\ntemp -= 1;\r\n$scope.count = temp;\r\nconsole.log($scope.count);\t\t\t\r\n},1000);\r\n}\r\n})</code></pre>\r\n<pre class=\"snippet-code-html lang-html prettyprint-override\"><code>    &lt;!doctype html&gt;\r\n&lt;html lang=\"en\"&gt;\r\n&lt;head&gt;\r\n\t&lt;meta charset=\"UTF-8\"&gt;\r\n\t&lt;title&gt;Document&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body ng-app=\"myCountDown\"&gt;\r\n\t&lt;div ng-controller=\"Countdown\"&gt;\r\n\t\t&lt;input type=\"text\" ng-model=\"inputValue\"&gt;\r\n\t\t&lt;button ng-click=\"start()\"&gt;开始&lt;/button&gt;\r\n\t\t&lt;input type=\"text\" ng-model=\"count\"&gt;\r\n\t&lt;/div&gt;\r\n\t&lt;script src=\"angular.min.js\"&gt;&lt;/script&gt;\r\n\t&lt;script src=\"app.js\"&gt;&lt;/script&gt;\r\n&lt;/body&gt;\r\n&lt;/html&gt;</code></pre>\r\n</div>\r\n</div>\r\n</p>\n\n<p>I have print the result in console,but no output in web page.</p>\n\n<p>thank you!</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "node.js",
-        "elasticsearch",
-        "indexing",
-        "nosql"
-      ],
-      "answers": [
+          "answer_id": 43374240,
+          "question_id": 26567486
+        },
         {
           "is_accepted": false,
           "score": 0,
-          "question_id": 43831443
+          "answer_id": 43959230,
+          "question_id": 26567486
         }
       ],
       "owner": {
-        "reputation": 80,
-        "user_id": 7312658,
+        "reputation": 47,
+        "user_id": 2475928,
         "user_type": "registered",
-        "profile_image": "https://lh5.googleusercontent.com/-vjYyMwYvX84/AAAAAAAAAAI/AAAAAAAAAfA/Q2JcCxCE63I/photo.jpg?sz=128",
-        "display_name": "Beni Gazala",
-        "link": "http://stackoverflow.com/users/7312658/beni-gazala"
+        "accept_rate": 80,
+        "profile_image": "https://www.gravatar.com/avatar/6a4fe6a579d772722cfc874796081ad4?s=128&d=identicon&r=PG",
+        "display_name": "Vettan Maximillion",
+        "link": "http://stackoverflow.com/users/2475928/vettan-maximillion"
       },
-      "is_answered": false,
-      "view_count": 50,
-      "answer_count": 1,
+      "is_answered": true,
+      "view_count": 26490,
+      "accepted_answer_id": 26567502,
+      "answer_count": 7,
       "score": 2,
-      "last_activity_date": 1494401569,
-      "creation_date": 1494160030,
-      "last_edit_date": 1494342655,
-      "question_id": 43831443,
-      "link": "http://stackoverflow.com/questions/43831443/elasticsearch-aggregation-group-by-sorting-and-pagging",
-      "title": "ElasticSearch - Aggregation/Group by: sorting and pagging",
-      "body": "<p>I'm trying to use Elasticsearch (2.4) aggregation to group by \"productId\" on more then one index using that query</p>\n\n<pre><code>{\n  \"from\": 0,\n  \"size\": 0,\n  \"min_score\": 0.15,\n  \"query\": {\n    \"filtered\": {\n      \"query\": {\n        \"bool\": {\n          \"should\": [\n            {\n              \"match_phrase_prefix\": {\n                \"keywords.family\": {\n                  \"query\": \"low fat milk\",\n                  \"fuzziness\": 0.7,\n                  \"boost\": 5\n                }\n              }\n            }\n          ]\n        }\n      }\n    }\n  },\n  \"aggs\": {\n    \"group_by_0\": {\n      \"terms\": {\n        \"field\": \"productId\",\n        \"size\": 50\n\n      },\n      \"aggs\": {\n        \"top_tag_hits\": {\n          \"top_hits\": {\n            \"size\": 1\n          }\n        }\n      }\n    }\n  }\n}\n</code></pre>\n\n<p>1) I want to sort by _score so I've tried using </p>\n\n<pre><code>\"order\": {\"_score\": \"desc\"}\n</code></pre>\n\n<p>which return </p>\n\n<pre><code>\"type\": \"aggregation_execution_exception\",\n\"reason\": \"Invalid term-aggregator order path [_score]. Unknown aggregation [_score]\"\n</code></pre>\n\n<p>2) Also, I'm trying to use paging - the \"size\" key actually working but \"from\" won't</p>\n\n<p>**UPDATE - example result with aggregation **</p>\n\n<pre><code>{\n  \"took\": 5108,\n  \"timed_out\": false,\n  \"_shards\": {\n    \"total\": 105,\n    \"successful\": 105,\n    \"failed\": 0\n  },\n  \"hits\": {\n    \"total\": 9963,\n    \"max_score\": 0,\n    \"hits\": []\n  },\n  \"aggregations\": {\n    \"group_by_0\": {\n      \"doc_count_error_upper_bound\": 69,\n      \"sum_other_doc_count\": 9779,\n      \"buckets\": [\n        {\n          \"key\": 98761,\n          \"doc_count\": 36,\n          \"top_tag_hits\": {\n            \"hits\": {\n              \"total\": 36,\n              \"max_score\": 0.36901662,\n              \"hits\": [\n                {\n                  \"_index\": \"retailer-1\",\n                  \"_type\": \"product\",\n                  \"_id\": \"1409421\",\n                  \"_score\": 0.36901662,\n                  \"_source\": {\n                    \"productId\": 98761\n                  }\n                }\n              ]\n            }\n          }\n        },\n        {\n          \"key\": 107459,\n          \"doc_count\": 36,\n          \"top_tag_hits\": {\n            \"hits\": {\n              \"total\": 36,\n              \"max_score\": 0.42744976,\n              \"hits\": [\n                {\n                  \"_index\": \"retailer-2\",\n                  \"_type\": \"product\",\n                  \"_id\": \"1402563\",\n                  \"_score\": 0.42744976,\n                  \"_source\": {\n                    \"productId\": 107459\n                  }\n                }\n              ]\n            }\n          }\n        }\n      ]\n    }\n  }\n}\n</code></pre>\n\n<p>Hope someone can help</p>\n"
+      "last_activity_date": 1494722607,
+      "creation_date": 1414272880,
+      "last_edit_date": 1414276012,
+      "question_id": 26567486,
+      "body_markdown": "I have looked through all the similar posts out there but nothing seems to help. This is what I have\r\n\r\n&lt;h3&gt;HTML:&lt;/h3&gt;\r\n\r\n    &lt;section&gt;\r\n\t  &lt;form id=&quot;contact-form&quot; action=&quot;&quot; method=&quot;post&quot;&gt;\r\n\t    &lt;fieldset&gt;\r\n\t      &lt;input id=&quot;name&quot; name=&quot;name&quot; placeholder=&quot;Name&quot; type=&quot;text&quot; /&gt;\r\n\t      &lt;input id=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Email&quot; type=&quot;text&quot; /&gt;\r\n          &lt;textarea id=&quot;comments&quot; name=&quot;comments&quot; placeholder=&quot;Message&quot;&gt;&lt;/textarea&gt;\r\n          &lt;div class=&quot;12u&quot;&gt;\r\n\t        &lt;a href=&quot;#&quot; id=&quot;form-button-submit &quot; class=&quot;button&quot; onClick=&quot;sendForm()&quot;&gt;Send Message&lt;/a&gt;\r\n\t\t    &lt;a href=&quot;#&quot; id=&quot;form-button-clear&quot; class=&quot;button&quot; onClick=&quot;document.getElementById(&#39;contact-form&#39;).reset()&quot;&gt;Clear Form&lt;/a&gt;\r\n\t      &lt;/div&gt;\r\n          &lt;ul id=&quot;response&quot;&gt;&lt;/ul&gt;\r\n        &lt;/fieldset&gt;\r\n\t  &lt;/form&gt;\r\n\t&lt;/section&gt;\r\n\r\n&lt;h3&gt;JavaScript/jQuery:&lt;/h3&gt;\r\n\r\n    function sendForm() {\r\n\t  var name = $(&#39;input#name&#39;).val();\r\n\t  var email = $(&#39;input#email&#39;).val();\r\n\t  var comments = $(&#39;textarea#comments&#39;).val();\r\n\t  var formData = &#39;name=&#39; + name + &#39;&amp;email=&#39; + email + &#39;&amp;comments=&#39; + comments;\r\n\t  $.ajax({\r\n\t    type: &#39;post&#39;,\r\n\t\turl: &#39;js/sendEmail.php&#39;,\r\n\t\tdata: formData,\r\n  \t\tsuccess: function(results) {\r\n          $(&#39;ul#response&#39;).html(results);\r\n\t    }\r\n\t  }); // end ajax\r\n\t}\r\n\r\nWhat I am unable to do is prevent the page refresh when the `#form-button-submit` is pressed. I tried `return false;` I tried `preventDefault()` and every combination including `return false;` inside the `onClick`. I also tried using `input type=&quot;button&quot;` and `type=&quot;submit&quot;` instead and same result. I can&#39;t solve this and it is driving be nuts. If at all possible I would rather use the hyperlink due to some design things.\r\nI would really appreciate your help on this.",
+      "link": "http://stackoverflow.com/questions/26567486/prevent-page-reload-and-redirect-on-form-submit-ajax-jquery",
+      "title": "Prevent page reload and redirect on form submit ajax/jquery",
+      "body": "<p>I have looked through all the similar posts out there but nothing seems to help. This is what I have</p>\n\n<h3>HTML:</h3>\n\n<pre><code>&lt;section&gt;\n  &lt;form id=\"contact-form\" action=\"\" method=\"post\"&gt;\n    &lt;fieldset&gt;\n      &lt;input id=\"name\" name=\"name\" placeholder=\"Name\" type=\"text\" /&gt;\n      &lt;input id=\"email\" name=\"email\" placeholder=\"Email\" type=\"text\" /&gt;\n      &lt;textarea id=\"comments\" name=\"comments\" placeholder=\"Message\"&gt;&lt;/textarea&gt;\n      &lt;div class=\"12u\"&gt;\n        &lt;a href=\"#\" id=\"form-button-submit \" class=\"button\" onClick=\"sendForm()\"&gt;Send Message&lt;/a&gt;\n        &lt;a href=\"#\" id=\"form-button-clear\" class=\"button\" onClick=\"document.getElementById('contact-form').reset()\"&gt;Clear Form&lt;/a&gt;\n      &lt;/div&gt;\n      &lt;ul id=\"response\"&gt;&lt;/ul&gt;\n    &lt;/fieldset&gt;\n  &lt;/form&gt;\n&lt;/section&gt;\n</code></pre>\n\n<h3>JavaScript/jQuery:</h3>\n\n<pre><code>function sendForm() {\n  var name = $('input#name').val();\n  var email = $('input#email').val();\n  var comments = $('textarea#comments').val();\n  var formData = 'name=' + name + '&amp;email=' + email + '&amp;comments=' + comments;\n  $.ajax({\n    type: 'post',\n    url: 'js/sendEmail.php',\n    data: formData,\n    success: function(results) {\n      $('ul#response').html(results);\n    }\n  }); // end ajax\n}\n</code></pre>\n\n<p>What I am unable to do is prevent the page refresh when the <code>#form-button-submit</code> is pressed. I tried <code>return false;</code> I tried <code>preventDefault()</code> and every combination including <code>return false;</code> inside the <code>onClick</code>. I also tried using <code>input type=\"button\"</code> and <code>type=\"submit\"</code> instead and same result. I can't solve this and it is driving be nuts. If at all possible I would rather use the hyperlink due to some design things.\nI would really appreciate your help on this.</p>\n"
     },
     {
       "tags": [
         "javascript",
-        "angularjs",
-        "html5"
+        "reactjs",
+        "react-router"
       ],
       "answers": [
-        {
-          "is_accepted": false,
-          "score": 1,
-          "question_id": 43038250
-        },
         {
           "is_accepted": true,
           "score": 1,
-          "question_id": 43038250
+          "answer_id": 43959328,
+          "question_id": 43959294
         }
       ],
       "owner": {
-        "reputation": 1144,
-        "user_id": 3937255,
+        "reputation": 57,
+        "user_id": 7724980,
         "user_type": "registered",
-        "accept_rate": 47,
-        "profile_image": "https://i.stack.imgur.com/z6q3T.jpg?s=128&g=1",
-        "display_name": "Sharma Vikram",
-        "link": "http://stackoverflow.com/users/3937255/sharma-vikram"
+        "accept_rate": 62,
+        "profile_image": "https://i.stack.imgur.com/qM1LO.jpg?s=128&g=1",
+        "display_name": "Ohsik",
+        "link": "http://stackoverflow.com/users/7724980/ohsik"
       },
       "is_answered": true,
-      "view_count": 77,
-      "accepted_answer_id": 43039742,
-      "answer_count": 2,
-      "score": 0,
-      "last_activity_date": 1494401554,
-      "creation_date": 1490590734,
-      "last_edit_date": 1494401554,
-      "question_id": 43038250,
-      "link": "http://stackoverflow.com/questions/43038250/how-to-compress-image-size-in-javascript",
-      "title": "How to compress image size in JavaScript?",
-      "body": "<p>I am trying to compress image size using JavaScript. but it returns canvas error. \nbelow is my code.</p>\n\n<pre><code> var reader = new FileReader();\n        reader.readAsDataURL(fileItem._file);\n        reader.onload = function (event) {\n            var base64 = event.target.result.substring(event.target.result.indexOf(',') + 1, event.target.result.length);\n     var cvs = document.createElement('canvas');\n            var source_img_obj = event.target.result;\n            cvs.width = source_img_obj.naturalWidth;\n            cvs.height = source_img_obj.naturalHeight;\n            var ctx = cvs.getContext(\"2d\").drawImage(source_img_obj, 0, 0);\n            var newImageData = cvs.toDataURL(type, 70 / 100);\n            var result_image_obj = new Image();\n            result_image_obj.src = newImageData;\n            console.log(result_image_obj);\n};\n</code></pre>\n\n<p>Error:\n<a href=\"https://i.stack.imgur.com/fLsgk.png\" rel=\"nofollow noreferrer\"><img src=\"https://i.stack.imgur.com/fLsgk.png\" alt=\"enter image description here\"></a></p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "ember.js",
-        "ember-data",
-        "json-api",
-        "server-side-validation"
-      ],
-      "owner": {
-        "reputation": 16,
-        "user_id": 5600045,
-        "user_type": "registered",
-        "profile_image": "https://www.gravatar.com/avatar/bc31dde1e15d8bc00d8f4d11be76c216?s=128&d=identicon&r=PG&f=1",
-        "display_name": "KotBehemot",
-        "link": "http://stackoverflow.com/users/5600045/kotbehemot"
-      },
-      "is_answered": false,
-      "view_count": 11,
-      "answer_count": 0,
-      "score": 1,
-      "last_activity_date": 1494401547,
-      "creation_date": 1494352960,
-      "last_edit_date": 1494401547,
-      "question_id": 43876889,
-      "link": "http://stackoverflow.com/questions/43876889/how-to-properly-save-and-validate-model-objects-with-other-nested-objects-in-emb",
-      "title": "How to properly save and validate model objects with other nested objects in Ember.js?",
-      "body": "<p>Let's say the user creates a new Person with a few PhoneNumbers. Everything is done through a single form, where you can dynamically add as many PhoneNumbers to the Person as you want. The user clicks the save button and whole form gets submitted to the server, after which a save response comes back from the server.</p>\n\n<p>The important thing is, that i don't want to save the PhoneNumbers separately from the Person. I want the operation to be atomic - everything gets sent together in one request and either everything validates on the server side and gets saved together in one transaction, or nothing gets saved and error data returns.</p>\n\n<p>Right now, to achieve it I have a savePerson action in my controller, where I do awful things like this:</p>\n\n<pre><code>person.get('phoneNumbers').setObjects([]);\nphones.forEach((phone) =&gt; {\n    if (!!phone.phone) {\n        var p = null;\n        if (!phone.id) {\n            p = that.store.createRecord('phoneNumber', {\n                'person': person,\n                'number': phone.phone\n            });\n            person.get('phoneNumbers').pushObject(p);\n        } else {\n            p = that.store.peekRecord('phoneNumber', phone.id);\n            p.person  = person;\n            p.number = phone.phone;\n            person.get('phoneNumbers').pushObject(p);\n        }\n    }\n});\n{...}\nperson.save().then(function() {\n    {...}\n    that.store.unloadAll('phoneNumber'); //needs to be done to remove records created by createRecord - their saved duplicates will come back after model reload\n    {...}\n})\n</code></pre>\n\n<p>I also have no idea how to properly handle server-side validation of the embedded objects. To validate the top level object (Person) I return error data compatible with JSON API specification like this:</p>\n\n<pre><code>{\n    \"errors\": [\n        {\n            \"detail\": \"This value is invalid\",\n            \"source\": {\n                \"pointer\": \"data/attributes/firstName\"\n            }\n        }\n        {...}\n    ]\n}\n</code></pre>\n\n<p>This works with Ember and eventually I have my errors in model and can retrieve them in the template with <code>{{ get model.errors propertyName }}</code>. <strong>But how to return errors referring to the nested objects?</strong> I have no idea unfortunately.</p>\n\n<p>I tried to seek various solutions to my conundrums but to no avail. I couldn't find any examples regarding such situations unfortunatelly. But it seems pretty basic. Am I missing something fundamental?</p>\n\n<p>I will be really grateful for any suggestions. Thanks.</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "jquery",
-        "ajax",
-        "struts2"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43879061
-        }
-      ],
-      "owner": {
-        "reputation": 136,
-        "user_id": 6332430,
-        "user_type": "registered",
-        "accept_rate": 91,
-        "profile_image": "https://i.stack.imgur.com/0A4Sw.jpg?s=128&g=1",
-        "display_name": "Will",
-        "link": "http://stackoverflow.com/users/6332430/will"
-      },
-      "is_answered": false,
       "view_count": 10,
+      "accepted_answer_id": 43959328,
       "answer_count": 1,
       "score": 0,
-      "last_activity_date": 1494401526,
-      "creation_date": 1494360848,
-      "question_id": 43879061,
-      "link": "http://stackoverflow.com/questions/43879061/struts2-file-tag-not-working-with-ajax",
-      "title": "Struts2 File tag not working with $.ajax?",
-      "body": "<p>I have a <code>&lt;s:file&gt;</code> tag inside the form. When I submit the form via form submission (e.g. submit button, etc.) everything works fine in the action method. However, when I change my code to:</p>\n\n<pre><code>$.ajax({\n    url: \"actionClass!actionMethodA.action\",\n    type: \"POST\",\n    error: function(XMLHttpRequest, textStatus, errorThrown) {\n                alert('Error ' + textStatus);\n                alert(errorThrown);\n                alert(XMLHttpRequest.responseText);\n            },\n    data: $(form).serialize(),\n    success: function(data) {\n                ...\n            }\n});\n</code></pre>\n\n<p>In the backend, the file field is always null.</p>\n\n<p>The file field is defined in  the action class as follow (with setter and getter):</p>\n\n<pre><code>private File impFileUrl;\n</code></pre>\n\n<p>Is it because now the form is serialized so that the file field can no longer be set properly in the backend?</p>\n"
+      "last_activity_date": 1494722474,
+      "creation_date": 1494722166,
+      "question_id": 43959294,
+      "body_markdown": "    &lt;Route path=&quot;/user/:username/&quot; component={UserProfile} /&gt;\r\n\r\nI have a route set up like above and having issue on \r\n\r\n    &lt;Link to={&quot;/user/&quot; + userName + &quot;/&quot;}&gt;user profile&lt;/Link&gt;\r\n\r\nWhen user goes to `/user/user1/` to `/user/user2/` because it does not reload the component but just update the states.  \r\n\r\nWhat is the best way to solve this issue? I need HTTP request in `componentDidMount` to be executes when username changes.",
+      "link": "http://stackoverflow.com/questions/43959294/react-reload-component-on-dynamic-route",
+      "title": "React reload component on dynamic route",
+      "body": "<pre><code>&lt;Route path=\"/user/:username/\" component={UserProfile} /&gt;\n</code></pre>\n\n<p>I have a route set up like above and having issue on </p>\n\n<pre><code>&lt;Link to={\"/user/\" + userName + \"/\"}&gt;user profile&lt;/Link&gt;\n</code></pre>\n\n<p>When user goes to <code>/user/user1/</code> to <code>/user/user2/</code> because it does not reload the component but just update the states.  </p>\n\n<p>What is the best way to solve this issue? I need HTTP request in <code>componentDidMount</code> to be executes when username changes.</p>\n"
     },
     {
       "tags": [
         "javascript",
-        "jquery",
-        "html",
-        "formvalidation-plugin"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": 1,
-          "question_id": 43885765
-        }
-      ],
-      "owner": {
-        "reputation": 5,
-        "user_id": 5832333,
-        "user_type": "registered",
-        "profile_image": "https://lh4.googleusercontent.com/-_iARKhvaTTI/AAAAAAAAAAI/AAAAAAAAACU/_6rknfdRvOs/photo.jpg?sz=128",
-        "display_name": "Thando Hlophe",
-        "link": "http://stackoverflow.com/users/5832333/thando-hlophe"
-      },
-      "is_answered": true,
-      "view_count": 12,
-      "answer_count": 1,
-      "score": 0,
-      "last_activity_date": 1494401512,
-      "creation_date": 1494400359,
-      "last_edit_date": 1494401016,
-      "question_id": 43885765,
-      "link": "http://stackoverflow.com/questions/43885765/jquery-validate-errorlabelcontainer",
-      "title": "jQuery Validate errorLabelContainer",
-      "body": "<p>Please help me with my validate, i have been trying to customize where the error message should display but i can not and i have been trying to search the web but it seems like I do not understand \"errorLabelContainer\" or validate.js</p>\n\n<p>I have two inputs, Name and Email.  I want to control where the message displays instead of under the input tag</p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>&lt;script&gt;\r\n\tjQuery(function($) {\r\n  var validator = $('#form').validate({\r\n    rules: {\r\n      firstname: {\r\n        required: true\r\n      },\r\n      email: {\r\n        required: true\r\n      }\r\n    },\r\n    messages: {\r\n\t\tfirstname: {\r\n\t\t\terrorElement : 'div',\r\n\t\t\terrorLabelContainer: '.errorOne'\r\n\t\t},\r\n\t\temail: {\r\n\t\t\terrorElement : 'div',\r\n\t\t\terrorLabelContainer: '.errorOne'\r\n\t\t}\r\n\t},\r\n\r\n  });\r\n});\r\n\t&lt;/script&gt;</code></pre>\r\n<pre class=\"snippet-code-css lang-css prettyprint-override\"><code>&lt;style&gt;\r\n\t.errorOne{\r\n\t\tbackground: lightgreen;\r\n\t\tmin-height: 20px;\r\n}\r\n\t.errorTwo{\r\n\t\tbackground: pink;\r\n\t\tmin-height: 20px;\r\n}\r\n\t&lt;/style&gt;</code></pre>\r\n<pre class=\"snippet-code-html lang-html prettyprint-override\"><code>&lt;!DOCTYPE html&gt;\r\n&lt;html lang=\"en\"&gt;\r\n&lt;head&gt;\r\n\t&lt;meta charset=\"utf-8\"&gt;\r\n\t&lt;title&gt;jQuery validation plug-in - main demo&lt;/title&gt;\r\n  &lt;link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\"&gt;\r\n  &lt;script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"&gt;&lt;/script&gt;\r\n  &lt;script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"&gt;&lt;/script&gt;\r\n&lt;script type=\"text/javascript\" src=\"http://code.jquery.com/jquery-1.11.1.js\"&gt;&lt;/script&gt;\r\n&lt;script type=\"text/javascript\" src=\"http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/jquery.validate.js\"&gt;&lt;/script&gt;\r\n&lt;script type=\"text/javascript\" src=\"http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/additional-methods.js\"&gt;&lt;/script&gt;\r\n\r\n&lt;/head&gt;\r\n&lt;body&gt;\r\n\r\n\r\n&lt;form id=\"form\" method=\"post\" action=\"\"&gt;\r\n\t&lt;div style=\"border:1px solid red; height: 500px\"&gt;\r\n\t\t&lt;div class=\"col-md-8\"&gt;\r\n\t\t\t&lt;label for=\"firstname\"&gt;Enter Name:&lt;/label&gt;\r\n\t\t\t&lt;input class=\"form-control\"  type=\"text\" name=\"firstname\" /&gt;\r\n\t\t\t&lt;label for=\"email\"&gt;Enter Email:&lt;/label&gt;\r\n\t\t\t&lt;input class=\"form-control\" type=\"text\" name=\"email\" /&gt;&lt;br&gt;\r\n\t\t\t&lt;input type=\"submit\" class=\"button\" value=\"Submit\" /&gt;\r\n\t\t&lt;/div&gt;\r\n\t\t&lt;div class=\"col-md-4\"&gt;\r\n\t\t\t&lt;ul&gt;\r\n\t\t\t\t&lt;li&gt;\r\n\t\t\t\t\t&lt;p&gt;The name error must be displayed in the div with class errorOne&lt;/p&gt;\r\n\t\t\t\t\t&lt;div class=\"errorOne\"&gt;&lt;/div&gt;\r\n\t\t\t\t&lt;/li&gt;\r\n\t\t\t\t&lt;li&gt;\r\n\t\t\t\t\t&lt;p&gt;The email error must be displayed in the div with class errorTwo&lt;/p&gt;\r\n\t\t\t\t\t&lt;div class=\"errorTwo\"&gt;&lt;/div&gt;\r\n\t\t\t\t&lt;/li&gt;\r\n\t\t\t&lt;/ul&gt;\r\n\t\t&lt;/div&gt;\r\n\t&lt;/div&gt;\r\n\r\n&lt;/form&gt;\r\n\r\n\t\r\n\t&lt;/body&gt;\r\n&lt;/html&gt;</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "html",
-        "css",
-        "angularjs"
-      ],
-      "owner": {
-        "reputation": 95,
-        "user_id": 7088371,
-        "user_type": "registered",
-        "accept_rate": 76,
-        "profile_image": "https://www.gravatar.com/avatar/4f2a62081d43b21c757cff113c83fda8?s=128&d=identicon&r=PG&f=1",
-        "display_name": "bluePearl",
-        "link": "http://stackoverflow.com/users/7088371/bluepearl"
-      },
-      "is_answered": false,
-      "view_count": 17,
-      "answer_count": 0,
-      "score": 0,
-      "last_activity_date": 1494401504,
-      "creation_date": 1494401084,
-      "last_edit_date": 1494401504,
-      "question_id": 43885991,
-      "link": "http://stackoverflow.com/questions/43885991/page-responsiveness-while-resizing-div",
-      "title": "page responsiveness while resizing div",
-      "body": "<p>Currently i have a project in which i am using both packages: ng2-dnd and ng-resizable. </p>\n\n<p>when i try to resize the div i would like the remaining page to be responsive in which the resized div doesn't overlay or go behind another div. here is an example of what i mean when resizing a div: <a href=\"https://mgechev.github.io/ngresizable/\" rel=\"nofollow noreferrer\">https://mgechev.github.io/ngresizable/</a></p>\n\n<p>How can i adjust this so all divs lay with respect to one another. </p>\n\n<pre><code> &lt;div ngResizable class=\"panel panel-primary\" dnd-sortable-container [dropZones]=\"['panel-dropZone']\"&gt;\n   &lt;div class=\"panel-heading\"&gt;{{panel.title}}\n\n   &lt;/div&gt;\n   &lt;div class=\"panel-body\"&gt;\n\n   &lt;/div&gt;\n &lt;/div&gt;\n</code></pre>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "extjs",
-        "extjs6",
-        "geoext3"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": 1,
-          "question_id": 43885996
-        }
-      ],
-      "owner": {
-        "reputation": 214,
-        "user_id": 3674573,
-        "user_type": "registered",
-        "accept_rate": 83,
-        "profile_image": "https://www.gravatar.com/avatar/10b62de5df33cbfba8de35316411e4a6?s=128&d=identicon&r=PG&f=1",
-        "display_name": "wondie",
-        "link": "http://stackoverflow.com/users/3674573/wondie"
-      },
-      "is_answered": true,
-      "view_count": 9,
-      "answer_count": 1,
-      "score": 0,
-      "last_activity_date": 1494401475,
-      "creation_date": 1494401114,
-      "last_edit_date": 1494401475,
-      "question_id": 43885996,
-      "link": "http://stackoverflow.com/questions/43885996/accessing-a-variable-within-a-store-in-extjs-6-mvc",
-      "title": "Accessing a variable within a store in ExtJs 6 MVC",
-      "body": "<p>I wanted to access a variable created within a store but I couldn't access. Below is the part of the code. </p>\n\n<pre><code>    Ext.define('MyApp.store.TreeStore', {\n        extend: 'GeoExt.data.store.LayersTree',\n        alias: 'store.layer_tree',\n        init: function(app) {\n            ....\n\n            this.ol_map = new ol.Map({\n                layers: [group, layer3, layer4],\n                view: new ol.View({\n                    center: [0, 0],\n                    zoom: 2\n                })\n            });\n\n        },\n        layerGroup: this.ol_map.getLayerGroup()\n    });\n</code></pre>\n\n<p>I want to access ol_map within the store. </p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "jquery",
         "html",
         "css"
       ],
@@ -476,552 +669,75 @@
         {
           "is_accepted": false,
           "score": 0,
-          "question_id": 37821512
+          "answer_id": 43958895,
+          "question_id": 43958852
         }
       ],
       "owner": {
-        "reputation": 421,
-        "user_id": 4158413,
+        "reputation": 25,
+        "user_id": 5697184,
         "user_type": "registered",
-        "accept_rate": 74,
-        "profile_image": "https://i.stack.imgur.com/pDlXK.jpg?s=128&g=1",
-        "display_name": "Robson",
-        "link": "http://stackoverflow.com/users/4158413/robson"
-      },
-      "is_answered": false,
-      "view_count": 107,
-      "answer_count": 1,
-      "score": 0,
-      "last_activity_date": 1494401408,
-      "creation_date": 1465936110,
-      "last_edit_date": 1465974104,
-      "question_id": 37821512,
-      "link": "http://stackoverflow.com/questions/37821512/ios-safari-overflow-modal-scrolling-website-issue",
-      "title": "iOS Safari overflow modal scrolling website issue",
-      "body": "<p>I have a problem with my fullscreen modal window.</p>\n\n<p>The problem is when modal is opened and I'm scrolling down, I'm scrolling through the site and the background of modal is crashing. Body has <code>overflow:hidden</code> but it seems like Safari on iOS ignore it.</p>\n\n<p>My modal:</p>\n\n<p>I tried this css to my body,html on opened modal:</p>\n\n<pre><code>.overflow-hidden {\n  /* used when modal is visible */\n    overflow: hidden;\n    position:fixed;\n    height: 100%;\n}\n</code></pre>\n\n<p>This works nice, but after close modal I'm on the top of my site. When I try only overflow, closing works good but modal scrool is crashing again.</p>\n\n<p>How can I fix this problem ?</p>\n\n<p>Many thanks for any advices.</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "jquery",
-        "node.js",
-        "web-applications",
-        "mqtt"
-      ],
-      "answers": [
-        {
-          "is_accepted": true,
-          "score": 0,
-          "question_id": 41439425
-        }
-      ],
-      "owner": {
-        "reputation": 39,
-        "user_id": 3863975,
-        "user_type": "registered",
-        "accept_rate": 50,
-        "profile_image": "https://www.gravatar.com/avatar/f2231385d19f868cfb89a83616358b3e?s=128&d=identicon&r=PG&f=1",
-        "display_name": "Rishabh Kaushik",
-        "link": "http://stackoverflow.com/users/3863975/rishabh-kaushik"
-      },
-      "is_answered": true,
-      "view_count": 122,
-      "accepted_answer_id": 43886104,
-      "answer_count": 1,
-      "score": 0,
-      "last_activity_date": 1494401396,
-      "creation_date": 1483432693,
-      "question_id": 41439425,
-      "link": "http://stackoverflow.com/questions/41439425/nodejs-web-application-for-mqtt-using-jquery",
-      "title": "Nodejs web application for mqtt using jquery",
-      "body": "<p>I want to design a web app capable of publishing message on mqtt broker when a switch state is changed or a form is filled and submitted etc. I am able to publish the message using mqtt library on node. I am also able to detect the normal switch state when it is changed on html page using javascript and jquery. Now I want to call the mqtt publish function from node app here. How will I do it?</p>\n\n<p>Here is the normal html file switch.html</p>\n\n<pre><code>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"switch.css\"&gt;\n&lt;script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js\"&gt;&lt;/script&gt;\n&lt;script src=\"switch.js\"&gt;&lt;/script&gt; \n&lt;/head&gt;\n&lt;body&gt;\n\n&lt;h2&gt;Toggle Switch&lt;/h2&gt;\n\n\n&lt;label class=\"switch\" id = \"switchLabel1\"&gt;\n  &lt;input type=\"checkbox\" id = \"switch1\"&gt;\n  &lt;div class=\"slider round\"&gt;&lt;/div&gt;\n&lt;/label&gt;\n\n&lt;/body&gt;\n&lt;/html&gt; \n</code></pre>\n\n<p>The javascript that detects the switch state switch.js</p>\n\n<pre><code>$( document ).ready(function() {\n    $('#switch1').attr('checked', true);\n    $('#switch1').click(function(){\n\n        if($(this).prop(\"checked\") == true){\n            console.log(\"switch1 is checked.\");\n        }\n\n        else if($(this).prop(\"checked\") == false){\n            console.log(\"switch1 is unchecked.\");\n        }\n\n    });\n});\n</code></pre>\n\n<p>The Nodejs app publishing message to mqtt index.js. MQTT library is installed using npm.</p>\n\n<pre><code>var mqtt = require('mqtt')\nvar client  = mqtt.connect('mqtt://192.168.15.3')\n\nclient.on('connect', function () {\n  client.subscribe('mqtt_node_subscribe')\n  client.publish('mqtt_node_publish', 'Hello mqtt')\n})\n\nclient.on('message', function (topic, message) {\n  // message is Buffer \n  console.log(message.toString())\n})\n</code></pre>\n\n<p>What I want to do is call client.publish(\"topic\", \"message\") when instead of console.log in switch.js</p>\n\n<p>When I do that it says client not defined, so I tried merging both js and running node, it says $ not defined. I tried including jquery in node app, it says window missing. So I need a method to serve this web application using node and use jquery etc as is.</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "angularjs",
-        "angularjs-directive"
-      ],
-      "owner": {
-        "reputation": 127,
-        "user_id": 1476702,
-        "user_type": "registered",
-        "accept_rate": 55,
-        "profile_image": "https://i.stack.imgur.com/RUpuB.jpg?s=128&g=1",
-        "display_name": "SrinivasNaidu",
-        "link": "http://stackoverflow.com/users/1476702/srinivasnaidu"
-      },
-      "is_answered": false,
-      "view_count": 16,
-      "answer_count": 0,
-      "score": 0,
-      "last_activity_date": 1494401360,
-      "creation_date": 1494401341,
-      "last_edit_date": 1494401360,
-      "question_id": 43886085,
-      "link": "http://stackoverflow.com/questions/43886085/two-way-binding-is-not-working-in-angularjs-1-x",
-      "title": "Two way binding is not working in angularjs 1.x",
-      "body": "<p>I am implementing a directive in such a way that it is accessible in multiple pages. My requirement is that when i hold down any key (as of now) i need to show the password. The password details will be coming from controller. I need to update the password in the directive.</p>\n\n<p>On keydown event i want to show the password as hello and on keyup i want to show the password as ********. </p>\n\n<p>Below is the code for that </p>\n\n<pre><code> &lt;div ng-app=\"myApp\" ng-controller=\"Ctrl1\"&gt;\n   &lt;a class=\"f-mrgn-left-4px\" key-hold password=\"statusMessage\" generatedpassword=\"selfgeneratedpassword\" tabindex=\"0\" ng-mousedown=\"ShowPassword()\" ng-mouseup=\"HidePassword()\"&gt;Show&lt;/a&gt;\n\n   &lt;span&gt;{{selfgeneratedpassword}}&lt;/span&gt;\n&lt;/div&gt; \n\nfunction Ctrl1($scope) {\n    $scope.selfgeneratedpassword = '******';\n    $scope.statusMessage = \"Password\";\n\n    $scope.ShowPassword = function () {\n    console.log('show passwo', $scope.statusMessage);\n        $scope.selfgeneratedpassword = $scope.statusMessage;\n    }\n\n    $scope.HidePassword = function () {\n      $scope.selfgeneratedpassword = \"********\";\n    }\n}\n\nangular.module('myApp', []).directive('keyHold', function() {\n    return {\n        restrict: 'A',\n        scope: {\n            'password': '=',\n            'generatedpassword': '='\n        },\n        link: function(scope, element, attrs) {\n                    console.log('self generated password', scope.password,scope.generatedpassword, element);               \n          element.bind('keydown', function () {           \n            $timeout(function () {\n                console.log('after timeout');\n                scope.selfgeneratedpassword = scope.password;\n            }, 100);\n          });\n\n          element.bind('keyup', function () {\n                            scope.generatedpassword = \"*******\";\n           });\n\n        }\n    }\n</code></pre>\n\n<p>Attached fiddler will explain how i am implementing it. <a href=\"http://jsfiddle.net/Naidu526/6HcGS/1364/\" rel=\"nofollow noreferrer\">Fiddler Link</a>. In the fiddler i am unable to get the two way binding working. Can anybody help me on this. I lost a day working on this.</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "redux"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43886059
-        }
-      ],
-      "owner": {
-        "reputation": 11,
-        "user_id": 5118365,
-        "user_type": "registered",
-        "profile_image": "https://lh4.googleusercontent.com/-0kulKhUV1C0/AAAAAAAAAAI/AAAAAAAAMj4/AXWN-d839RQ/photo.jpg?sz=128",
-        "display_name": "afdsdsafadwer",
-        "link": "http://stackoverflow.com/users/5118365/afdsdsafadwer"
-      },
-      "is_answered": false,
-      "view_count": 7,
-      "answer_count": 1,
-      "score": 0,
-      "last_activity_date": 1494401330,
-      "creation_date": 1494401258,
-      "question_id": 43886059,
-      "link": "http://stackoverflow.com/questions/43886059/mutating-arguments-in-pure-function",
-      "title": "mutating arguments in pure function",
-      "body": "<p>I am new to redux and studying this framework. As suggested in the <a href=\"http://redux.js.org/docs/introduction/ThreePrinciples.html#changes-are-made-with-pure-functions\" rel=\"nofollow noreferrer\">document</a>, it requires to <strong>return new state objects, instead of mutating the previous state.</strong> I just don't understand the purpose of this. JS arguments are call by value so changing arguments will not update the original value. Then what is the point of doing this?</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "angularjs",
-        "ionic-framework",
-        "error-handling",
-        "bundle"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43885934
-        }
-      ],
-      "owner": {
-        "reputation": 43,
-        "user_id": 5184353,
-        "user_type": "registered",
-        "profile_image": "https://www.gravatar.com/avatar/55dd8df69dfd65eedc60ad6bdc980a4a?s=128&d=identicon&r=PG&f=1",
-        "display_name": "Moris",
-        "link": "http://stackoverflow.com/users/5184353/moris"
+        "accept_rate": 100,
+        "profile_image": "https://www.gravatar.com/avatar/dc3b8b280926dfb2842c1efa90246ffa?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Pearu",
+        "link": "http://stackoverflow.com/users/5697184/pearu"
       },
       "is_answered": false,
       "view_count": 9,
       "answer_count": 1,
-      "score": -1,
-      "last_activity_date": 1494401306,
-      "creation_date": 1494400887,
-      "last_edit_date": 1494401260,
-      "question_id": 43885934,
-      "link": "http://stackoverflow.com/questions/43885934/tool-solution-for-handle-and-catch-error-in-app",
-      "title": "Tool/solution for handle and catch error in app",
-      "body": "<p>I am looking after tool/solution that will catch and handle errors in my app. \nMy application is in Ionic1. I expect from the solution to trace after the errors from the bundle.js and lead to the source code (through the sourceMap). Obviously I would like to send more data and parameters regarding the errors.\nDoes anyone have any suggestions?</p>\n\n<p>I prefer free tools and lightweight solution.</p>\n\n<p>Thanks.</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "jquery",
-        "ignite-ui",
-        "igcombo"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": 2,
-          "question_id": 42905335
-        },
-        {
-          "is_accepted": true,
-          "score": 2,
-          "question_id": 42905335
-        }
-      ],
-      "owner": {
-        "reputation": 55,
-        "user_id": 7475408,
-        "user_type": "registered",
-        "accept_rate": 58,
-        "profile_image": "https://www.gravatar.com/avatar/7b70560a7220fcd41c783d088f3c83d9?s=128&d=identicon&r=PG&f=1",
-        "display_name": "Somepub",
-        "link": "http://stackoverflow.com/users/7475408/somepub"
-      },
-      "is_answered": true,
-      "view_count": 15,
-      "accepted_answer_id": 42945119,
-      "answer_count": 2,
-      "score": 1,
-      "last_activity_date": 1494401231,
-      "creation_date": 1490017781,
-      "last_edit_date": 1494401231,
-      "question_id": 42905335,
-      "link": "http://stackoverflow.com/questions/42905335/igcombobox-how-do-i-prevent-submisson-if-nothing-selected",
-      "title": "igCombobox, how do I prevent submisson if nothing selected?",
-      "body": "<p>I have an igCombobox \"checkbox\", when nothing is selected it still submits the form, which I dont want to happen.</p>\n\n<p>I'm using this code to submit:</p>\n\n<pre><code> &lt;div id=\"checkboxSelectCombo\" name=\"kanal\" style=\"position:absolute;\" &gt;&lt;/div&gt;\n\n $(\"#checkboxSelectCombo\").on( \"focusout\",function() {\n  $(this).closest(\"form\").submit();\n     });\n</code></pre>\n\n<p>So, I tried to use if statement, if value is greater than zero or is not an empty string</p>\n\n<pre><code>$(\"#checkboxSelectCombo\").on( \"focusout\",function() {\n             if($(this).val()&gt;0 || $(this).val()!=\"\"){\n  $(this).closest(\"form\").submit();}\n     });\n</code></pre>\n\n<p>But since I cant get the value  from checkboxSelectCombo it wont work.\nI already searched igCombobox documentation, but didn't find anything.</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "google-chrome-extension",
-        "polymer",
-        "iron-list"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43880769
-        }
-      ],
-      "owner": {
-        "reputation": 768,
-        "user_id": 1668576,
-        "user_type": "registered",
-        "accept_rate": 75,
-        "profile_image": "https://www.gravatar.com/avatar/411ff8888c03cf888be5d1a39b192a8e?s=128&d=identicon&r=PG",
-        "display_name": "exscape",
-        "link": "http://stackoverflow.com/users/1668576/exscape"
-      },
-      "is_answered": false,
-      "view_count": 10,
-      "answer_count": 1,
       "score": 0,
-      "last_activity_date": 1494401171,
-      "creation_date": 1494368519,
-      "question_id": 43880769,
-      "link": "http://stackoverflow.com/questions/43880769/how-can-i-edit-and-sort-a-polymer-iron-list-from-a-browser-extension-userscript",
-      "title": "How can I edit and sort a Polymer iron-list from a browser extension/userscript?",
-      "body": "<p>I want to write a Chrome extension to add some data to each list entry on a site that uses Polymer and <code>&lt;iron-list&gt;</code> to display data. I have no experience of Polymer or Web Components, but it looks as if I need to edit the template used; is that correct?</p>\n\n<p>The site has has an <code>&lt;iron-list&gt;</code> tag containing an empty <code>&lt;array-selector id=\"...\"&gt;&lt;/array-selector&gt;</code>, then <code>&lt;div&gt;</code> which in turn contains a <code>&lt;template id=\"...\"&gt;&lt;/template&gt;</code>, followed by a bunch of list entries (using custom tags).<br>\n The list entries are lazy-loaded, so only about 20 exist at a time, even through the list is much larger.</p>\n\n<p>The template tag looks empty in DevTools (it just shows \"#document-fragment\"), and I haven't successfully gotten any further with JavaScript, either.</p>\n\n<p>The next step after that would be to sort the list according to some data that I add to the list.</p>\n\n<p>How can I proceed? And what do I need to know, in general, to start making progress on this project?</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "html",
-        "html5"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": 2,
-          "question_id": 43885970
-        },
-        {
-          "is_accepted": false,
-          "score": 1,
-          "question_id": 43885970
-        }
-      ],
-      "owner": {
-        "reputation": 1493,
-        "user_id": 1417801,
-        "user_type": "registered",
-        "accept_rate": 31,
-        "profile_image": "https://www.gravatar.com/avatar/8824489e133536c57d46d54e5d7bdf96?s=128&d=identicon&r=PG",
-        "display_name": "Konza",
-        "link": "http://stackoverflow.com/users/1417801/konza"
-      },
-      "is_answered": true,
-      "view_count": 16,
-      "answer_count": 2,
-      "score": 0,
-      "last_activity_date": 1494401170,
-      "creation_date": 1494401016,
-      "question_id": 43885970,
-      "link": "http://stackoverflow.com/questions/43885970/input-file-accept-attribute-not-working",
-      "title": "Input file accept attribute not working",
-      "body": "<p>I want the user to select these files listed in the accept attributes. But its not allowing the user to select <strong>*.mov</strong> files. I am not sure why.\nGiven below is the html I have used. </p>\n\n<pre><code> &lt;input type=\"file\" tabindex=\"0\"\n                    accept=\"video/mov, video/3g2, video/3gp, video/3gp2, video/3gpp, video/asf, video/asx, video/avi, video/divx, video/m4v,  video/mp4, video/mpe, video/x-m4v, video/mpeg, video/mpg, video/ogg, video/wmv\"\n                    name=\"video\"&gt;\n</code></pre>\n\n<p>I couldn't find much after googling. Any help is appreciated. </p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "unit-testing",
-        "ecmascript-6",
-        "sinon",
-        "static-class"
-      ],
-      "owner": {
-        "reputation": 1,
-        "user_id": 7990080,
-        "user_type": "registered",
-        "profile_image": "https://lh6.googleusercontent.com/-GYPm62SVLw4/AAAAAAAAAAI/AAAAAAAAABg/S0FA-1P_pQw/photo.jpg?sz=128",
-        "display_name": "Monkey Hood",
-        "link": "http://stackoverflow.com/users/7990080/monkey-hood"
-      },
-      "is_answered": false,
-      "view_count": 6,
-      "answer_count": 0,
-      "score": 0,
-      "last_activity_date": 1494401165,
-      "creation_date": 1494401165,
-      "question_id": 43886020,
-      "link": "http://stackoverflow.com/questions/43886020/how-to-unit-test-es6-static-class-with-sinon-spy-stub-mock-child-function-in",
-      "title": "How to Unit Test ES6 Static Class with Sinon (spy/stub/mock)? child function, internal function [JS + SINON]",
-      "body": "<p>Below there is a simplified version of the static class I want to test using Chai, Sinon and Mocha. It exposes 2 functions and has another internal. </p>\n\n<pre><code>//demo.js\nconst parentFunc = (baseNum) =&gt; {\n    return childFunc(baseNum, 10);\n};\n\nconst childFunc = (base, extra) =&gt; {\n    const sum = base + extra;\n    return internalFunc(sum);\n};\n\nconst internalFunc = (num) =&gt; {\n    return 100 + num;\n};\n\nmodule.exports = {\n    parentFunc: parentFunc,\n    childFunc: childFunc\n}\n</code></pre>\n\n<p>Logic is irrelevant, what I want to know is how to spy, stub or mock all the functions of the class to have full UT coverage. </p>\n\n<p>Below there are test cases I want do.</p>\n\n<pre><code>import DemoUtils from '../../src/scripts/common/demo';\nimport sinon from 'sinon';\nimport chai from 'chai';\n\nconst assert = chai.assert;\nconst expect = chai.expect;\n\ndescribe('Demo', () =&gt; {\n    describe('Internal Function', () =&gt; {\n        //const res = DemoUtils.internalFunc(8);\n    });\n\n    describe('Child Function', () =&gt; {\n        it('should return ', () =&gt; {\n            const res = DemoUtils.childFunc(5,10);\n            assert.equal(res, 115);\n        });\n\n    });\n\n    describe('Parent Function', () =&gt; {\n        it('should return 140', () =&gt; {\n            const res = DemoUtils.parentFunc(30);\n            assert.equal(res, 140);\n        });\n\n        it('should call the child function', () =&gt; {\n            const stubFunction = sinon.stub(DemoUtils, 'childFunc');\n            stubFunction.returns(13);\n\n            const res = DemoUtils.parentFunc(30);\n            assert.equal(res, 13);\n\n            assert.equal(stubFunction.calledOnce, true);\n            stubFunction.restore();\n        });\n    });\n});\n</code></pre>\n\n<ul>\n<li><strong>Internal Function</strong>: I guess internal function can't be tested because couldn't be called/mocked, isn't it?</li>\n<li><strong>Child Function</strong>: test works.</li>\n<li><strong>Parent Function</strong>: first test work but stub function never get called. I tried with spy and mocked too but I can't make it work either.</li>\n</ul>\n\n<p>Anyone has been able to test a ES6 Static Class?</p>\n\n<p>Thanks :)</p>\n"
+      "last_activity_date": 1494722419,
+      "creation_date": 1494717242,
+      "last_edit_date": 1494722419,
+      "question_id": 43958852,
+      "body_markdown": "I have an element that I contract and expand with a click. In its contracted state, it has to remain above another element. This other element&#39;s position will change relative to the viewport. I can&#39;t figure out how to do this.\r\n\r\nIn the examples I show, I want the contracted pink square to always remain above the teal square (the teal square serves ONLY as a marker for where the pink square SHOULD be), and for the expanded pink square to occupy the entire viewport.\r\n\r\nThere are only three states: \r\n\r\n1) The pink element, when contracted, will be above the teal element.\r\n\r\n2) As the pink element expands, it moves to the top right corner of the viewport, while simultaneously expanding its width and height to match the viewport&#39;s.\r\n\r\n3) The pink element occupies the entire viewport.\r\n\r\nRight now the contracted pink element doesn&#39;t remain on top of the teal element when the viewport is resized.\r\n\r\nI have a snippet below and a [CodePen](https://codepen.io/ajarana/pen/MmGLME) as well.\r\n\r\n&lt;!-- begin snippet: js hide: false console: true babel: false --&gt;\r\n\r\n&lt;!-- language: lang-js --&gt;\r\n\r\n    let parent = document.getElementById(&quot;parent&quot;);\r\n    let dynamicChild = document.getElementById(&quot;dynamicChild&quot;);\r\n\r\n    window.addEventListener(&#39;click&#39;, function() {\r\n      if (dynamicChild.style.width === &#39;50px&#39;) {\r\n        dynamicChild.style.width = &#39;100%&#39;;\r\n        dynamicChild.style.height = &#39;100%&#39;;\r\n\r\n        dynamicChild.style.right = &#39;0&#39;;\r\n        dynamicChild.style.top = &#39;0&#39;;\r\n      }  else {\r\n        dynamicChild.style.width = &#39;50px&#39;;\r\n        dynamicChild.style.height = &#39;50px&#39;;\r\n\r\n        dynamicChild.style.right = &#39;100px&#39;;\r\n        dynamicChild.style.top = &#39;46px&#39;;\r\n      }\r\n    }, false)\r\n\r\n&lt;!-- language: lang-css --&gt;\r\n\r\n    /* STATIC, doesn&#39;t change */\r\n    html, body {\r\n      height: 100%;\r\n    }\r\n\r\n    /* STATIC, doesn&#39;t change */\r\n    body {\r\n      margin: 0;\r\n      position: relative;\r\n      width: 100%;\r\n      background-color: black;\r\n    }\r\n\r\n    /* STATIC, doesn&#39;t change */\r\n    #wrapper {\r\n      padding-top: 20px;\r\n    }\r\n\r\n    /* STATIC, doesn&#39;t change */\r\n    #parent {\r\n      width: 80%;\r\n      margin: 0 auto;\r\n      height: 100px;\r\n      border: 1px solid #999;\r\n      \r\n      display: flex;\r\n      justify-content: flex-end;\r\n      align-items: center;\r\n    }\r\n\r\n    /* #dynamicChild&#39;s width and height change */\r\n    #staticChild, #dynamicChild {\r\n      width: 50px;\r\n      height: 50px;\r\n    }\r\n\r\n    /* STATIC, doesn&#39;t change */\r\n    #staticChild {\r\n      background-color: teal;\r\n    }\r\n\r\n    /* #dynamicChild&#39;s position will change. */\r\n    #dynamicChild {\r\n      background-color: pink;\r\n      position: absolute;\r\n      right: 100px;\r\n      top: 46px;\r\n      transition-property: width, height, top, right;\r\n      transition-timing-property: ease-in;\r\n      transition-duration: 2s;\r\n      transition-delay: 0;\r\n    }\r\n\r\n&lt;!-- language: lang-html --&gt;\r\n\r\n    &lt;div id=&quot;wrapper&quot;&gt;\r\n      &lt;div id=&quot;parent&quot;&gt;\r\n        &lt;div id=&quot;staticChild&quot;&gt;&lt;/div&gt;\r\n        &lt;div id=&quot;dynamicChild&quot;&gt;&lt;/div&gt;\r\n      &lt;/div&gt; \r\n    &lt;/div&gt;\r\n\r\n&lt;!-- end snippet --&gt;\r\n\r\n",
+      "link": "http://stackoverflow.com/questions/43958852/how-can-i-expand-and-contract-an-element-so-that-in-its-contracted-state-its-a",
+      "title": "How can I expand and contract an element so that in its contracted state, it&#39;s always positioned above another element?",
+      "body": "<p>I have an element that I contract and expand with a click. In its contracted state, it has to remain above another element. This other element's position will change relative to the viewport. I can't figure out how to do this.</p>\n\n<p>In the examples I show, I want the contracted pink square to always remain above the teal square (the teal square serves ONLY as a marker for where the pink square SHOULD be), and for the expanded pink square to occupy the entire viewport.</p>\n\n<p>There are only three states: </p>\n\n<p>1) The pink element, when contracted, will be above the teal element.</p>\n\n<p>2) As the pink element expands, it moves to the top right corner of the viewport, while simultaneously expanding its width and height to match the viewport's.</p>\n\n<p>3) The pink element occupies the entire viewport.</p>\n\n<p>Right now the contracted pink element doesn't remain on top of the teal element when the viewport is resized.</p>\n\n<p>I have a snippet below and a <a href=\"https://codepen.io/ajarana/pen/MmGLME\" rel=\"nofollow noreferrer\">CodePen</a> as well.</p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>let parent = document.getElementById(\"parent\");\r\nlet dynamicChild = document.getElementById(\"dynamicChild\");\r\n\r\nwindow.addEventListener('click', function() {\r\n  if (dynamicChild.style.width === '50px') {\r\n    dynamicChild.style.width = '100%';\r\n    dynamicChild.style.height = '100%';\r\n\r\n    dynamicChild.style.right = '0';\r\n    dynamicChild.style.top = '0';\r\n  }  else {\r\n    dynamicChild.style.width = '50px';\r\n    dynamicChild.style.height = '50px';\r\n\r\n    dynamicChild.style.right = '100px';\r\n    dynamicChild.style.top = '46px';\r\n  }\r\n}, false)</code></pre>\r\n<pre class=\"snippet-code-css lang-css prettyprint-override\"><code>/* STATIC, doesn't change */\r\nhtml, body {\r\n  height: 100%;\r\n}\r\n\r\n/* STATIC, doesn't change */\r\nbody {\r\n  margin: 0;\r\n  position: relative;\r\n  width: 100%;\r\n  background-color: black;\r\n}\r\n\r\n/* STATIC, doesn't change */\r\n#wrapper {\r\n  padding-top: 20px;\r\n}\r\n\r\n/* STATIC, doesn't change */\r\n#parent {\r\n  width: 80%;\r\n  margin: 0 auto;\r\n  height: 100px;\r\n  border: 1px solid #999;\r\n  \r\n  display: flex;\r\n  justify-content: flex-end;\r\n  align-items: center;\r\n}\r\n\r\n/* #dynamicChild's width and height change */\r\n#staticChild, #dynamicChild {\r\n  width: 50px;\r\n  height: 50px;\r\n}\r\n\r\n/* STATIC, doesn't change */\r\n#staticChild {\r\n  background-color: teal;\r\n}\r\n\r\n/* #dynamicChild's position will change. */\r\n#dynamicChild {\r\n  background-color: pink;\r\n  position: absolute;\r\n  right: 100px;\r\n  top: 46px;\r\n  transition-property: width, height, top, right;\r\n  transition-timing-property: ease-in;\r\n  transition-duration: 2s;\r\n  transition-delay: 0;\r\n}</code></pre>\r\n<pre class=\"snippet-code-html lang-html prettyprint-override\"><code>&lt;div id=\"wrapper\"&gt;\r\n  &lt;div id=\"parent\"&gt;\r\n    &lt;div id=\"staticChild\"&gt;&lt;/div&gt;\r\n    &lt;div id=\"dynamicChild\"&gt;&lt;/div&gt;\r\n  &lt;/div&gt; \r\n&lt;/div&gt;</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
     },
     {
       "tags": [
         "javascript",
         "arrays",
-        "dictionary"
-      ],
-      "owner": {
-        "reputation": 76,
-        "user_id": 5630442,
-        "user_type": "registered",
-        "profile_image": "https://i.stack.imgur.com/naz3t.jpg?s=128&g=1",
-        "display_name": "LittleGnome",
-        "link": "http://stackoverflow.com/users/5630442/littlegnome"
-      },
-      "is_answered": false,
-      "view_count": 14,
-      "closed_date": 1494400581,
-      "answer_count": 0,
-      "score": 0,
-      "last_activity_date": 1494401046,
-      "creation_date": 1494400404,
-      "last_edit_date": 1494401046,
-      "question_id": 43885780,
-      "link": "http://stackoverflow.com/questions/43885780/javascript-how-to-save-map-keys-in-a-variable-so-it-can-be-used-later",
-      "closed_reason": "unclear what you&#39;re asking",
-      "title": "Javascript - How to save Map.keys() in a variable, so it can be used later?",
-      "body": "<p>I have a normal map in Javascript.</p>\n\n<pre><code>let lMap = new Map();\nlMap.set(1, \"value1\");\nlMap.set(2, \"value2\");\n\nlet lMapKeyIterator = lMap.keys();\n\nlet lMap2 = new Map();\nlMap2.set(1, lMapKeyIterator);\n</code></pre>\n\n<p>When I console.log the mapKeyIterator I get this back. </p>\n\n<pre><code>MapIterator { '1', '2' }\n</code></pre>\n\n<p>Now my problem is that I want this variable pass through in a new Map. So I can convert the iterator to a Array like this:</p>\n\n<pre><code>let lArray = [ ...lMap2.get(1)];    \nconsole.log(lArray );\n</code></pre>\n\n<p>With this output ['1','2']. Only the Keys of the Map are in the Array. </p>\n\n<p>How can this be implemented??</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "angularjs",
-        "ui-select",
-        "ui-select2",
-        "angular-ui-select"
+        "transpose"
       ],
       "answers": [
         {
           "is_accepted": false,
           "score": 0,
-          "question_id": 39740945
+          "answer_id": 43959161,
+          "question_id": 43958938
         },
         {
           "is_accepted": false,
           "score": 0,
-          "question_id": 39740945
-        },
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 39740945
+          "answer_id": 43959306,
+          "question_id": 43958938
         }
       ],
       "owner": {
         "reputation": 1,
-        "user_id": 3828728,
+        "user_id": 8004367,
         "user_type": "registered",
-        "profile_image": "https://i.stack.imgur.com/mumly.jpg?s=128&g=1",
-        "display_name": "Puneet.Gupta",
-        "link": "http://stackoverflow.com/users/3828728/puneet-gupta"
+        "profile_image": "https://www.gravatar.com/avatar/14fa97603d306287c6750c6b3e7a17fc?s=128&d=identicon&r=PG&f=1",
+        "display_name": "soybean3r",
+        "link": "http://stackoverflow.com/users/8004367/soybean3r"
       },
       "is_answered": false,
-      "view_count": 261,
-      "answer_count": 3,
-      "score": 0,
-      "last_activity_date": 1494401022,
-      "creation_date": 1475048160,
-      "last_edit_date": 1475048621,
-      "question_id": 39740945,
-      "link": "http://stackoverflow.com/questions/39740945/ui-select-angularjs-set-maxlength-for-input-value-ui-select-match",
-      "title": "ui select angularjs set maxlength for input value (ui select match)",
-      "body": "<p>I want an extra attribute just like \"Placeholder\" is passing from ui select match. I want to set maxlength of select input. I can set it through select.min.js adding attribute maxlength=\"\" but i think making change to lib. file is not a solution.</p>\n\n<p><a href=\"http://i.stack.imgur.com/N3YIt.png\" rel=\"nofollow\">Just like i have adde maxlength=\"500\" in input</a></p>\n\n<p>please help me around.</p>\n\n<p>Thanks </p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "c#",
-        "jquery",
-        "asp.net"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": -1,
-          "question_id": 43885250
-        },
-        {
-          "is_accepted": false,
-          "score": 1,
-          "question_id": 43885250
-        },
-        {
-          "is_accepted": false,
-          "score": 1,
-          "question_id": 43885250
-        },
-        {
-          "is_accepted": false,
-          "score": 1,
-          "question_id": 43885250
-        },
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43885250
-        },
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43885250
-        },
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43885250
-        }
-      ],
-      "owner": {
-        "reputation": 2262,
-        "user_id": 4925134,
-        "user_type": "registered",
-        "accept_rate": 50,
-        "profile_image": "https://i.stack.imgur.com/lrNR1.jpg?s=128&g=1",
-        "display_name": "Ivin Raj",
-        "link": "http://stackoverflow.com/users/4925134/ivin-raj"
-      },
-      "is_answered": true,
-      "view_count": 51,
-      "answer_count": 7,
-      "score": 0,
-      "last_activity_date": 1494401002,
-      "creation_date": 1494398591,
-      "last_edit_date": 1494400167,
-      "question_id": 43885250,
-      "link": "http://stackoverflow.com/questions/43885250/text-box-minimum-length-validation-in-java-script",
-      "title": "text box minimum length validation in java script",
-      "body": "<p>Total Counts 100 ..after i entered 101 letter show alerts or error message its do not working in this code Please help me...</p>\n\n<p>Html</p>\n\n<pre><code>&lt;asp:TextBox ID=\"txtarea\" runat=\"server\" Width=\"700px\" Height=\"80px\" TextMode=\"MultiLine\"\n    onkeyup=\"cnt(this)\" MaxLength=\"100\"&gt;&lt;/asp:TextBox&gt;\n&lt;p style=\"text-align: right;\"&gt;\n    &lt;asp:Label ID=\"lblcharcnt\" runat=\"server\" Text=\"100\"&gt;&lt;/asp:Label&gt;\n&lt;/p&gt;\n&lt;asp:Label ID=\"lblcount\" runat=\"server\" Text='&lt;%#Eval(\"row\") %&gt;' Visible=\"false\"&gt;&lt;/asp:Label&gt;\n</code></pre>\n\n<p>JavScript   </p>\n\n<pre><code>&lt;script type=\"text/javascript\"&gt;\n    function cnt(text) {\n        var a = text.value;\n        var b = \"character left.\";\n        text.parentNode.getElementsByTagName('span')[0].innerHTML = 100 - a.length + \" \" + b;\n    }\n&lt;/script&gt;\n</code></pre>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "jasmine"
-      ],
-      "owner": {
-        "reputation": 1,
-        "user_id": 7990094,
-        "user_type": "registered",
-        "profile_image": "https://www.gravatar.com/avatar/bcb824a9638aae6c800fea844242aefe?s=128&d=identicon&r=PG&f=1",
-        "display_name": "Nishu",
-        "link": "http://stackoverflow.com/users/7990094/nishu"
-      },
-      "is_answered": false,
-      "view_count": 7,
-      "answer_count": 0,
-      "score": 0,
-      "last_activity_date": 1494400972,
-      "creation_date": 1494400572,
-      "last_edit_date": 1494400972,
-      "question_id": 43885837,
-      "link": "http://stackoverflow.com/questions/43885837/jasmine-multiple-conditions-length-hasclass-removeclass-need-to-be-checke",
-      "title": "Jasmine Multiple conditions ( .length, hasClass, removeClass ) need to be checked",
-      "body": "<p>I have a javascript function which looks like this:  </p>\n\n<pre><code>showHealthCareText: function() {        \n\nif ($(‘.belowAppointmentButton).length) {\n\n             \nif ($(\".belowAppointmentButton\").hasClass('hidden')) {        \n\n$('.belowAppointmentButton').removeClass('hidden');             \n}         \n}\n}\n\n-----------\n</code></pre>\n\n<p>For this function, i have to write a jasmine unit test:\nThis is the code i have written till now.</p>\n\n<pre><code>describe(“HealthCare.controller\", function(){         \nvar controller;            \n\nbeforeEach(function(){      \n\ncontroller = Checkout.HealthCare.controller;             \n\n});                  \n\ndescribe(‘Health Care Text show', function () {     \n\nit(\"Health Care Text\", function () {      \n\nspyOn($.fn, 'removeClass');     \n\ncontroller.showHealthCareText();     \n\nexpect($.fn.removeClass).toHaveBeenCalled();                 \n});             \n});          \n});\n</code></pre>\n\n<p>I am only able to write for the removeClass part.\nI tried alot of different things but not able to add length check part and hasClass part with it. Can anyone help me with the same.</p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "jquery",
-        "ajax",
-        "jquery-on"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": 3,
-          "question_id": 43885339
-        },
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43885339
-        },
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43885339
-        },
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43885339
-        }
-      ],
-      "owner": {
-        "reputation": 642,
-        "user_id": 3001970,
-        "user_type": "registered",
-        "accept_rate": 95,
-        "profile_image": "https://i.stack.imgur.com/BosCe.jpg?s=128&g=1",
-        "display_name": "wittich",
-        "link": "http://stackoverflow.com/users/3001970/wittich"
-      },
-      "is_answered": true,
-      "view_count": 37,
-      "answer_count": 4,
-      "score": 0,
-      "last_activity_date": 1494400941,
-      "creation_date": 1494398921,
-      "question_id": 43885339,
-      "link": "http://stackoverflow.com/questions/43885339/how-to-set-a-jquery-on-function-only-if-it-doesnt-already-existis",
-      "title": "How to set a jquery on() function only if it doesn&#39;t already existis?",
-      "body": "<p>I'm calling via ajax additional content where I add a jquery <a href=\"http:////api.jquery.com/on/\" rel=\"nofollow noreferrer\">on()</a> function for a click event. Each time I renew the content the event is also set again so at the end it get executed several times. How can I avoid this behavior?</p>\n\n<p>How do I test if the click event is already set on the document?</p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-html lang-html prettyprint-override\"><code>&lt;script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"&gt;&lt;/script&gt;\r\n&lt;a href=\"#\" class=\"open-alert\"&gt;Click&lt;/a&gt;\r\n&lt;script&gt;\r\n    // first ajax load\r\n    $(document).on('click', '.open-alert', function () {\r\n        alert('hello world!');\r\n    });\r\n\r\n    // second ajax load\r\n    $(document).on('click', '.open-alert', function () {\r\n        alert('hello world!');\r\n    });\r\n&lt;/script&gt;</code></pre>\r\n</div>\r\n</div>\r\n</p>\n\n<p><em>I already try to just the <a href=\"//api.jquery.com/jQuery.isFunction/\" rel=\"nofollow noreferrer\">jQuery.isFunction()</a>, but I don't anderstand how to apply it in this case.</em></p>\n"
-    },
-    {
-      "tags": [
-        "javascript",
-        "node.js",
-        "angular",
-        "angular-cli"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43885602
-        },
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43885602
-        }
-      ],
-      "owner": {
-        "reputation": 730,
-        "user_id": 5423108,
-        "user_type": "registered",
-        "profile_image": "https://i.stack.imgur.com/WtfBG.png?s=128&g=1",
-        "display_name": "Alireza",
-        "link": "http://stackoverflow.com/users/5423108/alireza"
-      },
-      "is_answered": false,
-      "view_count": 22,
+      "view_count": 44,
       "answer_count": 2,
-      "score": 0,
-      "last_activity_date": 1494400922,
-      "creation_date": 1494399868,
-      "last_edit_date": 1494400079,
-      "question_id": 43885602,
-      "link": "http://stackoverflow.com/questions/43885602/angular-4-i-keep-getting-cannot-find-module-portfinder-even-after-installing",
-      "title": "Angular 4 - I keep getting Cannot find module &#39;portfinder&#39; even after installing portfinder manually",
-      "body": "<p>I keep getting this error in my Terminal using <strong>ng serve</strong> in terminal, I already tried <code>='npm install portfinder</code>, also <code>npm uninstall -g angular-cli, npm cache clean, npm install npm -g, npm install -g angular-cli</code>, but none working and I keep getting it, I'm using npm 3.10.10, Angular4 and the error as below:</p>\n\n<pre><code>Cannot find module 'portfinder'\nError: Cannot find module 'portfinder'\n    at Function.Module._resolveFilename (module.js:469:15)\n    at Function.Module._load (module.js:417:25)\n    at Module.require (module.js:497:17)\n    at require (internal/module.js:20:19)\n    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/angular-cli/commands/serve.js:6:18)\n    at Module._compile (module.js:570:32)\n    at Object.Module._extensions..js (module.js:579:10)\n    at Module.load (module.js:487:32)\n    at tryModuleLoad (module.js:446:12)\n    at Function.Module._load (module.js:438:3)\n    at Module.require (module.js:497:17)\n    at require (internal/module.js:20:19)\n    at Class.includedCommands (/usr/local/lib/node_modules/angular-cli/addon/index.js:21:16)\n    at /usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/models/project.js:392:61\n    at Array.forEach (native)\n    at Project.addonCommands (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/models/project.js:391:15)\n    at Project.eachAddonCommand (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/models/project.js:426:30)\n    at module.exports (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/cli/lookup-command.js:33:13)\n    at CLI.&lt;anonymous&gt; (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/cli/cli.js:34:26)\n    at tryCatch (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/-internal.js:215:12)\n    at invokeCallback (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/-internal.js:230:13)\n    at publish (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/-internal.js:198:7)\n    at flush (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/asap.js:82:5)\n    at _combinedTickCallback (internal/process/next_tick.js:73:7)\n    at process._tickCallback (internal/process/next_tick.js:104:9)\n</code></pre>\n"
+      "score": -1,
+      "last_activity_date": 1494722281,
+      "creation_date": 1494718124,
+      "last_edit_date": 1494719019,
+      "question_id": 43958938,
+      "body_markdown": "After running this code my return has a bunch of &quot;,&quot; &#39;s:\r\n\r\n&lt;!-- begin snippet: js hide: false console: true babel: false --&gt;\r\n\r\n&lt;!-- language: lang-js --&gt;\r\n\r\n    function transposeTwoStrings(arr) {\r\n      var arr1 = arr[0];\r\n      var arr2 = arr[1];\r\n      var largerArray;\r\n\r\n      if (arr1.length &gt; arr2.length) {\r\n        largerArray = arr1;\r\n      } else if (arr1 &lt; arr2) {\r\n        largerArray = arr2;\r\n      }\r\n\r\n      var array = new Array(3);\r\n      for (var i = 0; i &lt; largerArray.length; i++) {\r\n        array[i] = new Array(3);\r\n      }\r\n      for (var i = 0; i &lt; largerArray.length; i++) {\r\n        if (arr1[i] === undefined) {\r\n          array += (&quot; &quot; + &quot; &quot; + arr2[i] + &quot;\\n&quot;);\r\n        } else {\r\n          array += (arr1[i] + &quot; &quot; + arr2[i] + &quot;\\n&quot;);\r\n        }\r\n      }\r\n      return array;\r\n\r\n    }\r\n\r\n    var result = transposeTwoStrings([&quot;Te&quot;, &quot;xts&quot;]);\r\n\r\n    console.log(result);\r\n\r\n&lt;!-- end snippet --&gt;\r\n\r\nShould Return &quot;T x\\ne t\\n  s&quot;\r\nInstead I get &quot;,,,,,,,,T x\r\ne t\r\n  s\r\n&quot;",
+      "link": "http://stackoverflow.com/questions/43958938/why-is-my-code-returning-commas",
+      "title": "Why is my code returning commas?",
+      "body": "<p>After running this code my return has a bunch of \",\" 's:</p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>function transposeTwoStrings(arr) {\r\n  var arr1 = arr[0];\r\n  var arr2 = arr[1];\r\n  var largerArray;\r\n\r\n  if (arr1.length &gt; arr2.length) {\r\n    largerArray = arr1;\r\n  } else if (arr1 &lt; arr2) {\r\n    largerArray = arr2;\r\n  }\r\n\r\n  var array = new Array(3);\r\n  for (var i = 0; i &lt; largerArray.length; i++) {\r\n    array[i] = new Array(3);\r\n  }\r\n  for (var i = 0; i &lt; largerArray.length; i++) {\r\n    if (arr1[i] === undefined) {\r\n      array += (\" \" + \" \" + arr2[i] + \"\\n\");\r\n    } else {\r\n      array += (arr1[i] + \" \" + arr2[i] + \"\\n\");\r\n    }\r\n  }\r\n  return array;\r\n\r\n}\r\n\r\nvar result = transposeTwoStrings([\"Te\", \"xts\"]);\r\n\r\nconsole.log(result);</code></pre>\r\n</div>\r\n</div>\r\n</p>\n\n<p>Should Return \"T x\\ne t\\n  s\"\nInstead I get \",,,,,,,,T x\ne t\n  s\n\"</p>\n"
     }
   ],
   "has_more": true,
   "quota_max": 300,
-  "quota_remaining": 270
+  "quota_remaining": 292
 }

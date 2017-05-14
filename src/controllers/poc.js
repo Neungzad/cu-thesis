@@ -42,7 +42,7 @@ export const getDifficultyLevel = async (question, request) => {
   const featureScore = await getFeatureScore(question, request)
   let finalScore = harmonicMean([questionScope, featureScore])
 
-  return finalScore
+  return finalScore.toFixed(2)
 }
 
 const getScoreQuestionScope = (q) => {

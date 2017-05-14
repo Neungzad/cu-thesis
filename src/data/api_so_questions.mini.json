@@ -3,74 +3,79 @@
     {
       "tags": [
         "javascript",
-        "mysql"
-      ],
-      "answers": [
-        {
-          "is_accepted": false,
-          "score": 0,
-          "question_id": 43886001
-        }
+        "vue.js"
       ],
       "owner": {
-        "reputation": 55,
-        "user_id": 7826324,
+        "reputation": 1,
+        "user_id": 8007804,
         "user_type": "registered",
-        "accept_rate": 73,
-        "profile_image": "https://www.gravatar.com/avatar/33caa309f37fb9caacce6c5b45bdcc04?s=128&d=identicon&r=PG&f=1",
-        "display_name": "JonasSH",
-        "link": "http://stackoverflow.com/users/7826324/jonassh"
+        "profile_image": "https://www.gravatar.com/avatar/8bf20fa9f534ad1ab2b9e169efe44eb8?s=128&d=identicon&r=PG&f=1",
+        "display_name": "dannnnnnn",
+        "link": "http://stackoverflow.com/users/8007804/dannnnnnn"
       },
       "is_answered": false,
-      "view_count": 23,
-      "answer_count": 1,
+      "view_count": 5,
+      "answer_count": 0,
       "score": 0,
-      "last_activity_date": 1494401681,
-      "creation_date": 1494401122,
-      "last_edit_date": 1494401491,
-      "question_id": 43886001,
-      "link": "http://stackoverflow.com/questions/43886001/how-to-make-a-function-wait-for-call-back-before-continuing",
-      "title": "How to make a function wait for call back, before continuing",
-      "body": "<p>In my chat program, I am trying to create a function, that checks if there exists a conversation in the database. If a conversation exists with <code>peopleName</code> it should get retrieved on the client. If a conversation with that name does NOT exist, a new conversation should get created.</p>\n\n<p>It seems that the 'checkConversation' function is not waiting for the result, because it is creating a new conversation every time, even though the conversation exists.</p>\n\n<p>Client-side:\n<div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>//Starting conversation\r\n$(\"#people\").on(\"click\", \".list-group-item\", function() {\r\n  var peopleName = $(this).children(\"span\").text();\r\n  var peopleID = $(this).children(\"span\").attr(\"class\");\r\n  var conversationExists = false;\r\n  socket.emit(\"checkConversation\", peopleName, function(data) {\r\n    conversationExists = data.result;\r\n    if (conversationExists) {\r\n      console.log(\"Retrieved existing conversation with \", peopleName);\r\n      return;\r\n      // Check if there is a conversation in the Database where this name is conversationReceiver. ------------------------------------\r\n      // if there is: retrieve conversation/messages\r\n      // else: create conversation.\r\n    } else {\r\n      console.log(\"NEW conversation with \", peopleName);\r\n      socket.emit(\"serverCreateConversation\", peopleName, peopleID);\r\n      $(\"#msg\").prop(\"readonly\", false);\r\n      $(\"#msg\").attr(\"placeholder\", \"Your message\");\r\n      $(\"#send\").attr(\"disabled\", false);\r\n      $(\"#chat\").empty();\r\n    }\r\n  });\r\n});</code></pre>\r\n</div>\r\n</div>\r\n</p>\n\n<p>Server-side:\n<div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>client.on(\"checkConversation\", function(peopleName, fn) {\r\n  var match = false;\r\n  connection.query(\"SELECT * FROM `conversations` WHERE `conversation_receiver` = '\" + peopleName + \"'\", function(error, results, fields) {\r\n    if (error) {\r\n      console.log(error);\r\n    } else if (results) {\r\n      console.log(\"Conversation exists!\", results);\r\n      match = true;\r\n    } else {\r\n      console.log(fields);\r\n    }\r\n  });\r\n  console.log(\"match: \" + match);\r\n  fn({ result: match });\r\n});</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
+      "last_activity_date": 1494723979,
+      "creation_date": 1494722394,
+      "last_edit_date": 1494723979,
+      "question_id": 43959320,
+      "body_markdown": "I am trying to declare getTemp variable global so that i can  use it in other function. VUE.JS\r\n\r\n    var weather = new Vue({\r\n        el: &#39;#weather&#39;,\r\n\r\n        data: {\r\n            getTemp: []\r\n        },\r\n\r\n        created: function () {\r\n            this.fetchData();\r\n        },        \r\n\r\n        methods: {\r\n            fetchData: function () {\r\n                this.$http.get(&#39;https://vt&#39;)\r\n                          .then(response =&gt; {\r\n                             this.getTemp = response.data;\r\n\t\t\t\t\t\t\t \r\n                          })\r\n            }\r\n        },\r\n\t})\r\n    ;",
+      "link": "http://stackoverflow.com/questions/43959320/i-am-trying-to-declare-gettemp-variable-global-so-that-i-can-use-it-in-other-fun",
+      "title": "I am trying to declare getTemp variable global so that i can use it in other function. VUE.JS",
+      "body": "<p>I am trying to declare getTemp variable global so that i can  use it in other function. VUE.JS</p>\n\n<pre><code>var weather = new Vue({\n    el: '#weather',\n\n    data: {\n        getTemp: []\n    },\n\n    created: function () {\n        this.fetchData();\n    },        \n\n    methods: {\n        fetchData: function () {\n            this.$http.get('https://vt')\n                      .then(response =&gt; {\n                         this.getTemp = response.data;\n\n                      })\n        }\n    },\n})\n;\n</code></pre>\n"
     },
     {
       "tags": [
-        "javascript",
-        "node.js",
-        "angular",
-        "angular-cli"
+        "javascript"
       ],
       "answers": [
         {
           "is_accepted": false,
           "score": 0,
-          "question_id": 43885602
+          "answer_id": 43959333,
+          "question_id": 43959240
         },
         {
           "is_accepted": false,
           "score": 0,
-          "question_id": 43885602
+          "answer_id": 43959338,
+          "question_id": 43959240
+        },
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43959349,
+          "question_id": 43959240
+        },
+        {
+          "is_accepted": false,
+          "score": 0,
+          "answer_id": 43959402,
+          "question_id": 43959240
         }
       ],
       "owner": {
-        "reputation": 730,
-        "user_id": 5423108,
+        "reputation": 1,
+        "user_id": 7929209,
         "user_type": "registered",
-        "profile_image": "https://i.stack.imgur.com/WtfBG.png?s=128&g=1",
-        "display_name": "Alireza",
-        "link": "http://stackoverflow.com/users/5423108/alireza"
+        "profile_image": "https://www.gravatar.com/avatar/d8485a306d1a9b83f2054cddf2625eab?s=128&d=identicon&r=PG&f=1",
+        "display_name": "N00B",
+        "link": "http://stackoverflow.com/users/7929209/n00b"
       },
       "is_answered": false,
-      "view_count": 22,
-      "answer_count": 2,
+      "view_count": 28,
+      "answer_count": 4,
       "score": 0,
-      "last_activity_date": 1494400922,
-      "creation_date": 1494399868,
-      "last_edit_date": 1494400079,
-      "question_id": 43885602,
-      "link": "http://stackoverflow.com/questions/43885602/angular-4-i-keep-getting-cannot-find-module-portfinder-even-after-installing",
-      "title": "Angular 4 - I keep getting Cannot find module &#39;portfinder&#39; even after installing portfinder manually JS: OpenWeatherMap API returns &quot;undefinded&quot; for parameter &quot;rain.3h&quot;",
-      "body": "<p>I keep getting this error in my Terminal using <strong>ng serve</strong> in terminal, I already tried <code>='npm install portfinder</code>, also <code>npm uninstall -g angular-cli, npm cache clean, npm install npm -g, npm install -g angular-cli</code>, but none working and I keep getting it, I'm using npm 3.10.10, Angular4 and the error as below:</p>\n\n<pre><code>Cannot find module 'portfinder'\nError: Cannot find module 'portfinder'\n    at Function.Module._resolveFilename (module.js:469:15)\n    at Function.Module._load (module.js:417:25)\n    at Module.require (module.js:497:17)\n    at require (internal/module.js:20:19)\n    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/angular-cli/commands/serve.js:6:18)\n    at Module._compile (module.js:570:32)\n    at Object.Module._extensions..js (module.js:579:10)\n    at Module.load (module.js:487:32)\n    at tryModuleLoad (module.js:446:12)\n    at Function.Module._load (module.js:438:3)\n    at Module.require (module.js:497:17)\n    at require (internal/module.js:20:19)\n    at Class.includedCommands (/usr/local/lib/node_modules/angular-cli/addon/index.js:21:16)\n    at /usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/models/project.js:392:61\n    at Array.forEach (native)\n    at Project.addonCommands (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/models/project.js:391:15)\n    at Project.eachAddonCommand (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/models/project.js:426:30)\n    at module.exports (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/cli/lookup-command.js:33:13)\n    at CLI.&lt;anonymous&gt; (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/lib/cli/cli.js:34:26)\n    at tryCatch (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/-internal.js:215:12)\n    at invokeCallback (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/-internal.js:230:13)\n    at publish (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/-internal.js:198:7)\n    at flush (/usr/local/lib/node_modules/angular-cli/node_modules/angular-cli/node_modules/rsvp/dist/lib/rsvp/asap.js:82:5)\n    at _combinedTickCallback (internal/process/next_tick.js:73:7)\n    at process._tickCallback (internal/process/next_tick.js:104:9)\n</code></pre>\n"
+      "last_activity_date": 1494723909,
+      "creation_date": 1494721538,
+      "last_edit_date": 1494723001,
+      "question_id": 43959240,
+      "body_markdown": "How do I get `charAt()` to display the letters of all the splitted values at index=0? I don&#39;t know what to write before the `.charAt()` in order to arrange to give me the letters of all the splitted values at index=0, it gives me one value though:\r\n\r\n    &lt;button onclick=&quot;occurence(&#39;The quick brown fox jumps over the lazy \r\n    dog&#39;)&quot;&gt;Go&lt;/button&gt;\r\n\r\n    &lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;\r\n\r\n    &lt;script&gt;\r\n    function occurence(str) {\r\n    //conversion to string to make get the value of every single letter\r\n    var spl = str.split(&quot;&quot;);\r\n    //loop to subtract from spl.length to get value for chartAt\r\n    for (i = 0; i &lt; spl.length; i++) {\r\n    }\r\n    document.getElementById(&quot;demo&quot;).innerHTML = spl[i - spl.length].charAt(0) + \r\n    &quot;&lt;br&gt;&quot;;\r\n    }\r\n    &lt;/script&gt;",
+      "link": "http://stackoverflow.com/questions/43959240/how-do-i-get-charat-to-check-every-first-letter-after-splitting-a-string",
+      "title": "how do I get charAt() to check every first letter after splitting a string?",
+      "body": "<p>How do I get <code>charAt()</code> to display the letters of all the splitted values at index=0? I don't know what to write before the <code>.charAt()</code> in order to arrange to give me the letters of all the splitted values at index=0, it gives me one value though:</p>\n\n<pre><code>&lt;button onclick=\"occurence('The quick brown fox jumps over the lazy \ndog')\"&gt;Go&lt;/button&gt;\n\n&lt;p id=\"demo\"&gt;&lt;/p&gt;\n\n&lt;script&gt;\nfunction occurence(str) {\n//conversion to string to make get the value of every single letter\nvar spl = str.split(\"\");\n//loop to subtract from spl.length to get value for chartAt\nfor (i = 0; i &lt; spl.length; i++) {\n}\ndocument.getElementById(\"demo\").innerHTML = spl[i - spl.length].charAt(0) + \n\"&lt;br&gt;\";\n}\n&lt;/script&gt;\n</code></pre>\n"
     }
   ],
   "has_more": true,

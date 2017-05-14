@@ -26,27 +26,65 @@ block content
             .col-sm-3
               .row
                 .col-sm-4.text-center 
-                  p.digit 10
-                  p.txtCount vote
+                  p.digit #{question.score}
+                  if question.score > 1
+                    p.txtCount votes
+                  else
+                    p.txtCount vote                    
+                .col-sm-4.text-center(class=(question.is_answered) ? 'accepted' : (question.answer_count > 1) ? 'answered' : undefined)
+                  p.digit #{question.answer_count}
+                  if question.answer_count > 1
+                    p.txtCount answers
+                  else
+                    p.txtCount answer
                 .col-sm-4.text-center
-                  p.digit 10
-                  p.txtCount anwser
-                .col-sm-4.text-center
-                  p.digit 100
-                  p.txtCount views
+                  p.digit #{question.view_count}
+                  if question.view_count > 1
+                    p.txtCount views
+                  else
+                    p.txtCount view
                 
             .col-sm-9
-              // title              
-              p #{question.title} (#{question.difScore})
+              // title      
+              .row
+                .col-sm-8
+                  a.question-title(href=(question.link) target='_blank') #{question.title}
+                .col-sm-4.text-right
+                  .score-warpper
+                    p.diff-sc #{question.difScore}
+                    p.diff-sub Score
+                  .lv-box
+                    p.text-lv #{question.difLv}
+                    p.sub-lv DIFFICULTY LEVEL
 
               // des
+              p.body-markdown #{question.body_markdown}
 
-              // tags 
-
-              // update May 6 at 17:34
+              .row
+                // tags 
+                .col-sm-8
+                  each tag in question.tags
+                    span.tag #{tag}
+                .col-sm-4.text-right
+                  span.last-active last activity #{question.timeAgo}
         
     .col-sm-4
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      .ask-question-box
+        a(href='http://stackoverflow.com/questions/ask' class='ask-question-btn' target='_blank') Ask Question
+
+      ul
+        li 
+          a(href="./?filter=easy") easy
+        li 
+          a(href="./?filter=normal") normal
+        li 
+          a(href="./?filter=hard") hard
+
+      h3 Search
+        form.form-horizontal
+          .form-group
+            label.col-sm-2.control-label(for="inputEmail3") Email
+            .col-sm-10
+              input.form-control(type="email" id="inputEmail3" placeholder="Email")
       p
-        a.btn.btn-default(href='#', role='button') View details »
+        a.btn.btn-primary(href='#', role='button') Search »
