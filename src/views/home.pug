@@ -5,9 +5,19 @@ block content
     .col-sm-8
       .tab-bar-warpper
         .row
-          .col-sm-5
-            h4 Top Questions
-          .col-sm-7
+          .col-sm-6
+            h4.pull-left Top Questions
+            p.filter-title Filter difficulty level
+            ul.pull-left.list-inline.filter-bar
+              li
+                a(href='./' class=(!filter) ? 'active' : undefined) no filter 
+              li 
+                a(href="./?filter=easy" class=(filter == 'easy') ? 'active' : undefined) easy
+              li 
+                a(href="./?filter=normal" class=(filter == 'normal') ? 'active' : undefined) normal
+              li 
+                a(href="./?filter=hard" class=(filter == 'hard') ? 'active' : undefined) hard
+          .col-sm-6
             ul.pull-right.list-inline.tab-bar
               li
                 a(href='./?tab=activity' class=(tab == 'activity') ? 'active' : undefined) activity 
@@ -72,19 +82,60 @@ block content
       .ask-question-box
         a(href='http://stackoverflow.com/questions/ask' class='ask-question-btn' target='_blank') Ask Question
 
-      ul
-        li 
-          a(href="./?filter=easy") easy
-        li 
-          a(href="./?filter=normal") normal
-        li 
-          a(href="./?filter=hard") hard
-
-      h3 Search
-        form.form-horizontal
-          .form-group
-            label.col-sm-2.control-label(for="inputEmail3") Email
-            .col-sm-10
-              input.form-control(type="email" id="inputEmail3" placeholder="Email")
-      p
+      h3.search-title Search
+      form.form-horizontal.search-form
+        .form-group
+          label.col-sm-3.control-label Word
+          .col-sm-9
+            input.form-control(type="q")
+        .form-group
+          label.col-sm-3.control-label Sort by
+          .col-sm-9
+            input.form-control(type="sort")
+        .form-group
+          label.col-sm-3.control-label Title
+          .col-sm-9
+            input.form-control(type="title")
+        .form-group
+          label.col-sm-3.control-label User ID
+          .col-sm-9
+            input.form-control(type="user")
+        .form-group
+          label.col-sm-3.control-label From date
+          .col-sm-9
+            input.form-control(type="fromdate")
+        .form-group
+          label.col-sm-3.control-label To date
+          .col-sm-9
+            input.form-control(type="todate")
+        .form-group
+          label.col-sm-3.control-label Body
+          .col-sm-9
+            input.form-control(type="body")
+        .form-group
+          label.col-sm-3.control-label Tagged
+          .col-sm-9
+            input.form-control(type="tagged")
+        .form-group
+          label.col-sm-3.control-label Not tagged
+          .col-sm-9
+            input.form-control(type="nottagged")
+        .form-group
+          label.col-sm-3.control-label Min views
+          .col-sm-9
+            input.form-control(type="views")
+        .form-group
+          label.col-sm-3.control-label Order by
+          .col-sm-9
+            input.form-control(type="order")
+        .form-group
+          label.col-sm-3.control-label Accepted answer
+          .col-sm-9
+            input.form-control(type="accepted")
+        .form-group
+          label.col-sm-3.control-label Min answers
+          .col-sm-9
+            input.form-control(type="answers" placeholder="answers")
+          
+      p.text-right
         a.btn.btn-primary(href='#', role='button') Search »

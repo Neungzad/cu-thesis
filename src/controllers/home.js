@@ -1,8 +1,8 @@
 import chalk from 'chalk'
 import _ from 'underscore'
-import axios from 'axios'
-import appConfig from '../config/appConfig'
-// import resQuestions from '../data/api_so_questions.mini.json'
+// import axios from 'axios'
+// import appConfig from '../config/appConfig'
+import resQuestions from '../data/api_so_questions.mini.json'
 import { getDifficultyLevel, connectDB } from './poc'
 var ta = require('../lib/timeAgo.js')()
 
@@ -11,7 +11,7 @@ var ta = require('../lib/timeAgo.js')()
  * Home page.
  */
 export const index = async (req, res) => {
-  const pagesize = 100
+  // const pagesize = 100
   const showPerPage = 5
   let page = 1
   const questions = []
@@ -32,9 +32,9 @@ export const index = async (req, res) => {
       let isLoopQuery = true
 
       while (isLoopQuery) {
-        console.log(chalk.red('Query page = ', page))
-        const response = await axios.get(`${appConfig.API_URL}/2.2/questions?order=desc&sort=${sort}&page=${page}&pagesize=${pagesize}&tagged=javascript&site=stackoverflow&filter=!4*Zo7ZBUu1hHnaNDR`)
-        const resQuestions = response.data.items
+        // console.log(chalk.red('Query page = ', page))
+        // const response = await axios.get(`${appConfig.API_URL}/2.2/questions?order=desc&sort=${sort}&page=${page}&pagesize=${pagesize}&tagged=javascript&site=stackoverflow&filter=!4*Zo7ZBUu1hHnaNDR`)
+        // const resQuestions = response.data.items
 
         // no data
         if (!resQuestions.length) {
@@ -43,7 +43,7 @@ export const index = async (req, res) => {
         }
 
         // check each question from api
-        for (let question of resQuestions) {
+        for (let question of resQuestions.items) {
           let q = await insertAttrQuestion(question, request)
           console.log(chalk.red('q ' + q.question_id + ' = ' + q.difLv))
 
@@ -66,10 +66,10 @@ export const index = async (req, res) => {
       }
     } else {
       // no filter show question
-      const response = await axios.get(`${appConfig.API_URL}/2.2/questions?order=desc&sort=${sort}&page=${page}&pagesize=${pagesize}&tagged=javascript&site=stackoverflow&filter=!4*Zo7ZBUu1hHnaNDR`)
-      const resQuestions = response.data.items
+      // const response = await axios.get(`${appConfig.API_URL}/2.2/questions?order=desc&sort=${sort}&page=${page}&pagesize=${pagesize}&tagged=javascript&site=stackoverflow&filter=!4*Zo7ZBUu1hHnaNDR`)
+      // const resQuestions = response.data.items
 
-      for (let question of resQuestions) {
+      for (let question of resQuestions.items) {
         let q = await insertAttrQuestion(question, request)
         questions.push(q)
 
@@ -86,6 +86,7 @@ export const index = async (req, res) => {
   res.render('home', {
     title: 'Stack Overflow Level',
     tab: sort,
+    filter: req.query.filter,
     questions: questions
   })
 }
