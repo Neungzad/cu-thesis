@@ -10,25 +10,34 @@ block content
             p.filter-title Filter difficulty level
             ul.pull-left.list-inline.filter-bar
               li
-                a(href='./' class=(!filter) ? 'active' : undefined) no filter 
+                a(href=(tab) ? './?filter=&tab='+tab : './?filter=' 
+                  class=(!filter) ? 'active' : undefined) no filter 
               li 
-                a(href="./?filter=easy" class=(filter == 'easy') ? 'active' : undefined) easy
+                a(href=(tab) ? './?filter=easy&tab='+tab : './?filter=easy' 
+                  class=(filter == 'easy') ? 'active' : undefined) easy
               li 
-                a(href="./?filter=normal" class=(filter == 'normal') ? 'active' : undefined) normal
+                a(href=(tab) ? './?filter=normal&tab='+tab : './?filter=normal' 
+                  class=(filter == 'normal') ? 'active' : undefined) normal
               li 
-                a(href="./?filter=hard" class=(filter == 'hard') ? 'active' : undefined) hard
+                a(href=(tab) ? './?filter=hard&tab='+tab : './?filter=hard'
+                  class=(filter == 'hard') ? 'active' : undefined) hard
           .col-sm-6
             ul.pull-right.list-inline.tab-bar
               li
-                a(href='./?tab=activity' class=(tab == 'activity') ? 'active' : undefined) activity 
+                a(href=(filter) ? './?filter='+filter+'&tab=activity' : './?tab=activity' 
+                  class=(tab == 'activity') ? 'active' : undefined) activity 
               li
-                a(href='./?tab=creation' class=(tab == 'creation') ? 'active' : undefined) creation 
+                a(href=(filter) ? './?filter='+filter+'&tab=creation' : './?tab=creation' 
+                  class=(tab == 'creation') ? 'active' : undefined) creation 
               li
-                a(href='./?tab=hot' class=(tab == 'hot') ? 'active' : undefined) hot
+                a(href=(filter) ? './?filter='+filter+'&tab=hot' : './?tab=hot' 
+                  class=(tab == 'hot') ? 'active' : undefined) hot
               li
-                a(href='./?tab=week' class=(tab == 'week') ? 'active' : undefined) week 
+                a(href=(filter) ? './?filter='+filter+'&tab=week' : './?tab=week' 
+                  class=(tab == 'week') ? 'active' : undefined) week 
               li
-                a(href='./?tab=month' class=(tab == 'month') ? 'active' : undefined) month
+                a(href=(filter) ? './?filter='+filter+'&tab=month' : './?tab=month'
+                  class=(tab == 'month') ? 'active' : undefined) month
 
       each question in questions
         .q-card
