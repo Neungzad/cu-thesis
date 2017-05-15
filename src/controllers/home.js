@@ -11,7 +11,7 @@ var ta = require('../lib/timeAgo.js')()
  * Home page.
  */
 export const index = async (req, res) => {
-  // const pagesize = 100
+  const pagesize = 100
   const showPerPage = 5
   let page = 1
   const questions = []
@@ -22,6 +22,7 @@ export const index = async (req, res) => {
 
   try {
     const request = await connectDB()
+    let response
 
     // Sort by tab
     if (req.query.tab)
@@ -33,7 +34,7 @@ export const index = async (req, res) => {
 
       while (isLoopQuery) {
         // console.log(chalk.red('Query page = ', page))
-        // const response = await axios.get(`${appConfig.API_URL}/2.2/questions?order=desc&sort=${sort}&page=${page}&pagesize=${pagesize}&tagged=javascript&site=stackoverflow&filter=!4*Zo7ZBUu1hHnaNDR`)
+        // response = await axios.get(`${appConfig.API_URL}/2.2/questions?order=desc&sort=${sort}&page=${page}&pagesize=${pagesize}&tagged=javascript&site=stackoverflow&filter=!4*Zo7ZBUu1hHnaNDR`)
         // const resQuestions = response.data.items
 
         // no data
@@ -66,7 +67,7 @@ export const index = async (req, res) => {
       }
     } else {
       // no filter show question
-      // const response = await axios.get(`${appConfig.API_URL}/2.2/questions?order=desc&sort=${sort}&page=${page}&pagesize=${pagesize}&tagged=javascript&site=stackoverflow&filter=!4*Zo7ZBUu1hHnaNDR`)
+      // response = await axios.get(`${appConfig.API_URL}/2.2/questions?order=desc&sort=${sort}&page=${page}&pagesize=${pagesize}&tagged=javascript&site=stackoverflow&filter=!4*Zo7ZBUu1hHnaNDR`)
       // const resQuestions = response.data.items
 
       for (let question of resQuestions.items) {
@@ -79,6 +80,8 @@ export const index = async (req, res) => {
         console.log(chalk.green(`Difficulty Score = ${q.difScore}`))
       }
     }
+
+    console.log(chalk.yellow(`quota_remaining = ${response.data.quota_remaining}`))
   } catch (e) {
     console.log(e)
   }
@@ -88,6 +91,17 @@ export const index = async (req, res) => {
     tab: sort,
     filter: req.query.filter,
     questions: questions
+  })
+}
+
+/**
+ * GET /
+ * Search page.
+*/
+
+export const search = async (req, res) => {
+  res.render('search', {
+    title: 'Stack Overflow Level'
   })
 }
 

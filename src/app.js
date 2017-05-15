@@ -74,6 +74,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
  * Primary app routes.
  */
 app.get('/', homeController.index)
+app.get('/search', homeController.search)
 app.get('/poc', pocController.index)
 
 /**

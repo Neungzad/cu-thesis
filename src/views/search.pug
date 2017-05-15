@@ -1,0 +1,29 @@
+extends layout
+
+block content  
+  .row
+    .col-sm-8
+      .tab-bar-warpper
+        .row
+          .col-sm-6
+            h4.pull-left Search result
+          .col-sm-6
+            ul.pull-right.list-inline.tab-bar
+              li
+                a(href=(filter) ? './?filter='+filter+'&tab=activity' : './?tab=activity' 
+                  class=(tab == 'activity') ? 'active' : undefined) activity 
+              li
+                a(href=(filter) ? './?filter='+filter+'&tab=creation' : './?tab=creation' 
+                  class=(tab == 'creation') ? 'active' : undefined) creation 
+              li
+                a(href=(filter) ? './?filter='+filter+'&tab=hot' : './?tab=hot' 
+                  class=(tab == 'hot') ? 'active' : undefined) hot
+              li
+                a(href=(filter) ? './?filter='+filter+'&tab=week' : './?tab=week' 
+                  class=(tab == 'week') ? 'active' : undefined) week 
+              li
+                a(href=(filter) ? './?filter='+filter+'&tab=month' : './?tab=month'
+                  class=(tab == 'month') ? 'active' : undefined) month
+
+    .col-sm-4
+      include sidebar
