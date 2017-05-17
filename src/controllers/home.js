@@ -90,7 +90,8 @@ export const index = async (req, res) => {
     title: 'Stack Overflow Level',
     tab: sort,
     filter: req.query.filter,
-    questions: questions
+    questions: questions,
+    form: {}
   })
 }
 
@@ -100,9 +101,32 @@ export const index = async (req, res) => {
 */
 
 export const search = async (req, res) => {
+  let query = '/2.2/search/advanced?site=stackoverflow'
+
+  console.log(dateToTimestamp(req.query.fromdate))
+
   res.render('search', {
-    title: 'Stack Overflow Level'
+    title: 'Stack Overflow Level',
+    query: query,
+    form: {
+      q: req.query.q,
+      order: req.query.order[0],
+      title: req.query.title,
+      user: req.query.user,
+      fromdate: req.query.fromdate,
+      todate: req.query.todate,
+      tagged: req.query.tagged,
+      nottagged: req.query.nottagged,
+      body: req.query.body,
+      views: req.query.views,
+      accepted: req.query.accepted,
+      answers: req.query.answers
+    }
   })
+}
+
+const dateToTimestamp = (date) => {
+  return new Date(date).getTime() / 1000
 }
 
 const decodeHtmlEntity = function (str) {

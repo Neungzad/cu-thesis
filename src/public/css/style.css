@@ -42,6 +42,10 @@ h4.headline {
  Home Page 
 */
 
+.m-r-0 {
+	margin-right: 0 !important;
+}
+
 body {
 	padding-top: 78px;
 	margin-bottom: 75px;
@@ -55,6 +59,24 @@ body {
 	border-top: 3px solid #F47983;
 }
 
+.form-control {
+	height: 32px;
+	font-size: 13px;
+	border-radius: 2px;
+}
+
+.btn-pink {
+    color: #fff;
+    background-color: #f47983;
+    border-color: #f47983;
+		border-radius: 2px;
+}
+
+.btn-pink:hover {
+    color: #fff;
+    background-color: #f05965;
+    border-color: #f05965;
+}
 
 /* Navbar */
 
@@ -322,7 +344,19 @@ body {
 	text-decoration: none;
 }
 
+.search-form-warpper {
+	background-color: #f3f3f3;
+	padding: 5px 17px;
+	border-radius: 3px;
+	margin-top: 20px;
+}
+
 .search-form {}
+
+.search-form .desc {
+	font-size: 12px;
+	color: #aaa;
+}
 
 .search-form label {
 	font-size: 13px;
@@ -331,9 +365,25 @@ body {
 }
 
 h3.search-title {
-	margin-bottom: 15px;
+	margin-bottom: 21px;
+	text-align: left;
+	font-size: 20px;
+	margin-top: 10px;
 }
 
+a#advanced-search-btn {
+	display: block;
+	margin-bottom: 0;
+	margin-top: 7px;
+	font-size: 13px;
+	position: relative;
+	color: #f47983;
+}
+
+a#advanced-search-btn:hover,
+a#advanced-search-btn:focus {
+	color: #f05965;
+}
 
 /* Footer */
 
