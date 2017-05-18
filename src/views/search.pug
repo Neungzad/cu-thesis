@@ -10,23 +10,22 @@ block content
           .col-sm-6
             ul.pull-right.list-inline.tab-bar
               li
-                a(href=(filter) ? './?filter='+filter+'&sort=relevance' : './?sort=relevance' 
-                  class=(sort == 'relevance') ? 'active' : undefined
+                a(href='./search?sort=relevance' + paramsConfig 
+                  class=(form.sort == 'relevance') ? 'active' : undefined
                   title="Search results with best match to search terms") relevance 
               li
-                a(href=(filter) ? './?filter='+filter+'&sort=creation' : './?sort=creation' 
-                  class=(sort == 'creation') ? 'active' : undefined
+                a(href='./search?sort=creation' + paramsConfig
+                  class=(form.sort == 'creation') ? 'active' : undefined
                   title="Newest search results") newest 
               li
-                a(href=(filter) ? './?filter='+filter+'&sort=votes' : './?sort=votes' 
-                  class=(sort == 'votes') ? 'active' : undefined
+                a(href='./search?sort=votes' + paramsConfig  
+                  class=(form.sort == 'votes') ? 'active' : undefined
                   title="Highest voted search results") votes
               li
-                a(href=(filter) ? './?filter='+filter+'&sort=activity' : './?sort=activity' 
-                  class=(sort == 'activity') ? 'active' : undefined
+                a(href='./search?sort=activity' + paramsConfig  
+                  class=(form.sort == 'activity') ? 'active' : undefined
                   title="Recently active search results") active 
         
-      p #{query} 
-      p #{form.q} #{form.order}
+      p #{paramsConfig}
     .col-sm-4
       include sidebar

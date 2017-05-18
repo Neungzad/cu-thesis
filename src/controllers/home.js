@@ -101,28 +101,62 @@ export const index = async (req, res) => {
 */
 
 export const search = async (req, res) => {
-  let query = '/2.2/search/advanced?site=stackoverflow'
+  logObject(req.query)
 
-  console.log(dateToTimestamp(req.query.fromdate))
+  let query = '/2.2/search/advanced?site=stackoverflow'
+  const sort = req.query.sort ? req.query.sort : 'relevance'
+  const params = {
+    sort: sort,
+    q: req.query.q,
+    order: req.query.order,
+    title: req.query.title,
+    user: req.query.user,
+    fromdate: req.query.fromdate,
+    todate: req.query.todate,
+    tagged: req.query.tagged,
+    nottagged: req.query.nottagged,
+    body: req.query.body,
+    views: req.query.views,
+    accepted: req.query.accepted,
+    answers: req.query.answers
+  }
+
+  let paramsApi = setParamUri(params, true)
+  console.log(chalk.green('paramsApi = ', paramsApi))
+
+  let paramsConfig = setParamUri(params)
+  console.log(chalk.cyan('paramsConfig = ', paramsConfig))
+
+  // console.log(dateToTimestamp(req.query.fromdate))
 
   res.render('search', {
     title: 'Stack Overflow Level',
-    query: query,
-    form: {
-      q: req.query.q,
-      order: req.query.order[0],
-      title: req.query.title,
-      user: req.query.user,
-      fromdate: req.query.fromdate,
-      todate: req.query.todate,
-      tagged: req.query.tagged,
-      nottagged: req.query.nottagged,
-      body: req.query.body,
-      views: req.query.views,
-      accepted: req.query.accepted,
-      answers: req.query.answers
-    }
+    paramsConfig: paramsConfig,
+    form: params
   })
+}
+
+const logObject = (object) => {
+  return Object.keys(object).map(key => console.log(chalk.yellow(`${key} = ${object[key]}`)))
+}
+
+const setParamUri = (params, useAPI = false) => {
+  return Object.keys(params).map(key => {
+    let val = params[key]
+
+    // skip
+    if (key === 'sort')
+      return ''
+
+    if (useAPI)
+      // date format
+      if (/fromdate|todate/g.test(key))
+        val = dateToTimestamp(params[key])
+
+    return params[key] ? `&${key}=${val}` : ''
+  }).reduce((result, param) => {
+    return result + param
+  }, '')
 }
 
 const dateToTimestamp = (date) => {

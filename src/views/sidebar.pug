@@ -73,7 +73,11 @@
           .col-sm-9
             input.form-control(name="answers" value=form.answers placeholder="1")
             span.desc the minimum number of answers
+
+      input(type='hidden' name='sort' value=form.sort)
+      
       p.pull-left
         a(href="javascipt:viod(0)" id="advanced-search-btn") Advanced Search 
       p.text-right
         button.btn.btn-pink(name="submit") Search
+        

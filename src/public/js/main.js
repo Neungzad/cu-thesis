@@ -9,7 +9,7 @@ $(document).ready(function () {
   })
 
   // hide advanced search
-  $('.advance-search').hide();
+  // $('.advance-search').hide();
 
   $('#advanced-search-btn').click(function(){
     $('.advance-search').toggle("slow");
