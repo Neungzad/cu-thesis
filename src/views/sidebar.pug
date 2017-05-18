@@ -10,6 +10,14 @@
           input.form-control(name="q" value=form.q placeholder="Enter word search")
           span.desc text will match all question properties
       .form-group
+        label.col-sm-3.control-label Difficulty Lv.
+        .col-sm-9
+          select.form-control(name="filter")
+            option(value='') 
+            option(value='easy' selected=(form.filter == 'easy')) Easy
+            option(value='normal' selected=(form.filter == 'normal')) Normal
+            option(value='hard' selected=(form.filter == 'hard')) Hard
+      .form-group
         label.col-sm-3.control-label Order by
         .col-sm-9
           select.form-control(name="order")
@@ -75,7 +83,7 @@
             span.desc the minimum number of answers
 
       input(type='hidden' name='sort' value=form.sort)
-      
+
       p.pull-left
         a(href="javascipt:viod(0)" id="advanced-search-btn") Advanced Search 
       p.text-right

@@ -102,12 +102,12 @@ export const index = async (req, res) => {
 
 export const search = async (req, res) => {
   logObject(req.query)
-
   let query = '/2.2/search/advanced?site=stackoverflow'
   const sort = req.query.sort ? req.query.sort : 'relevance'
   const params = {
     sort: sort,
     q: req.query.q,
+    filter: req.query.filter,
     order: req.query.order,
     title: req.query.title,
     user: req.query.user,
@@ -127,7 +127,10 @@ export const search = async (req, res) => {
   let paramsConfig = setParamUri(params)
   console.log(chalk.cyan('paramsConfig = ', paramsConfig))
 
-  // console.log(dateToTimestamp(req.query.fromdate))
+
+
+
+
 
   res.render('search', {
     title: 'Stack Overflow Level',
@@ -148,10 +151,14 @@ const setParamUri = (params, useAPI = false) => {
     if (key === 'sort')
       return ''
 
-    if (useAPI)
+    if (useAPI) {
+      if (key === 'filter')
+        return ''
+
       // date format
       if (/fromdate|todate/g.test(key))
         val = dateToTimestamp(params[key])
+    }
 
     return params[key] ? `&${key}=${val}` : ''
   }).reduce((result, param) => {
