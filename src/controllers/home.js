@@ -55,11 +55,14 @@ export const index = async (req, res) => {
         }
 
         // no more question
-        if (!response.data.has_more)
+        // loop 5 round if not found a question to exit loop
+        if (!response.data.has_more || page === 5)
           isLoopQuery = false
 
         console.log(chalk.bgRed.white('has_more = ', response.data.has_more))
         console.log(chalk.red('end while with page :', page))
+        console.log(chalk.cyan('questions.length :', questions.length))
+
         page = page + 1
       }
     } else {
@@ -169,12 +172,13 @@ export const search = async (req, res) => {
         }
 
         // no more question
-        if (!response.data.has_more)
+        // loop 5 round if not found a question to exit loop
+        if (!response.data.has_more || page === 5)
           isLoopQuery = false
 
         console.log(chalk.bgRed.white('has_more = ', response.data.has_more))
         console.log(chalk.red('end while with page :', page))
-        console.log(chalk.cyan(query))
+        console.log(chalk.cyan('questions.length :', questions.length))
 
         page = page + 1
       }

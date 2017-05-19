@@ -8,7 +8,7 @@
             p.txtCount votes
           else
             p.txtCount vote                    
-        .col-sm-4.text-center(class=(question.is_answered) ? 'accepted' : (question.answer_count > 1) ? 'answered' : undefined)
+        .col-sm-4.text-center(class=(question.accepted_answer_id) ? 'accepted' : (question.answer_count > 0) ? 'answered' : undefined)
           p.digit #{question.answer_count}
           if question.answer_count > 1
             p.txtCount answers

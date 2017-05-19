@@ -6,7 +6,7 @@ export function featureFocus(request, q) {
       WHERE posts.PostTypeId = 1` +
       ' AND posts.OwnerUserId = ' + q.owner.user_id
 
-    if (q.owner.user_id === 0) {
+    if (!q.owner.user_id || q.owner.user_id === 0) {
       resolve(0.5)
     } else {
       let allTags = []
@@ -67,7 +67,7 @@ export function ratioSuccessAnswered(request, q) {
       WHERE ans.PostTypeId = 2` +
       ' AND ans.OwnerUserId = ' + q.owner.user_id
 
-    if (q.owner.user_id === 0)
+    if (!q.owner.user_id || q.owner.user_id === 0)
       resolve(0)
     else
       request.query(query, function (_err, recordset) {
@@ -89,7 +89,7 @@ export function experience(request, q) {
       FROM [StackOverflow].[dbo].[Users]` +
       ' WHERE Id = ' + q.owner.user_id
 
-    if (q.owner.user_id === 0)
+    if (!q.owner.user_id || q.owner.user_id === 0)
       resolve(0)
     else
       request.query(query, function (_err, recordset) {
