@@ -31,61 +31,19 @@ block content
                   class=(tab == 'creation') ? 'active' : undefined) creation 
               li
                 a(href=(filter) ? './?filter='+filter+'&tab=hot' : './?tab=hot' 
-                  class=(tab == 'hot') ? 'active' : undefined) hot
+                  class=(tab == 'hot') ? 'active' : undefined
+                  title="Questions with the most views, answers, and votes over the last few days") hot
               li
                 a(href=(filter) ? './?filter='+filter+'&tab=week' : './?tab=week' 
-                  class=(tab == 'week') ? 'active' : undefined) week 
+                  class=(tab == 'week') ? 'active' : undefined
+                  title="Questions with the most views, answers, and votes this week") week 
               li
                 a(href=(filter) ? './?filter='+filter+'&tab=month' : './?tab=month'
-                  class=(tab == 'month') ? 'active' : undefined) month
+                  class=(tab == 'month') ? 'active' : undefined
+                  title="Questions with the most views, answers, and votes this month") month
 
       each question in questions
-        .q-card
-          .row
-            .col-sm-3
-              .row
-                .col-sm-4.text-center 
-                  p.digit #{question.score}
-                  if question.score > 1
-                    p.txtCount votes
-                  else
-                    p.txtCount vote                    
-                .col-sm-4.text-center(class=(question.is_answered) ? 'accepted' : (question.answer_count > 1) ? 'answered' : undefined)
-                  p.digit #{question.answer_count}
-                  if question.answer_count > 1
-                    p.txtCount answers
-                  else
-                    p.txtCount answer
-                .col-sm-4.text-center
-                  p.digit #{question.view_count}
-                  if question.view_count > 1
-                    p.txtCount views
-                  else
-                    p.txtCount view
-                
-            .col-sm-9
-              // title      
-              .row
-                .col-sm-8
-                  a.question-title(href=(question.link) target='_blank') #{question.title}
-                .col-sm-4.text-right
-                  .score-warpper
-                    p.diff-sc #{question.difScore}
-                    p.diff-sub Score
-                  .lv-box
-                    p.text-lv #{question.difLv}
-                    p.sub-lv DIFFICULTY LEVEL
-
-              // des
-              p.body-markdown #{question.body_markdown}
-
-              .row
-                // tags 
-                .col-sm-8
-                  each tag in question.tags
-                    span.tag #{tag}
-                .col-sm-4.text-right
-                  span.last-active last activity #{question.timeAgo}
+        include question-card
         
     .col-sm-4
       include sidebar

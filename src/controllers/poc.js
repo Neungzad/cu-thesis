@@ -332,12 +332,12 @@ const calScore = (words, isCode) => {
       return 0
 
     // for debug
-    if (tree[w])
-      // check first time visited node
-      if ((tree[w].isCode && isCode) || !tree[w].isCode)
-        // visitNode[tree[w].word] = true
-        console.log(tree[w].word + ' | isCode = ' + tree[w].isCode)
-      // console.log("WORD = " + tree[w].word)
+    // if (tree[w])
+    //   // check first time visited node
+    //   if ((tree[w].isCode && isCode) || !tree[w].isCode)
+    //     // visitNode[tree[w].word] = true
+    //     console.log(tree[w].word + ' | isCode = ' + tree[w].isCode)
+    //   // console.log("WORD = " + tree[w].word)
 
     sum += tree[w] ? recusiveCal(tree[w], isCode) : 0
   })

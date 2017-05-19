@@ -10,7 +10,7 @@
           input.form-control(name="q" value=form.q placeholder="Enter word search")
           span.desc text will match all question properties
       .form-group
-        label.col-sm-3.control-label Difficulty Lv.
+        label.col-sm-3.control-label.highlight Difficulty Lv.
         .col-sm-9
           select.form-control(name="filter")
             option(value='') 
@@ -84,8 +84,8 @@
 
       input(type='hidden' name='sort' value=form.sort)
 
-      p.pull-left
-        a(href="javascipt:viod(0)" id="advanced-search-btn") Advanced Search 
+      //- p.pull-left
+      //-   a(href="javascipt:viod(0)" id="advanced-search-btn") Advanced Search 
       p.text-right
         button.btn.btn-pink(name="submit") Search
         

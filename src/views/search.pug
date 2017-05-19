@@ -26,6 +26,11 @@ block content
                   class=(form.sort == 'activity') ? 'active' : undefined
                   title="Recently active search results") active 
         
-      p #{paramsConfig}
+      each question in questions
+        include question-card
+      
+      if noResult
+        p Your search returned no matches
+              
     .col-sm-4
       include sidebar
