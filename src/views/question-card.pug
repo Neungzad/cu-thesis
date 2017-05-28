@@ -31,7 +31,10 @@
             p.diff-sc #{question.difScore}
             p.diff-sub Score
           .lv-box
-            p.text-lv #{question.difLv}
+            if (question.difLv == 'Intermediate')
+              p.text-lv.text-sm #{question.difLv}
+            else
+              p.text-lv #{question.difLv}
             p.sub-lv DIFFICULTY LEVEL
 
       // des

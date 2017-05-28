@@ -283,7 +283,7 @@ const convetDiffLv = (score) => {
   if (score > 0.6)
     return 'hard'
   else if (score > 0.4)
-    return 'normal'
+    return 'Intermediate'
   else
     return 'easy'
 }

@@ -10,19 +10,19 @@
           input.form-control(name="q" value=form.q placeholder="Enter word search")
           span.desc text will match all question properties
       .form-group
-        label.col-sm-3.control-label.highlight Difficulty Lv.
+        label.col-sm-3.control-label.highlight Difficulty Level
         .col-sm-9
           select.form-control(name="filter")
             option(value='') 
             option(value='easy' selected=(form.filter == 'easy')) Easy
-            option(value='normal' selected=(form.filter == 'normal')) Normal
+            option(value='normal' selected=(form.filter == 'normal')) Intermediate
             option(value='hard' selected=(form.filter == 'hard')) Hard
       .form-group
         label.col-sm-3.control-label Order by
         .col-sm-9
           select.form-control(name="order")
-            option(value='desc' selected=(form.order == 'desc')) DESC
-            option(value='asc' selected=(form.order == 'asc')) ASC
+            option(value='desc' selected=(form.order == 'desc')) Descending
+            option(value='asc' selected=(form.order == 'asc')) Ascending
       .form-group
         label.col-sm-3.control-label Title
         .col-sm-9
@@ -38,12 +38,12 @@
           label.col-sm-3.control-label Not tagged
           .col-sm-9
             input.form-control(name="nottagged" value=form.nottagged placeholder="html;php;java")
-            span.desc none of which will be present on questions
+            span.desc a semicolon delimited list of excluded tags
         .form-group
           label.col-sm-3.control-label User ID
           .col-sm-9
             input.form-control(name="user" value=form.user placeholder="482001XX")
-            span.desc the id of the user who own the questions
+            span.desc the id of the user who owns the questions
         .form-group
           label.col-sm-3.control-label From date
           .col-sm-9
@@ -62,7 +62,7 @@
           label.col-sm-3.control-label Body
           .col-sm-9
             input.form-control(name="body" value=form.body placeholder="Enter body search")
-            span.desc text which must appear in questions' bodies
+            span.desc text that must appear in questions' bodies
         .form-group
           label.col-sm-3.control-label Min views
           .col-sm-9

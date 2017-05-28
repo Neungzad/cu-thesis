@@ -5,7 +5,7 @@ block content
     .col-sm-8
       .tab-bar-warpper
         .row
-          .col-sm-6
+          .col-sm-6.p-r-0
             h4.pull-left Top Questions
             p.filter-title Filter difficulty level
             ul.pull-left.list-inline.filter-bar
@@ -14,13 +14,13 @@ block content
                   class=(!filter) ? 'active' : undefined) no filter 
               li 
                 a(href=(tab) ? './?filter=easy&tab='+tab : './?filter=easy' 
-                  class=(filter == 'easy') ? 'active' : undefined) easy
+                  class=(filter == 'easy') ? 'active' : undefined) Easy
               li 
                 a(href=(tab) ? './?filter=normal&tab='+tab : './?filter=normal' 
-                  class=(filter == 'normal') ? 'active' : undefined) normal
+                  class=(filter == 'normal') ? 'active' : undefined) Intermediate
               li 
                 a(href=(tab) ? './?filter=hard&tab='+tab : './?filter=hard'
-                  class=(filter == 'hard') ? 'active' : undefined) hard
+                  class=(filter == 'hard') ? 'active' : undefined) Hard
           .col-sm-6
             ul.pull-right.list-inline.tab-bar
               li
